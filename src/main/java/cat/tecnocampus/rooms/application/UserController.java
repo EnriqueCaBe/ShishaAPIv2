@@ -2,6 +2,7 @@ package cat.tecnocampus.rooms.application;
 
 import cat.tecnocampus.rooms.application.daosInterface.UserDAO;
 import cat.tecnocampus.rooms.application.dtos.UserDTO;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class UserController {
 
     UserDAO userDAO;
-    private PasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public UserController(UserDAO userDAO) {
         this.userDAO = userDAO;
@@ -30,7 +31,7 @@ public class UserController {
         user.setEmail(userDTO.getEmail());
         user.setUsername(userDTO.getUsername());
         System.out.println(userDTO.getPassword());
-        user.setPassword(userDTO.getPassword());
+        user.setPassword("{bcrypt}"+encoder.encode(userDTO.getPassword()));
         userDAO.postUser(user);
     }
 }
