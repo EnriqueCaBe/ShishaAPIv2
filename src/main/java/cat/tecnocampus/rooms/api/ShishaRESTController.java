@@ -21,75 +21,75 @@ public class ShishaRESTController {
         this.shishaController = shishaController;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/1/all")
     public List<MarcaDTO> getAll(){
         return shishaController.getAll();
     }
 
-    @GetMapping("/marcas/tabacos")
+    @GetMapping("/1/marcas/tabacos")
     public List<MarcaDTO> getMarcas(){
         return shishaController.getMarcas();
     }
 
-    @GetMapping("/marcas")
+    @GetMapping("/1/marcas")
     public List<MarcaDTO> getMarcasNoTabacos(){
         return shishaController.getMarcasNoTabacos();
     }
 
-    @GetMapping("/marcas/{name}")
+    @GetMapping("/1/marcas/{name}")
     public MarcaDTO getMarcaByName(@PathVariable String name){
         return shishaController.getMarcaByName(name);
     }
 
-    @PostMapping("/marcas")
+    @PostMapping("/0/marcas")
     public void postTabaco(@RequestBody @Valid MarcaDTO marca){
         shishaController.postMarca(marca);
     }
 
-    @DeleteMapping("/marcas/{marca}")
+    @DeleteMapping("/0/marcas/{marca}")
     public void deleteMarca(@PathVariable String marca){
         shishaController.deleteMarca(marca);
     }
 
 
 
-    @GetMapping("/tabacos")
+    @GetMapping("/1/tabacos")
     public List<TabacoDTO> getTabacos(){
         return shishaController.getTabacos();
     }
 
-    @GetMapping("/tabacos/{name}")
+    @GetMapping("/1/tabacos/{name}")
     public TabacoDTO getTabacoByName(@PathVariable String name){
         return shishaController.getTabacoByName(name);
     }
 
-    @PostMapping("/tabacos/{marca}")
+    @PostMapping("/0/tabacos/{marca}")
     public void postTabaco(@RequestBody @Valid TabacoDTO tabaco, @PathVariable String marca){
         shishaController.postTabaco(tabaco,marca);
     }
 
-    @DeleteMapping("/tabacos/{tabaco}")
+    @DeleteMapping("/0/tabacos/{tabaco}")
     public void deleteTabaco(@PathVariable String tabaco){
         shishaController.deleteTabaco(tabaco);
     }
 
-    @GetMapping("/tabacos/marca/{marca}")
+    @GetMapping("/1/tabacos/marca/{marca}")
     public List<TabacoDTO> getTabacosByMarca(@PathVariable String marca){
         return shishaController.getTabacoByMarca(marca);
     }
 
 
-    @PostMapping("/formato/{tabaco}")
+    @PostMapping("/0/formato/{tabaco}")
     public TabacoDTO postFormato(@RequestBody FormatoDTO formatoDTO, @PathVariable String tabaco){
         return shishaController.postFormato(formatoDTO,tabaco);
     }
 
-    @GetMapping("/mixes")
+    @GetMapping("/1/mixes")
     public List<MezclaDTO> getAllMixes(){
         return shishaController.getAllMixes();
     }
 
-    @PostMapping("/mix")
+    @PostMapping("/0/mix")
     public void postMix(@RequestBody MezclaDTO mezcla){
         shishaController.postMix(mezcla);
     }

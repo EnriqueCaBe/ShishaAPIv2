@@ -1,3 +1,9 @@
+INSERT INTO users (id, username, email, password)
+VALUES ('cd4fa027-36b6-4639-86b8-834fe83b2e4a', 'EnriqueCaBe', 'enriquecabe300@gmail.com',
+        '{bcrypt}$2y$12$sqdYCDm.HjLx3ARvXjawd..6J115UWQ5j5nRDI33zPDC9muhEsXmi');
+
+INSERT INTO authorities (username, role)
+VALUES ('EnriqueCaBe', 'ROLE_ADMIN');
 
 --NAMELESS
 insert into marca(name,pais,descripcion) values('Nameless','Alemania','Tabaco rubio');

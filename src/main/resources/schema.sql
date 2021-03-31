@@ -45,3 +45,25 @@ create table porcentaje
     foreign key (tabaco) references tabaco(name) on delete cascade,
     foreign key (mezcla) references mezcla(name) on delete cascade
 );
+
+DROP TABLE if EXISTS users;
+create table users
+(
+    id         VARCHAR(256) PRIMARY KEY,
+    email      VARCHAR(100),
+    username    VARCHAR (100),
+    password   VARCHAR(70) NOT NULL,
+    enabled    TINYINT     NOT NULL DEFAULT 1
+);
+
+
+DROP TABLE if EXISTS authorities;
+CREATE TABLE authorities
+(
+    authority_id int(11)     NOT NULL AUTO_INCREMENT,
+    username     varchar(45) NOT NULL,
+    role         varchar(45) NOT NULL,
+    PRIMARY KEY (authority_id),
+    UNIQUE KEY uni_username_role (role,username),
+    CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(username)
+);

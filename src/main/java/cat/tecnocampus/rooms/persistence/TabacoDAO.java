@@ -1,9 +1,8 @@
 package cat.tecnocampus.rooms.persistence;
 
 import cat.tecnocampus.rooms.application.dtos.FormatoDTO;
-import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
-import cat.tecnocampus.rooms.application.exceptions.TabacoDoesNotExistEsception;
+import cat.tecnocampus.rooms.application.exceptions.TabacoDoesNotExistException;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
 import org.simpleflatmapper.jdbc.spring.RowMapperImpl;
@@ -41,7 +40,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
             var result =jdbcTemplate.query(query,tabacosRowMapper,name);
             return result.get(0);
         }catch (EmptyResultDataAccessException | IndexOutOfBoundsException e){
-            throw new TabacoDoesNotExistEsception(name);
+            throw new TabacoDoesNotExistException(name);
         }
 
     }
