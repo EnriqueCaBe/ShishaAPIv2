@@ -2,9 +2,11 @@ package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.UserController;
 import cat.tecnocampus.rooms.application.dtos.UserDTO;
+import cat.tecnocampus.rooms.domain.User;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Validated
@@ -29,5 +31,10 @@ public class UserRESTController {
     @PostMapping("/1/users")
     public void postUser(@RequestBody UserDTO userDTO){
         userController.postUser(userDTO);
+    }
+
+    @GetMapping("/1/me")
+    public UserDTO getMe(Principal principal){
+        return userController.getUserByUsername(principal.getName());
     }
 }

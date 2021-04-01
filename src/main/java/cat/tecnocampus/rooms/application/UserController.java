@@ -34,4 +34,5 @@ public class UserController {
         user.setPassword("{bcrypt}"+encoder.encode(userDTO.getPassword()));
         userDAO.postUser(user);
     }
+
 }
