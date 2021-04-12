@@ -1,5 +1,6 @@
 package cat.tecnocampus.rooms.api;
 
+import cat.tecnocampus.rooms.application.EmailService;
 import cat.tecnocampus.rooms.application.UserController;
 import cat.tecnocampus.rooms.application.dtos.UserDTO;
 import cat.tecnocampus.rooms.domain.User;
@@ -13,9 +14,11 @@ import java.util.List;
 @RestController
 public class UserRESTController {
     UserController userController;
+    EmailService emailService;
 
-    public UserRESTController(UserController userController) {
+    public UserRESTController(UserController userController,EmailService emailService) {
         this.userController = userController;
+        this.emailService = emailService;
     }
 
     @GetMapping("/0/users")
@@ -31,6 +34,7 @@ public class UserRESTController {
     @PostMapping("/1/users")
     public void postUser(@RequestBody UserDTO userDTO){
         userController.postUser(userDTO);
+        emailService.sendMail("enriquecabe300@gmail.com", "Test Subject", "Test mail");
     }
 
     @GetMapping("/1/me")

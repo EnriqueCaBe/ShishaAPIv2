@@ -5,6 +5,7 @@ import java.util.List;
 public class MezclaDTO {
     private String name;
     private List<PorcentajeDTO> partes;
+    private List<ValoracionDTO> valoraciones;
 
     public MezclaDTO(List<PorcentajeDTO> partes) {
         this.partes = partes;
@@ -27,5 +28,13 @@ public class MezclaDTO {
 
     public void setPartes(List<PorcentajeDTO> partes) {
         this.partes = partes;
+    }
+
+    public List<ValoracionDTO> getValoraciones() {
+        return valoraciones;
+    }
+
+    public void setValoraciones(List<ValoracionDTO> valoraciones) {
+        this.valoraciones = valoraciones;
     }
 }

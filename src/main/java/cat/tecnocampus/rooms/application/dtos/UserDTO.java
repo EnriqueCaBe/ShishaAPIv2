@@ -1,5 +1,6 @@
 package cat.tecnocampus.rooms.application.dtos;
 
+import java.util.List;
 import java.util.UUID;
 
 public class UserDTO {
@@ -8,6 +9,7 @@ public class UserDTO {
     private String username;
     private String password;
     private String role;
+    private List<ValoracionDTO> valoraciones;
 
     public UserDTO() {
         this.id= UUID.randomUUID().toString();
@@ -51,5 +53,13 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<ValoracionDTO> getValoraciones() {
+        return valoraciones;
+    }
+
+    public void setValoraciones(List<ValoracionDTO> valoraciones) {
+        this.valoraciones = valoraciones;
     }
 }

@@ -3,6 +3,7 @@ package cat.tecnocampus.rooms.persistence;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.MezclaDTO;
 import cat.tecnocampus.rooms.application.dtos.PorcentajeDTO;
+import cat.tecnocampus.rooms.application.dtos.ValoracionDTO;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,7 +27,7 @@ public class MezclaDAO implements cat.tecnocampus.rooms.application.daosInterfac
 
 
     public List<MezclaDTO> getAllMixes() {
-        final var query = "select m.name, p.tabaco as partes_tabaco, p.porcentaje as partes_porcentaje from mezcla m join porcentaje p on m.name=p.mezcla join tabaco t on p.tabaco=t.name";
+        final var query = "select m.name, p.tabaco as partes_tabaco, p.porcentaje as partes_porcentaje from mezcla m join porcentaje p on m.name=p.mezcla join tabaco t on p.tabaco=t.name ";
         return jdbcTemplate.query(query,mezclasRowMapper);
     }
 
@@ -37,6 +38,11 @@ public class MezclaDAO implements cat.tecnocampus.rooms.application.daosInterfac
             final var query1 = "insert into porcentaje(tabaco,porcentaje,mezcla) values(?,?,?)";
             jdbcTemplate.update(query1, porcentajeDTO.getTabaco(), porcentajeDTO.getPorcentaje(),mezcla.getName());
         }
+    }
+
+    public void postValoracion(ValoracionDTO valoracion,String user,String mezcla) {
+        final var query = "insert into valoracion(nota,usuario,mezcla) values(?,?,?)";
+        jdbcTemplate.update(query,valoracion.getNota(),user,mezcla);
     }
 
 

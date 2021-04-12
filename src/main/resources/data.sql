@@ -5,8 +5,9 @@ VALUES ('cd4fa027-36b6-4639-86b8-834fe83b2e4a', 'EnriqueCaBe', 'enriquecabe300@g
 INSERT INTO authorities (username, role)
 VALUES ('EnriqueCaBe', 'ROLE_ADMIN');
 
+
 --NAMELESS
-insert into marca(name,pais,descripcion) values('Nameless','Alemania','Tabaco rubio');
+insert into marca(name,pais,descripcion,imagen) values('Nameless','Alemania','Tabaco rubio','https://i.ibb.co/Jys8s36/nameless.png');
 insert into tabaco (name,descripcion,marca) values('Pablo','Lima y arándanos','Nameless');
 insert into formato(gramos,precio,tabaco) values(200.0,12.90,'Pablo');
 insert into formato(gramos,precio,tabaco) values(50.0,3.60,'Pablo');
@@ -14,8 +15,9 @@ insert into tabaco (name,descripcion,marca) values('Blacknana','Uva moscatel y m
 insert into formato(gramos,precio,tabaco) values(200.0,12.90,'Blacknana');
 insert into formato(gramos,precio,tabaco) values(50.0,3.60,'Blacknana');
 
+
 --Tangiers
-insert into marca(name,pais,descripcion) values('Tangiers','USA','Tabaco negro');
+insert into marca(name,pais,descripcion,imagen) values('Tangiers','USA','Tabaco negro','https://i.ibb.co/LPWDd6j/tangiers.png');
 insert into tabaco (name,descripcion,marca) values('C6 Pineapple','Piña','Tangiers');
 insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C6 Pineapple');
 insert into tabaco (name,descripcion,marca) values('C111 Ololiuqui','Cola y vainilla','Tangiers');
@@ -67,8 +69,9 @@ insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C119 Kosmik');
 insert into tabaco (name,descripcion,marca) values('C69 PassionFruit','Fruta de la pasión','Tangiers');
 insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C69 PassionFruit');
 
+
 --Serbetli
-insert into marca(name,pais,descripcion) values('Serbetli','Alemania','Tabaco rubio premium');
+insert into marca(name,pais,descripcion,imagen) values('Serbetli','Alemania','Tabaco rubio premium','https://i.ibb.co/cTzSKqY/serbetli.png');
 insert into tabaco (name,descripcion,marca) values('Banastra','Banana y fresa','Serbetli');
 insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Banastra');
 insert into formato(gramos,precio,tabaco) values(50.0,2.95,'Banastra');
@@ -128,8 +131,9 @@ insert into formato(gramos,precio,tabaco) values(50.0,2.95,'Stra Shark');
 insert into tabaco (name,descripcion,marca) values('Duses','Pera fresca','Serbetli');
 insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Duses');
 
+
 --Revoshi
-insert into marca(name,pais,descripcion) values('Revoshi','Turquia','Tabaco rubio');
+insert into marca(name,pais,descripcion,imagen) values('Revoshi','Turquia','Tabaco rubio','https://i.ibb.co/b69zGrb/revoshi.png');
 insert into tabaco (name,descripcion,marca) values('Blck Grp','Uva negra','Revoshi');
 insert into formato(gramos,precio,tabaco) values(50.0,3.30,'Blck Grp');
 insert into tabaco (name,descripcion,marca) values('D´App Strng','Dos manzanas intenso','Revoshi');
@@ -153,8 +157,9 @@ insert into formato(gramos,precio,tabaco) values(50.0,3.30,'Pancho Villa');
 insert into tabaco (name,descripcion,marca) values('Vamos Ernesto','Chicle de canela','Revoshi');
 insert into formato(gramos,precio,tabaco) values(50.0,3.30,'Vamos Ernesto');
 
+
 --Aloha
-insert into marca(name,pais,descripcion) values('Aloha','España','Tabaco rubio');
+insert into marca(name,pais,descripcion,imagen) values('Aloha','España','Tabaco rubio','https://i.ibb.co/9vqTK57/aloha.png');
 insert into tabaco (name,descripcion,marca) values('Splash','Naranja picante, fresca y cremosa','Aloha');
 insert into formato(gramos,precio,tabaco) values(100.0,7.50,'Splash');
 insert into formato(gramos,precio,tabaco) values(200.0,13.50,'Splash');
@@ -184,7 +189,59 @@ insert into formato(gramos,precio,tabaco) values(100.0,7.50,'Shaka Shaka');
 insert into formato(gramos,precio,tabaco) values(200.0,13.50,'Shaka Shaka');
 
 
+--Darkside
+insert into marca(name,pais,descripcion,imagen) values('Darkside','Rusia','Tabaco negro','https://i.ibb.co/1TpbsMG/darkside.png');
+insert into tabaco (name,descripcion,marca) values('Darkside Hola','Cola con limón','Darkside');
+insert into formato(gramos,precio,tabaco) values(30.0,3.85,'Darkside Hola');
+insert into tabaco (name,descripcion,marca) values('I Granny','Manzana verde dulce','Darkside');
+insert into formato(gramos,precio,tabaco) values(30.0,3.85,'I Granny');
+insert into tabaco (name,descripcion,marca) values('LM Blast','Refrescante y agrio sabor de limón maduro','Darkside');
+insert into formato(gramos,precio,tabaco) values(30.0,3.85,'LM Blast');
+insert into tabaco (name,descripcion,marca) values('MG Assi','Batido con pulpa de mango','Darkside');
+insert into formato(gramos,precio,tabaco) values(30.0,3.85,'MG Assi');
+insert into tabaco (name,descripcion,marca) values('Supernova','Impresionante mentol frío','Darkside');
+insert into formato(gramos,precio,tabaco) values(30.0,3.85,'Supernova');
+insert into tabaco (name,descripcion,marca) values('Tear','Rico sabor de limonada dulce de pera','Darkside');
+insert into formato(gramos,precio,tabaco) values(30.0,3.85,'Darkside Hola');
 
+
+--Dozaj
+insert into marca(name,pais,descripcion,imagen) values('Dozaj','Turquia','Tabaco rubio','');
+insert into tabaco (name,descripcion,marca) values('90+','Limón y menta','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'90+');
+insert into tabaco (name,descripcion,marca) values('Black Star','Maracuyá, chicle, melocotón y menta','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Black Star');
+insert into tabaco (name,descripcion,marca) values('Blade','Mezcla de bayas, fruta del dragon y menta','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Blade');
+insert into tabaco (name,descripcion,marca) values('Eternal','Puro de vainilla','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Eternal');
+insert into tabaco (name,descripcion,marca) values('Land Of Fire','Vodka, café, licor, nata','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Land Of Fire');
+insert into tabaco (name,descripcion,marca) values('Marshall','Brownie, naranja, menta','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Marshall');
+insert into tabaco (name,descripcion,marca) values('Mito','Caramelo, canela, toque helado','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Mito');
+insert into tabaco (name,descripcion,marca) values('Royal Style','Muffin de arándano','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Royal Style');
+insert into tabaco (name,descripcion,marca) values('Carnival','Mezcla de frutas exóticas','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Carnival');
+insert into formato(gramos,precio,tabaco) values(200.0,11.25,'Carnival');
+insert into tabaco (name,descripcion,marca) values('Casablanca','Té especiado, jenjibre, nata y toque de canela','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Casablanca');
+insert into formato(gramos,precio,tabaco) values(200.0,11.25,'Casablanca');
+insert into tabaco (name,descripcion,marca) values('Cuba Dream','Exótic tropical fruits','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Cuba Dream');
+insert into tabaco (name,descripcion,marca) values('Dead Sea','Coca cola con cereza helada','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Dead Sea');
+insert into formato(gramos,precio,tabaco) values(200.0,11.25,'Dead Sea');
+insert into tabaco (name,descripcion,marca) values('Jelly Bear','Osito de gominola','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Jelly Bear');
+insert into tabaco (name,descripcion,marca) values('Rio Lady','Piña, melón, chicle y toque helado','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Rio Lady');
+insert into tabaco (name,descripcion,marca) values('Sweet Night','Guayaba, melón, kiwi, lima y fruta nefelio (rambutan)','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Sweet Night');
+insert into tabaco (name,descripcion,marca) values('Vip 44','Cactus, lima y pepino','Dozaj');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Vip 44');
 
 
 --Mixes

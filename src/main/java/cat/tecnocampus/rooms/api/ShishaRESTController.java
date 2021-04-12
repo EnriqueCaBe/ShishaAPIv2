@@ -1,15 +1,13 @@
 package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.ShishaController;
-import cat.tecnocampus.rooms.application.dtos.FormatoDTO;
-import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
+import cat.tecnocampus.rooms.application.dtos.*;
 
-import cat.tecnocampus.rooms.application.dtos.MezclaDTO;
-import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Validated
@@ -94,6 +92,11 @@ public class ShishaRESTController {
         shishaController.postMix(mezcla);
     }
 
+
+    @PostMapping("/1/{mixName}/valoracion")
+    public void postValoracion(@RequestBody ValoracionDTO valoracionDTO, Principal principal, @PathVariable String mixName){
+        shishaController.postValoracion(valoracionDTO,principal.getName(),mixName);
+    }
 
 
 }

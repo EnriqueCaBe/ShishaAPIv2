@@ -85,4 +85,8 @@ public class ShishaController {
     public void postMix(MezclaDTO mezcla){
         mezclaDAO.postMix(mezcla);
     }
+
+    public void postValoracion(ValoracionDTO valoracionDTO, String name, String mixName) {
+        mezclaDAO.postValoracion(valoracionDTO,name,mixName);
+    }
 }

@@ -46,6 +46,8 @@ create table porcentaje
     foreign key (mezcla) references mezcla(name) on delete cascade
 );
 
+
+
 DROP TABLE if EXISTS users;
 create table users
 (
@@ -56,7 +58,6 @@ create table users
     enabled    TINYINT     NOT NULL DEFAULT 1
 );
 
-
 DROP TABLE if EXISTS authorities;
 CREATE TABLE authorities
 (
@@ -66,4 +67,13 @@ CREATE TABLE authorities
     PRIMARY KEY (authority_id),
     UNIQUE KEY uni_username_role (role,username),
     CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(username)
+);
+drop table if exists valoracion;
+create table valoracion
+(
+    nota double not null,
+    usuario varchar(256) not null,
+    mezcla varchar(256) not null,
+    foreign key (usuario) references users(username) on delete cascade,
+    foreign key (mezcla) references mezcla(name) on delete cascade
 );
