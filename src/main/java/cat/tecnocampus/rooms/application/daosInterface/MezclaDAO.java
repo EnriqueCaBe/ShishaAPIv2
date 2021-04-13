@@ -8,5 +8,4 @@ import java.util.List;
 public interface MezclaDAO {
     List<MezclaDTO> getAllMixes();
     void postMix(MezclaDTO mezcla);
-    void postValoracion(ValoracionDTO valoracion,String user, String mezcla);
 }

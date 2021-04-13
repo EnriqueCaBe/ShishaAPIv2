@@ -32,7 +32,7 @@ create table formato
 drop table if exists mezcla;
 create table mezcla
 (
-    id     int auto_increment primary key,
+    id     varchar(256) primary key,
     name    varchar(256) not null
 );
 
@@ -43,7 +43,7 @@ create table porcentaje
     mezcla        varchar(256) not null,
     porcentaje    double not null,
     foreign key (tabaco) references tabaco(name) on delete cascade,
-    foreign key (mezcla) references mezcla(name) on delete cascade
+    foreign key (mezcla) references mezcla(id) on delete cascade
 );
 
 
@@ -71,9 +71,11 @@ CREATE TABLE authorities
 drop table if exists valoracion;
 create table valoracion
 (
+    id varchar(256) not null,
     nota double not null,
+    comentario varchar(256),
     usuario varchar(256) not null,
     mezcla varchar(256) not null,
     foreign key (usuario) references users(username) on delete cascade,
-    foreign key (mezcla) references mezcla(name) on delete cascade
+    foreign key (mezcla) references mezcla(id) on delete cascade
 );

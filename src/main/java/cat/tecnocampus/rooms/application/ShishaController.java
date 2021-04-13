@@ -4,6 +4,7 @@ import cat.tecnocampus.rooms.application.dtos.*;
 import cat.tecnocampus.rooms.persistence.MarcaDAO;
 import cat.tecnocampus.rooms.persistence.MezclaDAO;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
+import cat.tecnocampus.rooms.persistence.ValoracionesDAO;
 import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
@@ -16,11 +17,13 @@ public class ShishaController {
     MarcaDAO marcaDAO;
     TabacoDAO tabacoDAO;
     MezclaDAO mezclaDAO;
+    ValoracionesDAO valoracionesDAO;
 
-    public ShishaController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO,MezclaDAO mezclaDAO) {
+    public ShishaController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO,MezclaDAO mezclaDAO,ValoracionesDAO valoracionesDAO) {
         this.marcaDAO = marcaDAO;
         this.tabacoDAO = tabacoDAO;
         this.mezclaDAO = mezclaDAO;
+        this.valoracionesDAO = valoracionesDAO;
     }
 
     public MarcaDTO getMarcaByName(String name) {
@@ -79,14 +82,27 @@ public class ShishaController {
     }
 
     public List<MezclaDTO> getAllMixes(){
-        return mezclaDAO.getAllMixes();
+        List<MezclaDTO> mezclas = mezclaDAO.getAllMixes();
+        List<ValoracionDTO> valoraciones;
+        for(MezclaDTO mezcla: mezclas){
+            valoraciones = valoracionesDAO.getValoracionesByMezclaName(mezcla.getId());
+            mezcla.setValoraciones(valoraciones);
+        }
+        return mezclas;
     }
 
     public void postMix(MezclaDTO mezcla){
-        mezclaDAO.postMix(mezcla);
+        MezclaDTO newMezcla = new MezclaDTO();
+        newMezcla.setName(mezcla.getName());
+        newMezcla.setPartes(mezcla.getPartes());
+        newMezcla.setValoraciones(mezcla.getValoraciones());
+        mezclaDAO.postMix(newMezcla);
     }
 
-    public void postValoracion(ValoracionDTO valoracionDTO, String name, String mixName) {
-        mezclaDAO.postValoracion(valoracionDTO,name,mixName);
+    public void postValoracion(ValoracionDTO valoracionDTO, String name, String mixID) {
+        ValoracionDTO newVal = new ValoracionDTO();
+        newVal.setNota(valoracionDTO.getNota());
+        newVal.setComentario(valoracionDTO.getComentario());
+        valoracionesDAO.postValoracion(valoracionDTO,name,mixID);
     }
 }

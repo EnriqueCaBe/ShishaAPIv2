@@ -3,10 +3,10 @@ package cat.tecnocampus.rooms.api;
 import cat.tecnocampus.rooms.application.EmailService;
 import cat.tecnocampus.rooms.application.UserController;
 import cat.tecnocampus.rooms.application.dtos.UserDTO;
-import cat.tecnocampus.rooms.domain.User;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import java.security.Principal;
 import java.util.List;
 
@@ -32,9 +32,9 @@ public class UserRESTController {
     }
 
     @PostMapping("/1/users")
-    public void postUser(@RequestBody UserDTO userDTO){
+    public void postUser(@RequestBody UserDTO userDTO) throws MessagingException {
         userController.postUser(userDTO);
-        emailService.sendMail("enriquecabe300@gmail.com", "Test Subject", "Test mail");
+        emailService.sendMail(userDTO);
     }
 
     @GetMapping("/1/me")

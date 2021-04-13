@@ -93,9 +93,9 @@ public class ShishaRESTController {
     }
 
 
-    @PostMapping("/1/{mixName}/valoracion")
-    public void postValoracion(@RequestBody ValoracionDTO valoracionDTO, Principal principal, @PathVariable String mixName){
-        shishaController.postValoracion(valoracionDTO,principal.getName(),mixName);
+    @PostMapping("/1/{mixID}/valoracion")
+    public void postValoracion(@RequestBody ValoracionDTO valoracionDTO, Principal principal, @PathVariable String mixID){
+        shishaController.postValoracion(valoracionDTO,principal.getName(),mixID);
     }
 
 

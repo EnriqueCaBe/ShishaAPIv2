@@ -1,6 +1,7 @@
 package cat.tecnocampus.rooms.persistence;
 
 import cat.tecnocampus.rooms.application.dtos.UserDTO;
+import cat.tecnocampus.rooms.application.exceptions.UserAlreadyExistsException;
 import cat.tecnocampus.rooms.application.exceptions.UserDoesNotExistException;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
@@ -52,11 +53,14 @@ public class UserDAO implements cat.tecnocampus.rooms.application.daosInterface.
 
     @Override
     public void postUser(UserDTO user) {
+        try {
             final var query = "insert into users(id,username,email,password) values(?,?,?,?)";
             jdbcTemplate.update(query, user.getId(), user.getUsername(), user.getEmail(), user.getPassword());
             final var query1 = "insert into authorities(username,role) values(?,?)";
             jdbcTemplate.update(query1, user.getUsername(), "ROLE_USER");
-
+        }catch(DuplicateKeyException dke){
+            throw new UserAlreadyExistsException(user.getUsername());
+        }
     }
 
 }

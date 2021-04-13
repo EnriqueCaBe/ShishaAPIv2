@@ -243,9 +243,54 @@ insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Sweet Night');
 insert into tabaco (name,descripcion,marca) values('Vip 44','Cactus, lima y pepino','Dozaj');
 insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Vip 44');
 
+--Dumanji
+insert into marca(name,pais,descripcion,imagen) values('Dumanji','Francia','Tabaco rubio','');
+insert into tabaco (name,descripcion,marca) values('Adam & Eve','Dos Manzanas','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Adam & Eve');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Adam & Eve');
+insert into tabaco (name,descripcion,marca) values('Na3ne','Menta','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Na3ne');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Na3ne');
+insert into tabaco (name,descripcion,marca) values('Cane Na3ne','Azúcar de caña y menta','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Cane Na3ne');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Cane Na3ne');
+insert into tabaco (name,descripcion,marca) values('French Rivera','Chicle y melón','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'French Rivera');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'French Rivera');
+insert into tabaco (name,descripcion,marca) values('Kush','Sabor CBD','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Kush');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Kush');
+insert into tabaco (name,descripcion,marca) values('Kush Na3ne','Sabor CBD con menta','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Kush Na3ne');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Kush Na3ne');
+insert into tabaco (name,descripcion,marca) values('Sun Beach','Kiwi, piña y melón','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Sun Beach');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Sun Beach');
+insert into tabaco (name,descripcion,marca) values('Tsunami','Sandía, arándanos y menta','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Tsunami');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Tsunami');
+insert into tabaco (name,descripcion,marca) values('Pink Kiss','Frutas exóticas dulces','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Pink Kiss');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Pink Kiss');
+insert into tabaco (name,descripcion,marca) values('Heaven','Fruta tropical, melón y menta','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Heaven');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Heaven');
+insert into tabaco (name,descripcion,marca) values('Bahamas','Piña, melón y frescor','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Bahamas');
+insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Bahamas');
+insert into tabaco (name,descripcion,marca) values('Meridian','Sandía, melón y manzana','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Meridian');
+insert into tabaco (name,descripcion,marca) values('Blue mix','Uvas, arándanos, piña y coco','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Blue mix');
+insert into tabaco (name,descripcion,marca) values('Touty Red','Frutos rojos','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Touty Red');
+insert into tabaco (name,descripcion,marca) values('Lover','Melón, bayas, especias y fresas','Dumanji');
+insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Lover');
+
+
 
 --Mixes
-insert into mezcla(name) values('Ou mama');
-insert into porcentaje(tabaco,porcentaje,mezcla) values('Pablo',50.0,'Ou mama');
-insert into porcentaje(tabaco,porcentaje,mezcla) values('Blacknana',50.0,'Ou mama');
+--insert into mezcla(name) values('Ou mama');
+--insert into porcentaje(tabaco,porcentaje,mezcla) values('Pablo',50.0,'Ou mama');
+--insert into porcentaje(tabaco,porcentaje,mezcla) values('Blacknana',50.0,'Ou mama');
 
