@@ -22,21 +22,17 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(userDTO.getEmail());
         helper.setSubject("Welcome to ShishaMixer");
-        helper.setText("<!doctype html>\n" +
-                "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\"\n" +
-                "      xmlns:th=\"http://www.thymeleaf.org\">\n" +
-                "<head>\n" +
-                "    <meta charset=\"UTF-8\">\n" +
-                "    <meta name=\"viewport\"\n" +
-                "          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n" +
-                "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
-                "    <title>Email</title>\n" +
-                "</head>\n" +
-                "<body>\n" +
-                "<div>Welcome "+userDTO.getUsername()+"</div>\n" +
+        helper.setText("<!DOCTYPE html>\n" +
+                "    <head>\n" +
                 "\n" +
-                "<div> Your email is "+userDTO.getEmail()+"</div>\n" +
-                "</body>\n" +
+                "    </head>\n" +
+                "    <body >\n" +
+                "        <center><div style=\"background-color: white; border: 2px black solid; border-radius: 20px;\">\n" +
+                "            <h1>Welcome</h1>\n" +
+                "        </div></center>\n" +
+                "\n" +
+                "\n" +
+                "    </body>\n" +
                 "</html>", true);
 
         helper.setFrom("shishamixer300@gmail.com");

@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class UserRESTController {
     }
 
     @PostMapping("/1/users")
-    public void postUser(@RequestBody UserDTO userDTO) throws MessagingException {
+    public void postUser(@RequestBody UserDTO userDTO) throws MessagingException, IOException {
         userController.postUser(userDTO);
         emailService.sendMail(userDTO);
     }
