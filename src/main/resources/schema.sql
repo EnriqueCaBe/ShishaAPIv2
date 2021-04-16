@@ -46,8 +46,6 @@ create table porcentaje
     foreign key (mezcla) references mezcla(id) on delete cascade
 );
 
-
-
 DROP TABLE if EXISTS users;
 create table users
 (

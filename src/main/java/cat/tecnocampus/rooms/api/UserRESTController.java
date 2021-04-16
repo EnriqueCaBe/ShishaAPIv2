@@ -32,7 +32,7 @@ public class UserRESTController {
         return userController.getUserByUsername(username);
     }
 
-    @PostMapping("/1/users")
+    @PostMapping("/2/users")
     public void postUser(@RequestBody UserDTO userDTO) throws MessagingException, IOException {
         userController.postUser(userDTO);
         emailService.sendMail(userDTO);

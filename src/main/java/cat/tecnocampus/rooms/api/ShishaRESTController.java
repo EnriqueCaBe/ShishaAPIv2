@@ -19,22 +19,22 @@ public class ShishaRESTController {
         this.shishaController = shishaController;
     }
 
-    @GetMapping("/1/all")
+    @GetMapping("/2/all")
     public List<MarcaDTO> getAll(){
         return shishaController.getAll();
     }
 
-    @GetMapping("/1/marcas/tabacos")
+    @GetMapping("/2/marcas/tabacos")
     public List<MarcaDTO> getMarcas(){
         return shishaController.getMarcas();
     }
 
-    @GetMapping("/1/marcas")
+    @GetMapping("/2/marcas")
     public List<MarcaDTO> getMarcasNoTabacos(){
         return shishaController.getMarcasNoTabacos();
     }
 
-    @GetMapping("/1/marcas/{name}")
+    @GetMapping("/2/marcas/{name}")
     public MarcaDTO getMarcaByName(@PathVariable String name){
         return shishaController.getMarcaByName(name);
     }
@@ -51,12 +51,12 @@ public class ShishaRESTController {
 
 
 
-    @GetMapping("/1/tabacos")
+    @GetMapping("/2/tabacos")
     public List<TabacoDTO> getTabacos(){
         return shishaController.getTabacos();
     }
 
-    @GetMapping("/1/tabacos/{name}")
+    @GetMapping("/2/tabacos/{name}")
     public TabacoDTO getTabacoByName(@PathVariable String name){
         return shishaController.getTabacoByName(name);
     }
@@ -71,7 +71,7 @@ public class ShishaRESTController {
         shishaController.deleteTabaco(tabaco);
     }
 
-    @GetMapping("/1/tabacos/marca/{marca}")
+    @GetMapping("/2/tabacos/marca/{marca}")
     public List<TabacoDTO> getTabacosByMarca(@PathVariable String marca){
         return shishaController.getTabacoByMarca(marca);
     }
