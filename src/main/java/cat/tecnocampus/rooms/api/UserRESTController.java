@@ -33,7 +33,7 @@ public class UserRESTController {
     }
 
     @PostMapping("/2/users")
-    public void postUser(@RequestBody UserDTO userDTO) throws MessagingException, IOException {
+    public void postUser(@RequestBody UserDTO userDTO) throws MessagingException {
         userController.postUser(userDTO);
         emailService.sendMail(userDTO);
     }

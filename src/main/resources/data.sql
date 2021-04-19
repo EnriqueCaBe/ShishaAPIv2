@@ -348,7 +348,7 @@ insert into formato(gramos,precio,tabaco) values(50.0,3.95,'');
 insert into formato(gramos,precio,tabaco) values(200.0,13.80,'');*/
 
 --Mixes
---insert into mezcla(name) values('Ou mama');
---insert into porcentaje(tabaco,porcentaje,mezcla) values('Pablo',50.0,'Ou mama');
---insert into porcentaje(tabaco,porcentaje,mezcla) values('Blacknana',50.0,'Ou mama');
+insert into mezcla(id,name) values('cd4fa027-36b6-4639-86b8-83wretw3b2e4a','Ou mama');
+insert into porcentaje(tabaco,porcentaje,mezcla) values('Pablo',50.0,'cd4fa027-36b6-4639-86b8-83wretw3b2e4a');
+insert into porcentaje(tabaco,porcentaje,mezcla) values('Blacknana',50.0,'cd4fa027-36b6-4639-86b8-83wretw3b2e4a');
 

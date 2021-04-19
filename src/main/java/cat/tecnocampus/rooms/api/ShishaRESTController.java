@@ -87,7 +87,7 @@ public class ShishaRESTController {
         return shishaController.getAllMixes();
     }
 
-    @PostMapping("/0/mix")
+    @PostMapping("/1/mix")
     public void postMix(@RequestBody MezclaDTO mezcla){
         shishaController.postMix(mezcla);
     }

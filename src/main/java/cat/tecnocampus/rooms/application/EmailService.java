@@ -27,7 +27,7 @@ public class EmailService {
                 "\n" +
                 "    </head>\n" +
                 "    <body style=\"font-family:'Calibri';\">\n" +
-                "        <center><div style=\"background-color: rgba(0, 0, 0, 0.432); border: 2px rgba(255, 255, 255, 0.637) solid; border-radius: 20px; width: 50%;\">\n" +
+                "        <center><div style=\"background-color: rgba(0, 0, 0, 0.432); border: 2px rgba(255, 255, 255, 0.637) solid; border-radius: 20px; width: 85%;\">\n" +
                 "            <img src=\"https://i.ibb.co/SX7GkQp/Shisha-Mixer.jpg\" style=\"width: 25%; border-radius: 50%; border:4px solid rgba(0, 0, 0, 0.753); margin: 30px;\" >\n" +
                 "            <h1>Welcome to ShishaMixer</h1>\n" +
                 "            <div style=\"text-align: left; padding: 10px\">\n" +
