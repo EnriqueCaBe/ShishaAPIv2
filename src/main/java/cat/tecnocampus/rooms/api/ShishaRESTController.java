@@ -12,6 +12,7 @@ import java.util.List;
 
 @Validated
 @RestController
+@CrossOrigin(origins = "*")
 public class ShishaRESTController {
     ShishaController shishaController;
 

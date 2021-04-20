@@ -35,7 +35,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public TabacoDTO getTabacoByName(String name) {
         final var query = "select t.name,t.descripcion,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t " +
                 "join formato f on t.name=f.tabaco " +
-                "where t.name=?";
+                "where t.name=? order by 1";
         try{
             var result =jdbcTemplate.query(query,tabacosRowMapper,name);
             return result.get(0);
@@ -47,7 +47,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
 
     public List<TabacoDTO> getTabacos() {
         final var query = "select t.name,t.descripcion,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t" +
-                " join formato f on t.name=f.tabaco";
+                " join formato f on t.name=f.tabaco order by 1";
         return jdbcTemplate.query(query,tabacosRowMapper);
     }
 
@@ -68,7 +68,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public List<TabacoDTO> getTabacoByMarca(String marca) {
         final var query = "select t.name,t.descripcion,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t" +
                 " join formato f on t.name=f.tabaco " +
-                "where t.marca=?";
+                "where t.marca=? order by 1";
         return jdbcTemplate.query(query,tabacosRowMapper,marca);
     }
 

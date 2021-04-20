@@ -30,8 +30,8 @@ insert into tabaco (name,descripcion,marca) values('C3 Strawberry','Fresa','Tang
 insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C3 Strawberry');
 insert into tabaco (name,descripcion,marca) values('C34 Its like that one breakfast cereal','Cereales americanos de colores','Tangiers');
 insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C34 Its like that one breakfast cereal');
-insert into tabaco (name,descripcion,marca) values('C38 kashmir Peach','Melocotón con toques florales','Tangiers');
-insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C38 kashmir Peach');
+insert into tabaco (name,descripcion,marca) values('C38 Kashmir Peach','Melocotón con toques florales','Tangiers');
+insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C38 Kashmir Peach');
 insert into tabaco (name,descripcion,marca) values('C4 Blitzsturm','Lavanda con mentol','Tangiers');
 insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C4 Blitzsturm');
 insert into tabaco (name,descripcion,marca) values('C5 Lemon Blossom','Limón con toques florales','Tangiers');
@@ -206,7 +206,7 @@ insert into formato(gramos,precio,tabaco) values(30.0,3.85,'Darkside Hola');
 
 
 --Dozaj
-insert into marca(name,pais,descripcion,imagen) values('Dozaj','Turquia','Tabaco rubio','');
+insert into marca(name,pais,descripcion,imagen) values('Dozaj','Turquia','Tabaco rubio','https://i.ibb.co/ZBmV6nP/dozaj.png');
 insert into tabaco (name,descripcion,marca) values('90+','Limón y menta','Dozaj');
 insert into formato(gramos,precio,tabaco) values(50.0,3.00,'90+');
 insert into tabaco (name,descripcion,marca) values('Black Star','Maracuyá, chicle, melocotón y menta','Dozaj');
@@ -287,6 +287,7 @@ insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Touty Red');
 insert into tabaco (name,descripcion,marca) values('Lover','Melón, bayas, especias y fresas','Dumanji');
 insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Lover');
 
+--Hookain
 insert into marca(name,pais,descripcion,imagen) values('Hookain','Alemania','Tabaco rubio','');
 insert into tabaco (name,descripcion,marca) values('American Pei','Cremosa tarta de manzana a la americana coon toffee. Receta increiblemente deliciosa de la abuela.','Hookain');
 insert into formato(gramos,precio,tabaco) values(50.0,3.95,'American Pei');
