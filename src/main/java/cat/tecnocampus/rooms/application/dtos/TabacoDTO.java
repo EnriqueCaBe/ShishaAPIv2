@@ -6,6 +6,7 @@ import java.util.List;
 
 public class TabacoDTO {
     private String name;
+    private String name_api;
     private String descripcion;
     private List<FormatoDTO> formatos;
 
@@ -17,6 +18,14 @@ public class TabacoDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getName_api() {
+        return name_api;
+    }
+
+    public void setName_api(String name_api) {
+        this.name_api = name_api;
     }
 
     public List<FormatoDTO> getFormatos() {

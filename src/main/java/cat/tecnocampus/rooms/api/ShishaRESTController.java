@@ -1,5 +1,6 @@
 package cat.tecnocampus.rooms.api;
 
+import cat.tecnocampus.rooms.application.CountryFlagsController;
 import cat.tecnocampus.rooms.application.ShishaController;
 import cat.tecnocampus.rooms.application.dtos.*;
 
@@ -15,9 +16,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ShishaRESTController {
     ShishaController shishaController;
+    CountryFlagsController countryFlagsController;
 
-    public ShishaRESTController(ShishaController shishaController) {
+    public ShishaRESTController(ShishaController shishaController, CountryFlagsController countryFlagsController) {
         this.shishaController = shishaController;
+        this.countryFlagsController = countryFlagsController;
     }
 
     @GetMapping("/2/all")
@@ -50,6 +53,11 @@ public class ShishaRESTController {
         shishaController.deleteMarca(marca);
     }
 
+    @GetMapping("/2/flag/{pais}")
+    public FlagDTO getFlag(@PathVariable String pais){
+        return countryFlagsController.getFlag(pais);
+    }
+
 
 
     @GetMapping("/2/tabacos")
@@ -57,9 +65,9 @@ public class ShishaRESTController {
         return shishaController.getTabacos();
     }
 
-    @GetMapping("/2/tabacos/{name}")
-    public TabacoDTO getTabacoByName(@PathVariable String name){
-        return shishaController.getTabacoByName(name);
+    @GetMapping("/2/tabacos/{name}/marca/{marca}")
+    public TabacoDTO getTabacoByName(@PathVariable String name, @PathVariable String marca){
+        return shishaController.getTabacoByName(name,marca);
     }
 
     @PostMapping("/0/tabacos/{marca}")
@@ -78,9 +86,9 @@ public class ShishaRESTController {
     }
 
 
-    @PostMapping("/0/formato/{tabaco}")
-    public TabacoDTO postFormato(@RequestBody FormatoDTO formatoDTO, @PathVariable String tabaco){
-        return shishaController.postFormato(formatoDTO,tabaco);
+    @PostMapping("/0/formato/{tabaco}/{marca}")
+    public TabacoDTO postFormato(@RequestBody FormatoDTO formatoDTO, @PathVariable String tabaco, @PathVariable String marca){
+        return shishaController.postFormato(formatoDTO,tabaco,marca);
     }
 
     @GetMapping("/1/mixes")

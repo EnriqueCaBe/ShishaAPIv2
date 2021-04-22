@@ -4,6 +4,7 @@ create table marca
     id          int auto_increment primary key,
     name        varchar(256) NOT null ,
     pais        varchar(256) NOT null,
+    pais_api    varchar (256) not null,
     descripcion varchar(256),
     imagen      varchar(256)
 );
@@ -13,6 +14,7 @@ create table tabaco
 (
     id          int auto_increment primary key,
     name        varchar(256) NOT null,
+    name_api    varchar(256) not null,
     descripcion varchar(256) NOT null,
     marca       varchar(256) NOT null,
     foreign key (marca) references marca (name) on delete cascade

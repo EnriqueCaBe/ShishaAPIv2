@@ -10,6 +10,7 @@ public class MarcaDTO {
     @NotNull
     private String name;
     private String pais;
+    private String pais_api;
     private String descripcion;
     private String imagen;
     private List<TabacoDTO> tabacos;
@@ -30,6 +31,14 @@ public class MarcaDTO {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public String getPais_api() {
+        return pais_api;
+    }
+
+    public void setPais_api(String pais_api) {
+        this.pais_api = pais_api;
     }
 
     public String getDescripcion() {

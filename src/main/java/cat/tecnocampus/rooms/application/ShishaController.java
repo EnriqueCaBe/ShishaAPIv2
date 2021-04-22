@@ -36,8 +36,8 @@ public class ShishaController {
         return tabacoDAO.getTabacos();
     }
 
-    public TabacoDTO getTabacoByName(String name) {
-        return tabacoDAO.getTabacoByName(name);
+    public TabacoDTO getTabacoByName(String tabaco, String marca) {
+        return tabacoDAO.getTabacoByName(tabaco,marca);
     }
 
     public List<MarcaDTO> getMarcasNoTabacos() {
@@ -77,8 +77,8 @@ public class ShishaController {
         return tabacoDAO.getTabacoByMarca(marca);
     }
 
-    public TabacoDTO postFormato(FormatoDTO formatoDTO, String tabaco) {
-        return tabacoDAO.postFormato(formatoDTO,tabaco);
+    public TabacoDTO postFormato(FormatoDTO formatoDTO, String tabaco, String marca) {
+        return tabacoDAO.postFormato(formatoDTO,tabaco, marca);
     }
 
     public List<MezclaDTO> getAllMixes(){

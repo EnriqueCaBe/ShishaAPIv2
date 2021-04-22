@@ -7,7 +7,6 @@ import cat.tecnocampus.rooms.domain.Tabaco;
 import java.util.List;
 
 public interface TabacoDAO {
-    public TabacoDTO getTabacoByName(String name);
     public List<TabacoDTO> getTabacos();
     void postTabaco(TabacoDTO tabaco, String marca);
 
@@ -15,5 +14,7 @@ public interface TabacoDAO {
 
     List<TabacoDTO> getTabacoByMarca(String marca);
 
-    TabacoDTO postFormato(FormatoDTO formatoDTO, String tabaco);
+    TabacoDTO postFormato(FormatoDTO formatoDTO, String tabaco, String marca);
+
+    TabacoDTO getTabacoByName(String tabaco, String marca);
 }
