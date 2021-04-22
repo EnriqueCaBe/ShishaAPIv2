@@ -29,7 +29,6 @@ public class CountryFlagsController {
     }
 
     private FlagDTO createFlagDTOfromJsonString(String jsonString) throws JsonProcessingException, JsonMappingException, JsonProcessingException {
-        System.out.print(jsonString);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(jsonString);
         FlagDTO flagDTO = new FlagDTO();
