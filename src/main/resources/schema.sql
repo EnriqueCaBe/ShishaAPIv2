@@ -68,8 +68,8 @@ CREATE TABLE authorities
     UNIQUE KEY uni_username_role (role,username),
     CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(username)
 );
-drop table if exists valoracion;
-create table valoracion
+drop table if exists valoracion_mezcla;
+create table valoracion_mezcla
 (
     id varchar(256) not null,
     nota double not null,
@@ -79,3 +79,14 @@ create table valoracion
     foreign key (usuario) references users(username) on delete cascade,
     foreign key (mezcla) references mezcla(id) on delete cascade
 );
+
+drop table if exists valoracion_tabaco;
+create table valoracion_tabaco
+(
+    id varchar(256) not null,
+    nota double not null,
+    usuario varchar(256) not null,
+    tabaco varchar(256) not null,
+    foreign key (usuario) references users(username) on delete cascade,
+    foreign key (tabaco) references tabaco(id) on delete cascade
+)

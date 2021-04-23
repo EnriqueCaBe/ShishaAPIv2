@@ -6,6 +6,12 @@ public class ValoracionDTO {
     private String id;
     private double nota;
     private String comentario;
+    private String usuario;
+    private String mezcla;
+
+    public ValoracionDTO(){
+        this.id = UUID.randomUUID().toString();
+    }
 
     public String getComentario() {
         return comentario;
@@ -14,9 +20,6 @@ public class ValoracionDTO {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
-    private String usuario;
-    private String mezcla;
 
     public String getMezcla() {
         return mezcla;
@@ -32,10 +35,6 @@ public class ValoracionDTO {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-
-    public ValoracionDTO(){
-        this.id = UUID.randomUUID().toString();
     }
 
     public double getNota() {

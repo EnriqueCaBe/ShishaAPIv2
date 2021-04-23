@@ -1,10 +1,7 @@
 package cat.tecnocampus.rooms.application;
 
 import cat.tecnocampus.rooms.application.dtos.*;
-import cat.tecnocampus.rooms.persistence.MarcaDAO;
-import cat.tecnocampus.rooms.persistence.MezclaDAO;
-import cat.tecnocampus.rooms.persistence.TabacoDAO;
-import cat.tecnocampus.rooms.persistence.ValoracionesDAO;
+import cat.tecnocampus.rooms.persistence.*;
 import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
@@ -18,12 +15,14 @@ public class ShishaController {
     TabacoDAO tabacoDAO;
     MezclaDAO mezclaDAO;
     ValoracionesDAO valoracionesDAO;
+    ValoracionTabacoDAO valoracionTabacoDAO;
 
-    public ShishaController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO,MezclaDAO mezclaDAO,ValoracionesDAO valoracionesDAO) {
+    public ShishaController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO,MezclaDAO mezclaDAO,ValoracionesDAO valoracionesDAO,ValoracionTabacoDAO valoracionTabacoDAO) {
         this.marcaDAO = marcaDAO;
         this.tabacoDAO = tabacoDAO;
         this.mezclaDAO = mezclaDAO;
         this.valoracionesDAO = valoracionesDAO;
+        this.valoracionTabacoDAO = valoracionTabacoDAO;
     }
 
     public MarcaDTO getMarcaByName(String name) {
@@ -37,7 +36,9 @@ public class ShishaController {
     }
 
     public TabacoDTO getTabacoByName(String tabaco, String marca) {
-        return tabacoDAO.getTabacoByName(tabaco,marca);
+        TabacoDTO ret = tabacoDAO.getTabacoByName(tabaco,marca);
+        ret.setValoraciones(valoracionTabacoDAO.getValoracionesByTabacoId(ret.getId()));
+        return ret;
     }
 
     public List<MarcaDTO> getMarcasNoTabacos() {
@@ -69,6 +70,9 @@ public class ShishaController {
         ret= marcaDAO.getMarcasNoTabacos();
         for(MarcaDTO marca : ret){
             marca.setTabacos(tabacoDAO.getTabacoByMarca(marca.getName()));
+            for(TabacoDTO tabacoDTO: marca.getTabacos()){
+                tabacoDTO.setValoraciones(valoracionTabacoDAO.getValoracionesByTabacoId(tabacoDTO.getId()));
+            }
         }
         return ret;
     }

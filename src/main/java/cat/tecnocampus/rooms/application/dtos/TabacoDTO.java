@@ -5,12 +5,22 @@ import cat.tecnocampus.rooms.domain.Tabaco;
 import java.util.List;
 
 public class TabacoDTO {
+    private String id;
     private String name;
     private String name_api;
     private String descripcion;
     private List<FormatoDTO> formatos;
+    private List<ValoracionTabacoDTO> valoraciones;
 
     public TabacoDTO(){}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -42,5 +52,13 @@ public class TabacoDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public List<ValoracionTabacoDTO> getValoraciones() {
+        return valoraciones;
+    }
+
+    public void setValoraciones(List<ValoracionTabacoDTO> valoraciones) {
+        this.valoraciones = valoraciones;
     }
 }
