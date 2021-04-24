@@ -13,6 +13,7 @@ public class MarcaDTO {
     private String pais_api;
     private String descripcion;
     private String imagen;
+    private String imagen_flag;
     private List<TabacoDTO> tabacos;
 
     public MarcaDTO(){}

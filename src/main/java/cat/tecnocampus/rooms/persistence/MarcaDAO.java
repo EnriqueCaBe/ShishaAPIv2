@@ -32,13 +32,13 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
 
 
     public List<MarcaDTO> getMarcas() {
-        final var query= "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen,t.name as tabacos_name, t.descripcion as tabacos_descripcion  from marca m " +
+        final var query= "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen,m.imagen_flag,t.name as tabacos_name, t.descripcion as tabacos_descripcion  from marca m " +
                 "join tabaco t on m.name = t.marca";
         return jdbcTemplate.query(query,marcasRowMapper);
     }
 
     public MarcaDTO getMarcaByName(String name) {
-        final var query = "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen from marca m " +
+        final var query = "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen,m.imagen_flag from marca m " +
                 "where lower(m.name)=?";
         try{
             var result = jdbcTemplate.query(query,marcaRowMapper,name);
@@ -50,12 +50,12 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
     }
 
     public List<MarcaDTO> getMarcasNoTabacos() {
-        final var query= "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen from marca m ";
+        final var query= "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen,m.imagen_flag from marca m ";
         return jdbcTemplate.query(query,marcasRowMapper);
     }
 
     public void postMarca(MarcaDTO marca) {
-        final var query = "insert into marca(name,pais,pais_api,descripcion,imagen) values(?,?,?,?)";
+        final var query = "insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values(?,?,?,?)";
         jdbcTemplate.update(query,marca.getName(),marca.getPais(),marca.getDescripcion(),marca.getImagen());
     }
 
@@ -65,7 +65,7 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
     }
 
     public List<MarcaDTO> getAll() {
-        final var query= "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen,t.name as tabacos_name,t.descripcion as tabacos_descripcion, f.gramos as tabacos_formatos_gramos, f.precio as tabacos_formatos_precio from marca m " +
+        final var query= "select m.name,m.pais,m.pais_api,m.descripcion,m.imagen,m.imagen_flag,t.name as tabacos_name,t.descripcion as tabacos_descripcion, f.gramos as tabacos_formatos_gramos, f.precio as tabacos_formatos_precio from marca m " +
                 "join tabaco t on m.name = t.marca join formato f on t.name=f.tabaco";
         return jdbcTemplate.query(query,marcasRowMapper);
     }

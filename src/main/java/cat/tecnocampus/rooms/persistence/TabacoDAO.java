@@ -35,7 +35,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public TabacoDTO getTabacoByName(String tabaco, String marca) {
         final var query = "select t.id, t.name,t.descripcion,t.name_api,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t " +
                 "join formato f on t.name=f.tabaco " +
-                "where t.name_api=? and lower(t.marca)=? order by 1";
+                "where t.name_api=? and lower(t.marca)=? order by 1 and 4";
         try{
             var result =jdbcTemplate.query(query,tabacosRowMapper,tabaco,marca);
             return result.get(0);

@@ -6,7 +6,8 @@ create table marca
     pais        varchar(256) NOT null,
     pais_api    varchar (256) not null,
     descripcion varchar(256),
-    imagen      varchar(256)
+    imagen      varchar(256),
+    imagen_flag varchar(256)
 );
 
 drop table if exists tabaco;

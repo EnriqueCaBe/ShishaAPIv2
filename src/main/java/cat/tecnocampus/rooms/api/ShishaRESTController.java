@@ -1,6 +1,5 @@
 package cat.tecnocampus.rooms.api;
 
-import cat.tecnocampus.rooms.application.CountryFlagsController;
 import cat.tecnocampus.rooms.application.ShishaController;
 import cat.tecnocampus.rooms.application.dtos.*;
 
@@ -16,11 +15,9 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ShishaRESTController {
     ShishaController shishaController;
-    CountryFlagsController countryFlagsController;
 
-    public ShishaRESTController(ShishaController shishaController, CountryFlagsController countryFlagsController) {
+    public ShishaRESTController(ShishaController shishaController) {
         this.shishaController = shishaController;
-        this.countryFlagsController = countryFlagsController;
     }
 
     @GetMapping("/2/all")
@@ -53,10 +50,6 @@ public class ShishaRESTController {
         shishaController.deleteMarca(marca);
     }
 
-    @GetMapping("/2/flag/{pais}")
-    public FlagDTO getFlag(@PathVariable String pais){
-        return countryFlagsController.getFlag(pais);
-    }
 
 
 

@@ -7,7 +7,7 @@ VALUES ('EnriqueCaBe', 'ROLE_ADMIN');
 
 
 --NAMELESS
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Nameless','Alemania','Germany','Tabaco rubio','https://i.ibb.co/Jys8s36/nameless.png');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Nameless','Alemania','Germany','Tabaco rubio','https://i.ibb.co/Jys8s36/nameless.png','https://restcountries.eu/data/deu.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('Pablo','pablo','Lima y arándanos','Nameless');
 insert into formato(gramos,precio,tabaco) values(200.0,12.90,'Pablo');
 insert into formato(gramos,precio,tabaco) values(50.0,3.60,'Pablo');
@@ -17,7 +17,7 @@ insert into formato(gramos,precio,tabaco) values(50.0,3.60,'Blacknana');
 
 
 --Tangiers
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Tangiers','USA','usa','Tabaco negro','https://i.ibb.co/LPWDd6j/tangiers.png');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Tangiers','USA','usa','Tabaco negro','https://i.ibb.co/LPWDd6j/tangiers.png','https://restcountries.eu/data/usa.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('C6 Pineapple','c6_pineapple','Piña','Tangiers');
 insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C6 Pineapple');
 insert into tabaco (name,name_api,descripcion,marca) values('C111 Ololiuqui','c111_ololiuqui','Cola y vainilla','Tangiers');
@@ -71,7 +71,7 @@ insert into formato(gramos,precio,tabaco) values(250.0,35.0,'C69 PassionFruit');
 
 
 --Serbetli
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Serbetli','Alemania','Germany','Tabaco rubio premium','https://i.ibb.co/cTzSKqY/serbetli.png');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Serbetli','Alemania','Germany','Tabaco rubio premium','https://i.ibb.co/cTzSKqY/serbetli.png','https://restcountries.eu/data/deu.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('Banastra','banastra','Banana y fresa','Serbetli');
 insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Banastra');
 insert into formato(gramos,precio,tabaco) values(50.0,2.95,'Banastra');
@@ -133,7 +133,7 @@ insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Duses');
 
 
 --Revoshi
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Revoshi','Turquia','Turkey','Tabaco rubio','https://i.ibb.co/b69zGrb/revoshi.png');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Revoshi','Turquia','Turkey','Tabaco rubio','https://i.ibb.co/b69zGrb/revoshi.png','https://restcountries.eu/data/tur.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('Blck Grp','blck_grp','Uva negra','Revoshi');
 insert into formato(gramos,precio,tabaco) values(50.0,3.30,'Blck Grp');
 insert into tabaco (name,name_api,descripcion,marca) values('D´App Strng','dapp_strng','Dos manzanas intenso','Revoshi');
@@ -159,7 +159,7 @@ insert into formato(gramos,precio,tabaco) values(50.0,3.30,'Vamos Ernesto');
 
 
 --Aloha
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Aloha','España','Spain','Tabaco rubio','https://i.ibb.co/cwcDsg1/aloha.jpg');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Aloha','España','Spain','Tabaco rubio','https://i.ibb.co/cwcDsg1/aloha.jpg','https://restcountries.eu/data/esp.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('Splash','splash','Naranja picante, fresca y cremosa','Aloha');
 insert into formato(gramos,precio,tabaco) values(100.0,7.50,'Splash');
 insert into formato(gramos,precio,tabaco) values(200.0,13.50,'Splash');
@@ -190,7 +190,7 @@ insert into formato(gramos,precio,tabaco) values(200.0,13.50,'Shaka Shaka');
 
 
 --Darkside
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Darkside','Rusia','Russian','Tabaco negro','https://i.ibb.co/1TpbsMG/darkside.png');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Darkside','Rusia','Russian','Tabaco negro','https://i.ibb.co/1TpbsMG/darkside.png','https://restcountries.eu/data/rus.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('Darkside Hola','darkside_hola','Cola con limón','Darkside');
 insert into formato(gramos,precio,tabaco) values(30.0,3.85,'Darkside Hola');
 insert into tabaco (name,name_api,descripcion,marca) values('I Granny','i_granny','Manzana verde dulce','Darkside');
@@ -206,7 +206,7 @@ insert into formato(gramos,precio,tabaco) values(30.0,3.85,'Darkside Hola');
 
 
 --Dozaj
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Dozaj','Turquia','Turkey','Tabaco rubio','https://i.ibb.co/ZBmV6nP/dozaj.png');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Dozaj','Turquia','Turkey','Tabaco rubio','https://i.ibb.co/ZBmV6nP/dozaj.png','https://restcountries.eu/data/tur.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('90+','90plus','Limón y menta','Dozaj');
 insert into formato(gramos,precio,tabaco) values(50.0,3.00,'90+');
 insert into tabaco (name,name_api,descripcion,marca) values('Black Star','black_star','Maracuyá, chicle, melocotón y menta','Dozaj');
@@ -244,7 +244,7 @@ insert into tabaco (name,name_api,descripcion,marca) values('Vip 44','vip_44','C
 insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Vip 44');
 
 --Dumanji
-insert into marca(name,pais,pais_api,descripcion,imagen) values('Dumanji','Francia','France','Tabaco rubio','https://i.ibb.co/mBMcM2j/dumanji.jpg');
+insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Dumanji','Francia','France','Tabaco rubio','https://i.ibb.co/mBMcM2j/dumanji.jpg','https://restcountries.eu/data/fra.svg');
 insert into tabaco (name,name_api,descripcion,marca) values('Adam & Eve','adam_and_eve','Dos Manzanas','Dumanji');
 insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Adam & Eve');
 insert into formato(gramos,precio,tabaco) values(200.0,11.50,'Adam & Eve');
@@ -288,7 +288,7 @@ insert into tabaco (name,name_api,descripcion,marca) values('Lover','lover','Mel
 insert into formato(gramos,precio,tabaco) values(50.0,3.00,'Lover');
 
 --Hookain
-/*insert into marca(name,pais,pais_api,descripcion,imagen) values('Hookain','Alemania','Germany','Tabaco rubio','https://i.ibb.co/6mQsXhp/hookain.png');
+/*insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Hookain','Alemania','Germany','Tabaco rubio','https://i.ibb.co/6mQsXhp/hookain.png');
 insert into tabaco (name,name_api,descripcion,marca) values('American Pei','Cremosa tarta de manzana a la americana coon toffee. Receta increiblemente deliciosa de la abuela.','Hookain');
 insert into formato(gramos,precio,tabaco) values(50.0,3.95,'American Pei');
 insert into tabaco (name,name_api,descripcion,marca) values('Mng Loco','Una combinación de diferentes tipos de mango, un toque de energía y nuestro nuevo y aún más fresco sabor a mentol.','Hookain');
