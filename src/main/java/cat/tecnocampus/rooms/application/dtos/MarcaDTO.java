@@ -65,4 +65,12 @@ public class MarcaDTO {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    public String getImagen_flag() {
+        return imagen_flag;
+    }
+
+    public void setImagen_flag(String imagen_flag) {
+        this.imagen_flag = imagen_flag;
+    }
 }
