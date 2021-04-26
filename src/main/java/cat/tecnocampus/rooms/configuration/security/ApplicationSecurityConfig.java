@@ -17,7 +17,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
 
-    private static final String USERS_QUERY = "select nickname, password, enabled from tinder_user where nickname = ?";
+    private static final String USERS_QUERY = "select username, password, enabled from users where username = ?";
     private static final String AUTHORITIES_QUERY = "select username, role from authorities where username = ?";
 
     private DataSource dataSource;
