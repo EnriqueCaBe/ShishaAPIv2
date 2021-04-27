@@ -1776,3 +1776,353 @@ VALUES(
 );
 INSERT INTO formato(gramos, precio, tabaco)
 VALUES(50.0, 3.00, 'Lover');
+INSERT INTO marca(
+    NAME,
+    pais,
+    pais_api,
+    descripcion,
+    imagen,
+    imagen_flag
+)
+VALUES(
+          'Hookain',
+          'Alemania',
+          'Germany',
+          'Tabaco rubio',
+          'https://i.ibb.co/6mQsXhp/hookain.png',
+          'https://restcountries.eu/data/deu.svg'
+      );
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'American Pei',
+          'american_pei',
+          'Cremosa tarta de manzana a la americana coon toffee. Receta increiblemente deliciosa de la abuela.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'American Pei');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Mng Loco',
+          'mng_loco',
+          'Una combinación de diferentes tipos de mango, un toque de energía y nuestro nuevo y aún más fresco sabor a mentol.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Mng Loco');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Zenter Schox',
+          'zenter_schox',
+          'El sabor más agrio del mundo a partir de aromas de lima y limón. Es tan agrio que te volverá loco. ',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Zenter Schox');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Laoz',
+          'laoz',
+          'Jugo dulce de cereza, afrutado e intenso combinado con arándanos. Añadimos mentol para hacerlo más fresco. Sabor afrutado y fresco. ',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Laoz');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Original Vanta Zotic',
+          'original_vanta_zotic',
+          'Batido afrutado de maracuyá, durazno y zumo de naranja, recuerda a un limonada muy famosa con un toque exótico.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Original Vanta Zotic');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Cotton Candy Craem',
+          'cotton_candy_craem',
+          'Algodón de azúcar, sandía, mango y arándanos.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Cotton Candy Craem');
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(200.0, 13.80, 'Cotton Candy Craem');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Orogina',
+          'orogina',
+          'Naranja y mandarina combinadas con un toque de White Caek.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Orogina');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Eyez Kalt',
+          'eyez_kalt',
+          'Muy frío. Caramelo de menta refinado con plátano y lima.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Eyez Kalt');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Vantanaz',
+          'vantanaz',
+          'El fuerte sabor a piña se mezcla con una combinación de mango, pomelo y zumo de durazno. Idéntico a Vanta Piña.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Vantanaz');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Pic Zkittlez',
+          'pic_zkittlez',
+          'Refrescante té helado de melocotón salvaje y albaricoque. Mezclado con menta y unos ingredientes especiales que no te contamos.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Pic Zkittlez');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Ch3ri Zkittlez',
+          'cheri_zkittlez',
+          'Sabor intenso a cereza y fruta de dragón. Mejor de lo que te puedas imaginar.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Ch3ri Zkittlez');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Sm!nt',
+          'smint',
+          'Experimenta el sabor refrescante de nuestro caramelo de menta a la tic tac. Fresco y dulce.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Sm!nt');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Fellatio',
+          'fellatio',
+          'Batido de sandía, melón dulce, maracuyá y frutas el bosque.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Fellatio');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Green Lean',
+          'green_lean',
+          'La mejor lima que jamás hayas probado, convertida en zumo de lima. Siente el sabor y el frescor de miles de limas que explotarán en tu cazoleta.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Green Lean');
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(200.0, 13.80, 'Green Lean');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Kaffa Yayo',
+          'kaffa_yayo',
+          'El mejor postre con sabor a coco. Coco de Hawai cubierto por una fina crema de almendras con vainilla bourbon.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Kaffa Yayo');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Bubblenciaga',
+          'bubblenciaga',
+          'El típico chicle americano en su momento de mayor sabor. Dulce y duradero hasta dejarte boquiabierto.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Bubblenciaga');
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(200.0, 13.80, 'Bubblenciaga');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Cactopus',
+          'cactopus',
+          'Dulce y cremoso al mismo tiempo. El sabor dulce a cactus con la fresa y vainilla hacen un trio delicioso e intenso. ',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Cactopus');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Lemenciaga',
+          'lemenciaga',
+          'Un sabor refrescante de limón y esencia de té verde con el indispensable toque de menta fresca.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Lemenciaga');
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(200.0, 13.80, 'Lemenciaga');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Punani',
+          'punani',
+          'Jugoso, jugosísimo, mango y maracuyá fusionado con naranja y piña.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Punani');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'White Caek',
+          'white_caek',
+          'El más sabroso! tarta de queso con un toque de caramelo.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'White Caek');
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(200.0, 13.80, 'White Caek');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Big Black Barries',
+          'big_black_barries',
+          'Intenso sabor a uva moscatel con esencia de mentol..',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Big Black Barries');
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(200.0, 13.80, 'Big Black Barries');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Soleiro Spliff',
+          'soleiro_spliff',
+          'Una explosión de sabores. Marakuyá, caramelo de naranja y helado de vainilla. ',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Soleiro Spliff');
+INSERT INTO tabaco(
+    NAME,
+    name_api,
+    descripcion,
+    marca
+)
+VALUES(
+          'Kivi King',
+          'kivi_king',
+          'Kiwi afrutado intenso sobre una cama de lima. Agradablemente fresco con un toque de menta y mentol.',
+          'Hookain'
+      );
+INSERT INTO formato(gramos, precio, tabaco)
+VALUES(50.0, 3.95, 'Kivi King');
