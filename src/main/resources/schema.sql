@@ -67,7 +67,7 @@ CREATE TABLE authorities
     role         varchar(45) NOT NULL,
     PRIMARY KEY (authority_id),
     UNIQUE KEY uni_username_role (role,username),
-    CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(username)
+    CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(email)
 );
 drop table if exists valoracion_mezcla;
 create table valoracion_mezcla

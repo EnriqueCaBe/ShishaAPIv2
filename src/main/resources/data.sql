@@ -3,7 +3,7 @@ VALUES ('cd4fa027-36b6-4639-86b8-834fe83b2e4a', 'EnriqueCaBe', 'enriquecabe300@g
         '{bcrypt}$2a$10$Hm0L1XIsrWDkeWNjbMUCmOhd7qRYJXeM4hQ1kOHrWVd1tMzqIpU3i');
 
 INSERT INTO authorities (username, role)
-VALUES ('EnriqueCaBe', 'ROLE_ADMIN');
+VALUES ('enriquecabe300@gmail.com', 'ROLE_ADMIN');
 
 
 --NAMELESS

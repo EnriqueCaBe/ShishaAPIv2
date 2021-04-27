@@ -17,7 +17,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
 
-    private static final String USERS_QUERY = "select username, password, enabled from users where username = ?";
+    private static final String USERS_QUERY = "select email, password, enabled from users where email = ?";
     private static final String AUTHORITIES_QUERY = "select username, role from authorities where username = ?";
 
     private DataSource dataSource;
@@ -43,7 +43,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*", "/*.html","/2/all","/2/users","/2/marcas/tabacos","/2/marcas","/2/marcas/*","/2/tabacos","/2/tabacos/*/marca/*","/2/tabacos/marca/*").permitAll()
                 .antMatchers("/1/mixes","/1/mix","/1/*/valoracion","/1/me").hasRole("USER")
-                .antMatchers("/0/users","/0/users/{username}","/0/marcas","/0/marcas/*","/0/tabacos/*","/0/formato/*/*").hasRole("ADMIN")
+                .antMatchers("/0/users","/0/users/{username}","/0/marcas","/0/marcas/*","/0/tabacos/*","/0/formato/*/*","/1/mixes","/1/mix","/1/*/valoracion","/1/me").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated();
     }
