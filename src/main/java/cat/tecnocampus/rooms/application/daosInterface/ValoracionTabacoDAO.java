@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ValoracionTabacoDAO {
     List<ValoracionTabacoDTO> getValoracionesByTabacoId(String tabaco);
-    void postValoracionTabaco(ValoracionTabacoDTO valoracion,String user, String tabaco);
+    void postValoracionTabaco(ValoracionTabacoDTO valoracion);
 }

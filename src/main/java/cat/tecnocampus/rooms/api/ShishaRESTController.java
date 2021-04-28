@@ -77,6 +77,14 @@ public class ShishaRESTController {
     public List<TabacoDTO> getTabacosByMarca(@PathVariable String marca){
         return shishaController.getTabacoByMarca(marca);
     }
+    @PostMapping("/1/tabaco")
+    public void postValoracionTabaco(@RequestBody ValoracionTabacoDTO valoracion, Principal principal){
+        shishaController.postValoracionTabaco(valoracion,principal.getName());
+    }
+    @GetMapping("1/tabaco/valoraciones/{tabacoID}")
+    public List<ValoracionTabacoDTO> getValoracionesByTabaco(@PathVariable String tabacoID){
+        return shishaController.getValoracionesByTabaco(tabacoID);
+    }
 
 
     @PostMapping("/0/formato/{tabaco}/{marca}")

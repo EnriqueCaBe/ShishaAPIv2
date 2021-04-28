@@ -86,6 +86,7 @@ create table valoracion_tabaco
 (
     id varchar(256) not null,
     nota double not null,
+    comentario varchar(256) not null,
     usuario varchar(256) not null,
     tabaco varchar(256) not null,
     foreign key (usuario) references users(username) on delete cascade,

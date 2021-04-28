@@ -36,13 +36,13 @@ public class UserDAO implements cat.tecnocampus.rooms.application.daosInterface.
 
     @Override
     public List<UserDTO> getAllUsers() {
-        final var query = "select u.id, u.email, u.username, u.password, a.role from users u join authorities a on u.username=a.username";
+        final var query = "select u.id, u.email, u.username, u.password, a.role from users u join authorities a on u.email=a.username";
         return jdbcTemplate.query(query,usersRowMapper);
     }
 
     @Override
     public UserDTO getUserByUsername(String username) {
-        final var query = "select u.id, u.email, u.username, u.password, a.role from users u join authorities a on u.username=a.username where u.username=?";
+        final var query = "select u.id, u.email, u.username, u.password, a.role from users u join authorities a on u.email=a.username where u.username=?";
         try{
             var result =jdbcTemplate.query(query,userRowMapper,username);
             return result.get(0);
@@ -57,7 +57,7 @@ public class UserDAO implements cat.tecnocampus.rooms.application.daosInterface.
             final var query = "insert into users(id,username,email,password) values(?,?,?,?)";
             jdbcTemplate.update(query, user.getId(), user.getUsername(), user.getEmail(), user.getPassword());
             final var query1 = "insert into authorities(username,role) values(?,?)";
-            jdbcTemplate.update(query1, user.getUsername(), "ROLE_USER");
+            jdbcTemplate.update(query1, user.getEmail(), "ROLE_USER");
         }catch(DuplicateKeyException dke){
             throw new UserAlreadyExistsException(user.getUsername());
         }

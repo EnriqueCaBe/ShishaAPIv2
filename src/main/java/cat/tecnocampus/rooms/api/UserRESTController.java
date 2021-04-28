@@ -43,4 +43,5 @@ public class UserRESTController {
     public UserDTO getMe(Principal principal){
         return userController.getUserByUsername(principal.getName());
     }
+
 }

@@ -1,10 +1,14 @@
 package cat.tecnocampus.rooms.application.dtos;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.util.UUID;
 
+@JsonPropertyOrder({"id","tabaco","usuario","nota","comentario"})
 public class ValoracionTabacoDTO {
     private String id;
     private double nota;
+    private String comentario;
     private String usuario;
     private String tabaco;
 
@@ -42,5 +46,13 @@ public class ValoracionTabacoDTO {
 
     public void setTabaco(String tabaco) {
         this.tabaco = tabaco;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

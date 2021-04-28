@@ -4,10 +4,8 @@ import cat.tecnocampus.rooms.application.dtos.*;
 import cat.tecnocampus.rooms.persistence.*;
 import org.springframework.stereotype.Component;
 
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class ShishaController {
@@ -108,5 +106,19 @@ public class ShishaController {
         newVal.setNota(valoracionDTO.getNota());
         newVal.setComentario(valoracionDTO.getComentario());
         valoracionesDAO.postValoracion(valoracionDTO,name,mixID);
+    }
+
+    public void postValoracionTabaco(ValoracionTabacoDTO valoracion, String name) {
+        ValoracionTabacoDTO newVal = new ValoracionTabacoDTO();
+        newVal.setComentario(valoracion.getComentario());
+        newVal.setNota(valoracion.getNota());
+        newVal.setUsuario(name);
+        newVal.setTabaco(valoracion.getTabaco());
+        valoracionTabacoDAO.postValoracionTabaco(newVal);
+    }
+
+    public List<ValoracionTabacoDTO> getValoracionesByTabaco(String tabacoID) {
+        return valoracionTabacoDAO.getValoracionesByTabacoId(tabacoID);
+
     }
 }

@@ -25,13 +25,13 @@ public class ValoracionTabacoDAO implements cat.tecnocampus.rooms.application.da
 
     @Override
     public List<ValoracionTabacoDTO> getValoracionesByTabacoId(String tabaco) {
-        final String query = "select id, nota, usuario, tabaco from valoracion_tabaco where tabaco=?";
+        final String query = "select id, nota, usuario, tabaco, comentario from valoracion_tabaco where tabaco=?";
         return jdbcTemplate.query(query,valoracionesRowMapper,tabaco);
     }
 
     @Override
-    public void postValoracionTabaco(ValoracionTabacoDTO valoracion, String user, String tabaco) {
-        final String query="insert into valoracion_tabaco(id,nota,usuario,tabaco) values(?,?,?,?)";
-        jdbcTemplate.update(query,valoracion.getId(),valoracion.getNota(),user,tabaco);
+    public void postValoracionTabaco(ValoracionTabacoDTO valoracion) {
+        final String query="insert into valoracion_tabaco(id,nota,usuario,comentario,tabaco) values(?,?,?,?,?)";
+        jdbcTemplate.update(query,valoracion.getId(),valoracion.getNota(),valoracion.getUsuario(),valoracion.getComentario(),valoracion.getTabaco());
     }
 }
