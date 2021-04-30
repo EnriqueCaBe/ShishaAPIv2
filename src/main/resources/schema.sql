@@ -18,6 +18,7 @@ create table tabaco
     name_api    varchar(256) not null,
     descripcion varchar(256) NOT null,
     marca       varchar(256) NOT null,
+    nota        double default 0,
     foreign key (marca) references marca (name) on delete cascade
 );
 

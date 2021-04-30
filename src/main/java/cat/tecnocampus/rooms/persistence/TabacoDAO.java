@@ -33,7 +33,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
                     .newRowMapper(TabacoDTO.class);
 
     public TabacoDTO getTabacoByName(String tabaco, String marca) {
-        final var query = "select t.id, t.name,t.descripcion,t.name_api,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t " +
+        final var query = "select t.id, t.name,t.descripcion,t.nota,t.name_api,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t " +
                 "join formato f on t.name=f.tabaco " +
                 "where t.name_api=? and lower(t.marca)=? order by 1 and 4";
         try{
@@ -45,8 +45,23 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
 
     }
 
+    @Override
+    public TabacoDTO getTabacoByID(String id) {
+        final String query="select t.id, t.name,t.descripcion,t.nota,t.name_api,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t " +
+                "join formato f on t.name=f.tabaco " +
+                "where t.id=? order by 1 and 4";
+        List<TabacoDTO> res = jdbcTemplate.query(query,tabacosRowMapper,id);
+        return res.get(0);
+    }
+
+    @Override
+    public void updateNotaMedia(String tabaco, double notaMedia) {
+        final String query= "update tabaco set nota=? where id=?";
+        jdbcTemplate.update(query,notaMedia,tabaco);
+    }
+
     public List<TabacoDTO> getTabacos() {
-        final var query = "select t.id,t.name,t.name_api,t.descripcion,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t" +
+        final var query = "select t.id,t.name,t.name_api,t.descripcion,t.nota,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t" +
                 " join formato f on t.name=f.tabaco order by 1";
         return jdbcTemplate.query(query,tabacosRowMapper);
     }
@@ -66,7 +81,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     }
 
     public List<TabacoDTO> getTabacoByMarca(String marca) {
-        final var query = "select t.id,t.name,t.name_api,t.descripcion,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t" +
+        final var query = "select t.id,t.name,t.name_api,t.nota,t.descripcion,f.gramos as formatos_gramos, f.precio as formatos_precio from tabaco t" +
                 " join formato f on t.name=f.tabaco " +
                 "where t.marca=? order by 1";
         return jdbcTemplate.query(query,tabacosRowMapper,marca);

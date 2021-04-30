@@ -8,4 +8,6 @@ public interface UserDAO {
     List<UserDTO> getAllUsers();
     UserDTO getUserByUsername(String username);
     void postUser(UserDTO user);
+
+    UserDTO getUserByEmail(String name);
 }

@@ -41,7 +41,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtTokenVerifierFilter(jwtConfig),JwtUsernamePasswordAuthenticationFilter.class)
 
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*", "/*.html","/2/all","/2/users","/2/marcas/tabacos","/2/marcas","/2/marcas/*","/2/tabacos","/2/tabacos/*/marca/*","/2/tabacos/marca/*").permitAll()
+                .antMatchers("/", "index", "/css/*", "/js/*", "/*.html","/2/all","/2/users","/2/marcas/tabacos","/2/marcas","/2/marcas/*","/2/tabacos","/2/tabacos/*/marca/*","/2/tabacos/marca/*","/2/tabaco/*").permitAll()
                 .antMatchers("/1/mixes","/1/mix","/1/*/valoracion","/1/me").hasRole("USER")
                 .antMatchers("/0/users","/0/users/{username}","/0/marcas","/0/marcas/*","/0/tabacos/*","/0/formato/*/*","/1/mixes","/1/mix","/1/*/valoracion","/1/me").hasRole("ADMIN")
                 .anyRequest()

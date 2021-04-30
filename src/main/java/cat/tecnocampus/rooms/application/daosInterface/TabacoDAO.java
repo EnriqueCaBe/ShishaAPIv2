@@ -17,4 +17,8 @@ public interface TabacoDAO {
     TabacoDTO postFormato(FormatoDTO formatoDTO, String tabaco, String marca);
 
     TabacoDTO getTabacoByName(String tabaco, String marca);
+
+    TabacoDTO getTabacoByID(String id);
+
+    void updateNotaMedia(String tabaco, double notaMedia);
 }

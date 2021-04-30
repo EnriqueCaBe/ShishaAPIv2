@@ -14,13 +14,15 @@ public class ShishaController {
     MezclaDAO mezclaDAO;
     ValoracionesDAO valoracionesDAO;
     ValoracionTabacoDAO valoracionTabacoDAO;
+    UserDAO userDAO;
 
-    public ShishaController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO,MezclaDAO mezclaDAO,ValoracionesDAO valoracionesDAO,ValoracionTabacoDAO valoracionTabacoDAO) {
+    public ShishaController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO,MezclaDAO mezclaDAO,ValoracionesDAO valoracionesDAO,ValoracionTabacoDAO valoracionTabacoDAO,UserDAO userDAO) {
         this.marcaDAO = marcaDAO;
         this.tabacoDAO = tabacoDAO;
         this.mezclaDAO = mezclaDAO;
         this.valoracionesDAO = valoracionesDAO;
         this.valoracionTabacoDAO = valoracionTabacoDAO;
+        this.userDAO = userDAO;
     }
 
     public MarcaDTO getMarcaByName(String name) {
@@ -110,15 +112,31 @@ public class ShishaController {
 
     public void postValoracionTabaco(ValoracionTabacoDTO valoracion, String name) {
         ValoracionTabacoDTO newVal = new ValoracionTabacoDTO();
+        UserDTO user = userDAO.getUserByEmail(name);
+
         newVal.setComentario(valoracion.getComentario());
         newVal.setNota(valoracion.getNota());
-        newVal.setUsuario(name);
         newVal.setTabaco(valoracion.getTabaco());
+        newVal.setUsuario(user.getUsername());
         valoracionTabacoDAO.postValoracionTabaco(newVal);
+
+        List<ValoracionTabacoDTO> valoraciones = valoracionTabacoDAO.getValoracionesByTabacoId(valoracion.getTabaco());
+        double notaMedia=0;
+        for(ValoracionTabacoDTO valoracionTabacoDTO: valoraciones){
+            notaMedia = notaMedia + valoracionTabacoDTO.getNota();
+        }
+        notaMedia = notaMedia/valoraciones.size();
+        tabacoDAO.updateNotaMedia(valoracion.getTabaco(),notaMedia);
     }
 
     public List<ValoracionTabacoDTO> getValoracionesByTabaco(String tabacoID) {
         return valoracionTabacoDAO.getValoracionesByTabacoId(tabacoID);
 
+    }
+
+    public TabacoDTO getTabacoByID(String id) {
+        TabacoDTO ret = tabacoDAO.getTabacoByID(id);
+        ret.setValoraciones(valoracionTabacoDAO.getValoracionesByTabacoId(id));
+        return ret;
     }
 }

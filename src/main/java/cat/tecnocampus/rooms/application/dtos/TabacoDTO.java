@@ -9,6 +9,7 @@ public class TabacoDTO {
     private String name;
     private String name_api;
     private String descripcion;
+    private double nota;
     private List<FormatoDTO> formatos;
     private List<ValoracionTabacoDTO> valoraciones;
 
@@ -60,5 +61,13 @@ public class TabacoDTO {
 
     public void setValoraciones(List<ValoracionTabacoDTO> valoraciones) {
         this.valoraciones = valoraciones;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 }

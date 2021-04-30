@@ -63,4 +63,11 @@ public class UserDAO implements cat.tecnocampus.rooms.application.daosInterface.
         }
     }
 
+    @Override
+    public UserDTO getUserByEmail(String name) {
+        final String query = "select username from users where email=?";
+        List<UserDTO> res =jdbcTemplate.query(query,userRowMapper,name);
+        return res.get(0);
+    }
+
 }
