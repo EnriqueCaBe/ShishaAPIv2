@@ -3,6 +3,10 @@ package cat.tecnocampus.rooms.configuration.security;
 import cat.tecnocampus.rooms.configuration.security.jwt.JwtConfig;
 import cat.tecnocampus.rooms.configuration.security.jwt.JwtTokenVerifierFilter;
 import cat.tecnocampus.rooms.configuration.security.jwt.JwtUsernamePasswordAuthenticationFilter;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+@OpenAPIDefinition(info = @Info(title = "ShishaAPI", version = "v0.1"))
+@SecurityScheme(
+        name = "bearerAuth",
+        type = SecuritySchemeType.HTTP,
+        scheme = "bearer",
+        bearerFormat = "jwt"
+)
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -41,7 +52,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtTokenVerifierFilter(jwtConfig),JwtUsernamePasswordAuthenticationFilter.class)
 
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*", "/*.html","/2/all","/2/users","/2/marcas/tabacos","/2/marcas","/2/marcas/*","/2/tabacos","/2/tabacos/*/marca/*","/2/tabacos/marca/*","/2/tabaco/*").permitAll()
+                .antMatchers("/", "index", "/css/*", "/js/*", "/*.html","/2/all","/2/users","/2/marcas/tabacos","/2/marcas","/2/marcas/*","/2/tabacos","/2/tabacos/*/marca/*","/2/tabacos/marca/*","/2/tabaco/*","/login").permitAll()
                 .antMatchers("/1/mixes","/1/mix","/1/*/valoracion","/1/me").hasRole("USER")
                 .antMatchers("/0/users","/0/users/{username}","/0/marcas","/0/marcas/*","/0/tabacos/*","/0/formato/*/*","/1/mixes","/1/mix","/1/*/valoracion","/1/me").hasRole("ADMIN")
                 .anyRequest()

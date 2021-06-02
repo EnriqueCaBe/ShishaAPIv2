@@ -352,13 +352,13 @@ insert into marca(name,pais,pais_api,descripcion,imagen,imagen_flag) values('Mus
 insert into tabaco (name,name_api,descripcion,marca) values('Cosmos','cosmos','Kiwi, manzana y menta','Musthave');
 insert into formato(gramos,precio,tabaco) values(200.0,23.50,'Cosmos');
 insert into tabaco (name,name_api,descripcion,marca) values('Stellar','stellar','Lima & Limón','Musthave');
-insert into formato(gramos,precio,tabaco) values(200.0,23.50,'');
+insert into formato(gramos,precio,tabaco) values(200.0,23.50,'Stellar');
 insert into tabaco (name,name_api,descripcion,marca) values('Atmosphere','atmosphere','limonada de zumo de sandía, melón y sirope de berberis vulgaris','Musthave');
 insert into formato(gramos,precio,tabaco) values(200.0,23.50,'Atmosphere');
 insert into tabaco (name,name_api,descripcion,marca) values('Pinkman','pinkman','Pomelo rosa, sirope de frambuesa y fresa','Musthave');
 insert into formato(gramos,precio,tabaco) values(200.0,23.50,'Pinkman');
 insert into tabaco (name,name_api,descripcion,marca) values('Space Invaders','space_invaders','Pistacho','Musthave');
-insert into formato(gramos,precio,tabaco) values(200.0,23.50,'');
+insert into formato(gramos,precio,tabaco) values(200.0,23.50,'Space Invaders');
 insert into tabaco (name,name_api,descripcion,marca) values('Raspi','raspi','Mermelada de frambuesa','Musthave');
 insert into formato(gramos,precio,tabaco) values(200.0,23.50,'Raspi');
 insert into tabaco (name,name_api,descripcion,marca) values('Space Force','space_force','Tarta de pistacho con frambuesa','Musthave');
