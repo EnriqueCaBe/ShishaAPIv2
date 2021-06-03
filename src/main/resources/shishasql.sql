@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2021 a las 18:55:58
+-- Tiempo de generación: 03-06-2021 a las 15:00:39
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -20,6 +20,344 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `shishasql`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `authorities`
+--
+
+CREATE TABLE `authorities` (
+  `authority_id` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `role` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `authorities`
+--
+
+INSERT INTO `authorities` (`authority_id`, `username`, `role`) VALUES
+(1, 'EnriqueCaBe', 'ROLE_ADMIN');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `formato`
+--
+
+CREATE TABLE `formato` (
+  `id` int(11) NOT NULL,
+  `gramos` double NOT NULL,
+  `precio` double NOT NULL,
+  `imagen` varchar(256) DEFAULT NULL,
+  `tabaco` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `formato`
+--
+
+INSERT INTO `formato` (`id`, `gramos`, `precio`, `imagen`, `tabaco`) VALUES
+(1, 200, 12.9, NULL, 'Pablo'),
+(2, 50, 3.6, NULL, 'Pablo'),
+(3, 200, 12.9, NULL, 'Blacknana'),
+(4, 50, 3.6, NULL, 'Blacknana'),
+(5, 250, 35, NULL, 'C6 Pineapple'),
+(6, 250, 35, NULL, 'C111 Ololiuqui'),
+(7, 250, 35, NULL, 'C16 Pink Grapefruit'),
+(8, 250, 35, NULL, 'C27 Cocoa'),
+(9, 250, 35, NULL, 'C3 Strawberry'),
+(10, 250, 35, NULL, 'C34 Its like that one breakfast cereal'),
+(11, 250, 35, NULL, 'C38 Kashmir Peach'),
+(12, 250, 35, NULL, 'C4 Blitzsturm'),
+(13, 250, 35, NULL, 'C5 Lemon Blossom'),
+(14, 250, 35, NULL, 'C57 Sevilla Orange'),
+(15, 250, 35, NULL, 'C58 Welch Cream'),
+(16, 250, 35, NULL, 'C59 Blackberry'),
+(17, 250, 35, NULL, 'C62 Strawberry Kiwi'),
+(18, 250, 35, NULL, 'C74 Lemon Lime'),
+(19, 250, 35, NULL, 'C76 Apricot Spring Blend'),
+(20, 250, 35, NULL, 'C77 Tropical Revenge'),
+(21, 250, 35, NULL, 'C78 Horchata'),
+(22, 250, 35, NULL, 'C9 Melon Blend'),
+(23, 250, 35, NULL, 'C90 Peach Iced Tea'),
+(24, 250, 35, NULL, 'C92 Mimon'),
+(25, 250, 35, NULL, 'C94 Maraschino Cherry'),
+(26, 250, 35, NULL, 'C96 Cane Mint'),
+(27, 250, 35, NULL, 'C96a Cane Mint Vault'),
+(28, 250, 35, NULL, 'C119 Kosmik'),
+(29, 250, 35, NULL, 'C69 PassionFruit'),
+(30, 200, 11.5, NULL, 'Banastra'),
+(31, 50, 2.95, NULL, 'Banastra'),
+(32, 200, 11.5, NULL, 'Blueerry'),
+(33, 200, 11.5, NULL, 'Double Effect'),
+(34, 200, 11.5, NULL, 'Elon'),
+(35, 50, 2.95, NULL, 'Green Flash'),
+(36, 200, 11.5, NULL, 'Ice Bird'),
+(37, 50, 2.95, NULL, 'Ice Bird'),
+(38, 200, 11.5, NULL, 'Ice Pin'),
+(39, 50, 2.95, NULL, 'Ice Pin'),
+(40, 200, 11.5, NULL, 'T-Ber'),
+(41, 50, 2.95, NULL, 'T-Ber'),
+(42, 200, 11.5, NULL, 'Hate 69'),
+(43, 50, 2.95, NULL, 'Hate 69'),
+(44, 50, 2.95, NULL, 'Blue Tropic'),
+(45, 200, 11.5, NULL, 'Emon Ke'),
+(46, 50, 2.95, NULL, 'Emon Ke'),
+(47, 200, 11.5, NULL, 'Grapic'),
+(48, 50, 2.95, NULL, 'Grapic'),
+(49, 200, 11.5, NULL, 'Green Mix'),
+(50, 50, 2.95, NULL, 'Green Mix'),
+(51, 200, 11.5, NULL, 'I Blueberry'),
+(52, 50, 2.95, NULL, 'I Blueberry'),
+(53, 200, 11.5, NULL, 'Icbdrumm'),
+(54, 50, 2.95, NULL, 'Icbdrumm'),
+(55, 200, 11.5, NULL, 'Iceber'),
+(56, 50, 2.95, NULL, 'Ime Spiced Pinch'),
+(57, 200, 11.5, NULL, 'Imliciblerry'),
+(58, 50, 2.95, NULL, 'Imliciblerry'),
+(59, 200, 11.5, NULL, 'Istanbul Nights'),
+(60, 50, 2.95, NULL, 'Istanbul Nights'),
+(61, 200, 11.5, NULL, 'Rotana'),
+(62, 50, 2.95, NULL, 'Rotana'),
+(63, 200, 11.5, NULL, 'Stra Shark'),
+(64, 50, 2.95, NULL, 'Stra Shark'),
+(65, 200, 11.5, NULL, 'Duses'),
+(66, 50, 3.3, NULL, 'Blck Grp'),
+(67, 50, 3.3, NULL, 'D´App Strng'),
+(68, 50, 3.3, NULL, 'Eskimo Cndy'),
+(69, 50, 3.3, NULL, 'Eskimo Lmn'),
+(70, 50, 3.3, NULL, 'Eskimo P´App'),
+(71, 50, 3.3, NULL, 'Eskimo Wtrmln'),
+(72, 50, 3.3, NULL, 'Free Spartacus'),
+(73, 50, 3.3, NULL, 'Orng Mnt'),
+(74, 50, 3.3, NULL, 'Ola Zapata'),
+(75, 50, 3.3, NULL, 'Pancho Villa'),
+(76, 50, 3.3, NULL, 'Vamos Ernesto'),
+(77, 100, 7.5, NULL, 'Splash'),
+(78, 200, 13.5, NULL, 'Splash'),
+(79, 100, 7.5, NULL, 'Nazaré'),
+(80, 200, 13.5, NULL, 'Nazaré'),
+(81, 100, 7.5, NULL, 'Atlantic'),
+(82, 200, 13.5, NULL, 'Atlantic'),
+(83, 100, 7.5, NULL, 'Pacific'),
+(84, 200, 13.5, NULL, 'Pacific'),
+(85, 100, 7.5, NULL, 'T.Riko'),
+(86, 200, 13.5, NULL, 'T.Riko'),
+(87, 100, 7.5, NULL, 'Sparrow'),
+(88, 200, 13.5, NULL, 'Sparrow'),
+(89, 100, 7.5, NULL, 'Los Locos'),
+(90, 200, 13.5, NULL, 'Los Locos'),
+(91, 100, 7.5, NULL, 'Maverick'),
+(92, 200, 13.5, NULL, 'Maverick'),
+(93, 100, 7.5, NULL, 'Shaka Shaka'),
+(94, 200, 13.5, NULL, 'Shaka Shaka'),
+(95, 30, 3.85, NULL, 'Darkside Hola'),
+(96, 30, 3.85, NULL, 'I Granny'),
+(97, 30, 3.85, NULL, 'LM Blast'),
+(98, 30, 3.85, NULL, 'MG Assi'),
+(99, 30, 3.85, NULL, 'Supernova'),
+(100, 30, 3.85, NULL, 'Darkside Hola'),
+(101, 50, 3, NULL, '90+'),
+(102, 50, 3, NULL, 'Black Star'),
+(103, 50, 3, NULL, 'Blade'),
+(104, 50, 3, NULL, 'Eternal'),
+(105, 50, 3, NULL, 'Land Of Fire'),
+(106, 50, 3, NULL, 'Marshall'),
+(107, 50, 3, NULL, 'Mito'),
+(108, 50, 3, NULL, 'Royal Style'),
+(109, 50, 3, NULL, 'Carnival'),
+(110, 200, 11.25, NULL, 'Carnival'),
+(111, 50, 3, NULL, 'Casablanca'),
+(112, 200, 11.25, NULL, 'Casablanca'),
+(113, 50, 3, NULL, 'Cuba Dream'),
+(114, 50, 3, NULL, 'Dead Sea'),
+(115, 200, 11.25, NULL, 'Dead Sea'),
+(116, 50, 3, NULL, 'Jelly Bear'),
+(117, 50, 3, NULL, 'Rio Lady'),
+(118, 50, 3, NULL, 'Sweet Night'),
+(119, 50, 3, NULL, 'Vip 44'),
+(120, 50, 3, NULL, 'Adam & Eve'),
+(121, 200, 11.5, NULL, 'Adam & Eve'),
+(122, 50, 3, NULL, 'Na3ne'),
+(123, 200, 11.5, NULL, 'Na3ne'),
+(124, 50, 3, NULL, 'Cane Na3ne'),
+(125, 200, 11.5, NULL, 'Cane Na3ne'),
+(126, 50, 3, NULL, 'French Rivera'),
+(127, 200, 11.5, NULL, 'French Rivera'),
+(128, 50, 3, NULL, 'Kush'),
+(129, 200, 11.5, NULL, 'Kush'),
+(130, 50, 3, NULL, 'Kush Na3ne'),
+(131, 200, 11.5, NULL, 'Kush Na3ne'),
+(132, 50, 3, NULL, 'Sun Beach'),
+(133, 200, 11.5, NULL, 'Sun Beach'),
+(134, 50, 3, NULL, 'Tsunami'),
+(135, 200, 11.5, NULL, 'Tsunami'),
+(136, 50, 3, NULL, 'Pink Kiss'),
+(137, 200, 11.5, NULL, 'Pink Kiss'),
+(138, 50, 3, NULL, 'Heaven'),
+(139, 200, 11.5, NULL, 'Heaven'),
+(140, 50, 3, NULL, 'Bahamas'),
+(141, 200, 11.5, NULL, 'Bahamas'),
+(142, 50, 3, NULL, 'Meridian'),
+(143, 50, 3, NULL, 'Blue mix'),
+(144, 50, 3, NULL, 'Touty Red'),
+(145, 50, 3, NULL, 'Lover'),
+(174, 50, 3.95, NULL, 'American Pei'),
+(175, 50, 3.95, NULL, 'Mng Loco'),
+(176, 50, 3.95, NULL, 'Zenter Schox'),
+(177, 50, 3.95, NULL, 'Laoz'),
+(178, 50, 3.95, NULL, 'Original Vanta Zotic'),
+(179, 50, 3.95, NULL, 'Cotton Candy Craem'),
+(180, 200, 13.8, NULL, 'Cotton Candy Craem'),
+(181, 50, 3.95, NULL, 'Orogina'),
+(182, 50, 3.95, NULL, 'Eyez Kalt'),
+(183, 50, 3.95, NULL, 'Vantanaz'),
+(184, 50, 3.95, NULL, 'Pic Zkittlez'),
+(185, 50, 3.95, NULL, 'Ch3ri Zkittlez'),
+(186, 50, 3.95, NULL, 'Sm!nt'),
+(187, 50, 3.95, NULL, 'Fellatio'),
+(188, 50, 3.95, NULL, 'Green Lean'),
+(189, 200, 13.8, NULL, 'Green Lean'),
+(190, 50, 3.95, NULL, 'Kaffa Yayo'),
+(191, 50, 3.95, NULL, 'Bubblenciaga'),
+(192, 200, 13.8, NULL, 'Bubblenciaga'),
+(193, 50, 3.95, NULL, 'Cactopus'),
+(194, 50, 3.95, NULL, 'Lemenciaga'),
+(195, 200, 13.8, NULL, 'Lemenciaga'),
+(196, 50, 3.95, NULL, 'Punani'),
+(197, 50, 3.95, NULL, 'White Caek'),
+(198, 200, 13.8, NULL, 'White Caek'),
+(199, 50, 3.95, NULL, 'Big Black Barries'),
+(200, 200, 13.8, NULL, 'Big Black Barries'),
+(201, 50, 3.95, NULL, 'Soleiro Spliff'),
+(202, 50, 3.95, NULL, 'Kivi King'),
+(203, 200, 23.5, NULL, 'Cosmos'),
+(204, 200, 23.5, NULL, 'Stellar'),
+(205, 200, 23.5, NULL, 'Atmosphere'),
+(206, 200, 23.5, NULL, 'Pinkman'),
+(207, 200, 23.5, NULL, 'Space Invaders'),
+(208, 200, 23.5, NULL, 'Raspi'),
+(209, 200, 23.5, NULL, 'Space Force'),
+(210, 200, 23.5, NULL, 'Space Flavour'),
+(211, 200, 23.5, NULL, 'Uranus'),
+(212, 200, 23.5, NULL, 'Eclipse'),
+(213, 40, 4.1, NULL, 'Zonda'),
+(214, 40, 4.1, NULL, 'Amazon'),
+(215, 40, 4.1, NULL, 'Southerly Buster'),
+(216, 40, 4.1, NULL, 'Khamseen'),
+(217, 40, 4.1, NULL, 'Lena'),
+(218, 40, 4.1, NULL, 'Volta'),
+(219, 40, 4.1, NULL, 'Buran'),
+(220, 40, 4.1, NULL, 'Sirocco'),
+(221, 40, 4.1, NULL, 'Mississippi'),
+(222, 40, 4.1, NULL, 'Mekong'),
+(223, 50, 3, NULL, 'Orko'),
+(224, 50, 3, NULL, 'Tokio'),
+(225, 50, 3, NULL, 'Nairobi'),
+(226, 50, 3, NULL, 'Lambada'),
+(227, 50, 3, NULL, 'Excalibur'),
+(228, 50, 3, NULL, 'Pink Lemenciaga'),
+(229, 50, 3.95, NULL, 'Pink Lemenciaga'),
+(230, 50, 3.95, NULL, 'Code In Love'),
+(231, 50, 3.3, NULL, 'Capitan Pinto'),
+(232, 50, 3.3, NULL, 'Chao Bella'),
+(233, 50, 2.95, NULL, 'Alhambra'),
+(234, 50, 2.95, NULL, 'Amsterdan Lights'),
+(235, 50, 2.95, NULL, 'Baku Nights'),
+(236, 50, 2.95, NULL, 'Discovery'),
+(237, 50, 2.95, NULL, 'Istanblue'),
+(238, 50, 2.95, NULL, 'La Beirut'),
+(239, 50, 2.95, NULL, 'London Fog'),
+(240, 50, 2.95, NULL, 'Mi Amor'),
+(241, 200, 10.95, NULL, 'Mi Amor'),
+(242, 1000, 49.95, NULL, 'Mi Amor'),
+(243, 50, 2.95, NULL, 'Moscow Evenings'),
+(244, 50, 2.95, NULL, 'No Woman No Cry'),
+(245, 50, 2.95, NULL, 'The Coldest Green'),
+(246, 200, 10.95, NULL, 'The Coldest Green'),
+(247, 50, 2.95, NULL, 'The Perfect Storm'),
+(248, 50, 2.95, NULL, 'Thor\'s Flash'),
+(249, 50, 2.95, NULL, 'Tokio Desire'),
+(250, 50, 2.95, NULL, 'Venezia Serenata'),
+(251, 50, 2.95, NULL, 'Wind Of Amazon'),
+(253, 40, 2.7, NULL, 'King Leonidas'),
+(254, 40, 2.7, NULL, 'La Force'),
+(255, 40, 2.7, NULL, 'Yodda'),
+(256, 40, 2.7, NULL, 'Babyelya'),
+(257, 40, 2.7, NULL, 'Chernobyl'),
+(258, 40, 2.7, NULL, 'Halep Boom'),
+(259, 40, 2.7, NULL, 'Joker'),
+(260, 40, 2.7, NULL, 'Ommy Shelby'),
+(261, 40, 2.7, NULL, 'Gobfather'),
+(262, 40, 2.7, NULL, 'Baron Rouge'),
+(263, 50, 2.9, NULL, 'Zeus'),
+(264, 50, 2.9, NULL, 'Hera'),
+(265, 50, 2.9, NULL, 'Deja Vu'),
+(266, 50, 2.9, NULL, 'Ugly King'),
+(267, 50, 2.9, NULL, 'Karnaval'),
+(268, 50, 2.9, NULL, 'Ay, Carmela!');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `marca`
+--
+
+CREATE TABLE `marca` (
+  `id` int(11) NOT NULL,
+  `NAME` varchar(256) NOT NULL,
+  `pais` varchar(256) NOT NULL,
+  `pais_api` varchar(256) NOT NULL,
+  `descripcion` varchar(256) DEFAULT NULL,
+  `imagen` varchar(256) DEFAULT NULL,
+  `imagen_flag` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `marca`
+--
+
+INSERT INTO `marca` (`id`, `NAME`, `pais`, `pais_api`, `descripcion`, `imagen`, `imagen_flag`) VALUES
+(15, 'Afzal', 'Índia', 'India', 'Tabaco rubio.', 'https://i.ibb.co/XXrtNZm/afzal.png', 'https://restcountries.eu/data/ind.svg'),
+(5, 'Aloha', 'España', 'Spain', 'Tabaco rubio', 'https://i.ibb.co/cwcDsg1/aloha.jpg', 'https://restcountries.eu/data/esp.svg'),
+(13, 'Apocalypse', 'Alemania', 'Germany', 'Tabaco rubio.', 'https://i.ibb.co/ct2kcFk/apocalypse-tobacco.jpg', 'https://restcountries.eu/data/deu.svg'),
+(12, 'Blue Horse', 'Turquía', 'Turkey', 'Tabaco Rubio', 'https://i.ibb.co/4t0cRT0/blue-horse.png', 'https://restcountries.eu/data/tur.svg'),
+(6, 'Darkside', 'Rusia', 'Russian', 'Tabaco negro', 'https://i.ibb.co/1TpbsMG/darkside.png', 'https://restcountries.eu/data/rus.svg'),
+(7, 'Dozaj', 'Turquia', 'Turkey', 'Tabaco rubio', 'https://i.ibb.co/ZBmV6nP/dozaj.png', 'https://restcountries.eu/data/tur.svg'),
+(8, 'Dumanji', 'Francia', 'France', 'Tabaco rubio', 'https://i.ibb.co/mBMcM2j/dumanji.jpg', 'https://restcountries.eu/data/fra.svg'),
+(11, 'Element', 'Rusia', 'Russia', 'Tabaco de diferentes gamas', 'https://i.ibb.co/5vnb5BJ/element-tobacco.jpg', 'https://restcountries.eu/data/rus.svg'),
+(9, 'Hookain', 'Alemania', 'Germany', 'Tabaco rubio', 'https://i.ibb.co/6mQsXhp/hookain.png', 'https://restcountries.eu/data/deu.svg'),
+(10, 'Musthave', 'Rusia', 'Russia', 'Tabaco negro', 'https://i.ibb.co/pLSCjmH/tabak-musthave.png', 'https://restcountries.eu/data/rus.svg'),
+(1, 'Nameless', 'Alemania', 'Germany', 'Tabaco rubio', 'https://i.ibb.co/Jys8s36/nameless.png', 'https://restcountries.eu/data/deu.svg'),
+(4, 'Revoshi', 'Turquia', 'Turkey', 'Tabaco rubio', 'https://i.ibb.co/b69zGrb/revoshi.png', 'https://restcountries.eu/data/tur.svg'),
+(3, 'Serbetli', 'Alemania', 'Germany', 'Tabaco rubio premium', 'https://i.ibb.co/cTzSKqY/serbetli.png', 'https://restcountries.eu/data/deu.svg'),
+(14, 'Smyrna', 'Turquía', 'Turkey', 'Tabaco rubio', 'https://i.ibb.co/HBPTR9f/smyrna.jpg', 'https://restcountries.eu/data/tur.svg'),
+(2, 'Tangiers', 'USA', 'usa', 'Tabaco negro', 'https://i.ibb.co/LPWDd6j/tangiers.png', 'https://restcountries.eu/data/usa.svg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mezcla`
+--
+
+CREATE TABLE `mezcla` (
+  `id` varchar(256) NOT NULL,
+  `NAME` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `porcentaje`
+--
+
+CREATE TABLE `porcentaje` (
+  `tabaco` varchar(256) NOT NULL,
+  `mezcla` varchar(256) NOT NULL,
+  `porcentaje` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -237,9 +575,92 @@ INSERT INTO `tabaco` (`id`, `name_tabaco`, `name_api`, `descripcion`, `marca`) V
 (207, 'Zeus', 'zeus', 'La menta oscura más poderosa del Olimpo. Incluso los dioses se sorprenderán de tal frescura.', 'Smyrna'),
 (166, 'Zonda', 'zonda', 'Una mezcla de frutas tropicales donde la agridulce piña se combina con el sabor exótico de una tierna y jugosa papaya.', 'Element');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` varchar(256) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `username` varchar(100) NOT NULL,
+  `PASSWORD` varchar(70) NOT NULL,
+  `enabled` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `username`, `PASSWORD`, `enabled`) VALUES
+('cd4fa027-36b6-4639-86b8-834fe83b2e4a', 'enriquecabe300@gmail.com', 'EnriqueCaBe', '{bcrypt}$2a$10$Hm0L1XIsrWDkeWNjbMUCmOhd7qRYJXeM4hQ1kOHrWVd1tMzqIpU3i', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `valoracion_mezcla`
+--
+
+CREATE TABLE `valoracion_mezcla` (
+  `id` varchar(256) NOT NULL,
+  `nota` double NOT NULL,
+  `comentario` varchar(256) DEFAULT NULL,
+  `usuario` varchar(256) NOT NULL,
+  `mezcla` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `valoracion_tabaco`
+--
+
+CREATE TABLE `valoracion_tabaco` (
+  `id` varchar(256) NOT NULL,
+  `nota` double NOT NULL,
+  `usuario` varchar(256) NOT NULL,
+  `tabaco` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `authorities`
+--
+ALTER TABLE `authorities`
+  ADD PRIMARY KEY (`authority_id`),
+  ADD UNIQUE KEY `uni_username_role` (`role`,`username`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indices de la tabla `formato`
+--
+ALTER TABLE `formato`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tabaco` (`tabaco`);
+
+--
+-- Indices de la tabla `marca`
+--
+ALTER TABLE `marca`
+  ADD PRIMARY KEY (`NAME`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indices de la tabla `mezcla`
+--
+ALTER TABLE `mezcla`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `porcentaje`
+--
+ALTER TABLE `porcentaje`
+  ADD KEY `mezcla` (`mezcla`),
+  ADD KEY `tabaco` (`tabaco`);
 
 --
 -- Indices de la tabla `tabaco`
@@ -250,8 +671,48 @@ ALTER TABLE `tabaco`
   ADD KEY `marca` (`marca`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indices de la tabla `valoracion_mezcla`
+--
+ALTER TABLE `valoracion_mezcla`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario` (`usuario`),
+  ADD KEY `mezcla` (`mezcla`);
+
+--
+-- Indices de la tabla `valoracion_tabaco`
+--
+ALTER TABLE `valoracion_tabaco`
+  ADD KEY `usuario` (`usuario`),
+  ADD KEY `tabaco` (`tabaco`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `authorities`
+--
+ALTER TABLE `authorities`
+  MODIFY `authority_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `formato`
+--
+ALTER TABLE `formato`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+
+--
+-- AUTO_INCREMENT de la tabla `marca`
+--
+ALTER TABLE `marca`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `tabaco`
@@ -264,10 +725,43 @@ ALTER TABLE `tabaco`
 --
 
 --
+-- Filtros para la tabla `authorities`
+--
+ALTER TABLE `authorities`
+  ADD CONSTRAINT `fk_username` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+
+--
+-- Filtros para la tabla `formato`
+--
+ALTER TABLE `formato`
+  ADD CONSTRAINT `formato_ibfk_1` FOREIGN KEY (`tabaco`) REFERENCES `tabaco` (`name_tabaco`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `porcentaje`
+--
+ALTER TABLE `porcentaje`
+  ADD CONSTRAINT `porcentaje_ibfk_1` FOREIGN KEY (`tabaco`) REFERENCES `tabaco` (`name_tabaco`) ON DELETE CASCADE,
+  ADD CONSTRAINT `porcentaje_ibfk_2` FOREIGN KEY (`mezcla`) REFERENCES `mezcla` (`id`) ON DELETE CASCADE;
+
+--
 -- Filtros para la tabla `tabaco`
 --
 ALTER TABLE `tabaco`
   ADD CONSTRAINT `tabaco_ibfk_1` FOREIGN KEY (`marca`) REFERENCES `marca` (`NAME`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `valoracion_mezcla`
+--
+ALTER TABLE `valoracion_mezcla`
+  ADD CONSTRAINT `valoracion_mezcla_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `users` (`username`) ON DELETE CASCADE,
+  ADD CONSTRAINT `valoracion_mezcla_ibfk_2` FOREIGN KEY (`mezcla`) REFERENCES `mezcla` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `valoracion_tabaco`
+--
+ALTER TABLE `valoracion_tabaco`
+  ADD CONSTRAINT `valoracion_tabaco_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `users` (`username`) ON DELETE CASCADE,
+  ADD CONSTRAINT `valoracion_tabaco_ibfk_2` FOREIGN KEY (`tabaco`) REFERENCES `tabaco` (`name_tabaco`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
