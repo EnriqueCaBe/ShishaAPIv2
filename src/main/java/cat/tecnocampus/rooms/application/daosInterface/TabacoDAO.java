@@ -7,18 +7,9 @@ import cat.tecnocampus.rooms.domain.Tabaco;
 import java.util.List;
 
 public interface TabacoDAO {
-    public List<TabacoDTO> getTabacos();
-    void postTabaco(TabacoDTO tabaco, String marca);
 
-    void deleteTabaco(String tabaco);
+    void insertTabaco(TabacoDTO tabaco);
 
-    List<TabacoDTO> getTabacoByMarca(String marca);
+    boolean isTabacoExists(TabacoDTO tabacoDTO);
 
-    TabacoDTO postFormato(FormatoDTO formatoDTO, String tabaco, String marca);
-
-    TabacoDTO getTabacoByName(String tabaco, String marca);
-
-    TabacoDTO getTabacoByID(String id);
-
-    void updateNotaMedia(String tabaco, double notaMedia);
 }

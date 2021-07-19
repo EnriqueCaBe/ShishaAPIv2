@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarcaDTO {
-    @NotNull
-    private String name;
+
+    private String name_marca;
     private String pais;
     private String pais_api;
     private String descripcion;
@@ -18,12 +18,12 @@ public class MarcaDTO {
 
     public MarcaDTO(){}
 
-    public String getName() {
-        return name;
+    public String getNameMarca() {
+        return name_marca;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameMarca(String name) {
+        this.name_marca = name;
     }
 
     public String getPais() {
