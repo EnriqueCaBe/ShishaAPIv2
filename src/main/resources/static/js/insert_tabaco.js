@@ -1,16 +1,25 @@
 $(document).ready(function(){
-
   getMarcas();
-
-
-
-    // jQuery methods go here...
-  
   });
 
 
   function doIt(){
-    console.log("Hole");
+    const tabaco = `{"name_tabaco": "${document.getElementById("name_tabaco").value}" ,"name_api": "${document.getElementById("name_api").value}" ,"descripcion": "${document.getElementById("descripcion").value}" ,"marca": "${document.getElementById("marca").value}"}`;
+    
+    await insertTabaco(tabaco);
+    location.reload();
+  }
+
+  function insertMarca(tabaco){
+    return new Promise((resolve) => {
+      fetch(`/tabaco`, {
+        method: 'POST',
+        body: tabaco,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((res)=>resolve(res));
+    });
   }
 
   async function getMarcas(){

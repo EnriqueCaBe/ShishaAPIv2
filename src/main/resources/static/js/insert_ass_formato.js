@@ -1,10 +1,6 @@
 $(document).ready(function(){
-
     getTabacos();
     getFormatos();
-
-    // jQuery methods go here...
-  
   });
 
   async function getTabacos(){
