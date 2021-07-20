@@ -4,7 +4,6 @@ import cat.tecnocampus.rooms.application.MarcaController;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,8 +17,7 @@ public class MarcaRestController {
     }
 
     @PostMapping("/marca")
-    public void insertMarca(@RequestBody @Valid MarcaDTO marca){
-        System.out.println(marca.getNameMarca());
+    public void insertMarca(@RequestBody MarcaDTO marca){
         marcaController.postMarca(marca);
     }
 

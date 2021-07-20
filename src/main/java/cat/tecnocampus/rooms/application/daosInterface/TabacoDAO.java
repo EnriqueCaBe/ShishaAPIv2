@@ -12,4 +12,5 @@ public interface TabacoDAO {
 
     boolean isTabacoExists(TabacoDTO tabacoDTO);
 
+    List<TabacoDTO> getAllTabaco();
 }

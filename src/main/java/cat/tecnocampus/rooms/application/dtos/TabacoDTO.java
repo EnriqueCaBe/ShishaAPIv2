@@ -1,30 +1,33 @@
 package cat.tecnocampus.rooms.application.dtos;
 
-import cat.tecnocampus.rooms.domain.Tabaco;
-
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class TabacoDTO {
-    @NotNull
-    private String name;
-    @NotNull
+
+    private int id;
+    private String name_tabaco;
     private String name_api;
-    @NotNull
     private String descripcion;
-    @NotNull
-    private MarcaDTO marca;
+    private String marca;
     private List<FormatoDTO> formatos;
 
 
     public TabacoDTO(){}
 
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName_tabaco() {
+        return name_tabaco;
+    }
+
+    public void setName_tabaco(String name_tabaco) {
+        this.name_tabaco = name_tabaco;
     }
 
     public String getName_api() {
@@ -51,11 +54,11 @@ public class TabacoDTO {
         this.descripcion = descripcion;
     }
 
-    public MarcaDTO getMarca() {
+    public String getMarca() {
         return marca;
     }
 
-    public void setMarca(MarcaDTO marca) {
+    public void setMarca(String marca) {
         this.marca = marca;
     }
 }

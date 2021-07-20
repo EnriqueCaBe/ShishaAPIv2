@@ -26,13 +26,19 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     @Override
     public void insertTabaco(TabacoDTO tabaco) {
         final String query = "insert into tabaco(name_tabaco,name_api, descripcion, marca) values(?,?,?,?)";
-        jdbcTemplate.update(query,tabaco.getName(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca());
+        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca());
     }
 
     @Override
     public boolean isTabacoExists(TabacoDTO tabacoDTO) {
         final String query = "select name_tabaco from tabaco where name_tabaco = ?";
-        List<TabacoDTO> list = jdbcTemplate.query(query,tabacosRowMapper, tabacoDTO.getName());
+        List<TabacoDTO> list = jdbcTemplate.query(query,tabacosRowMapper, tabacoDTO.getName_tabaco());
         return list.size() != 0;
+    }
+
+    @Override
+    public List<TabacoDTO> getAllTabaco() {
+        final String query = "select * from tabaco";
+        return jdbcTemplate.query(query,tabacosRowMapper);
     }
 }

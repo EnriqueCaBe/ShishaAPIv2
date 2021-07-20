@@ -20,7 +20,7 @@ public class MarcaController {
         if(!marcaDAO.isMarcaExists(marca)) {
             marcaDAO.insertMarca(marca);
         }
-        else throw new MarcaDoesExistsException(marca.getNameMarca());
+        else throw new MarcaDoesExistsException(marca.getName_marca());
     }
 
     public List<MarcaDTO> getAllMarcas() {

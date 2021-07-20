@@ -18,12 +18,12 @@ public class MarcaDTO {
 
     public MarcaDTO(){}
 
-    public String getNameMarca() {
+    public String getName_marca() {
         return name_marca;
     }
 
-    public void setNameMarca(String name) {
-        this.name_marca = name;
+    public void setName_marca(String name_marca) {
+        this.name_marca = name_marca;
     }
 
     public String getPais() {
@@ -50,14 +50,6 @@ public class MarcaDTO {
         this.descripcion = descripcion;
     }
 
-    public List<TabacoDTO> getTabacos() {
-        return tabacos;
-    }
-
-    public void setTabacos(List<TabacoDTO> tabacos) {
-        this.tabacos = tabacos;
-    }
-
     public String getImagen() {
         return imagen;
     }
@@ -72,5 +64,13 @@ public class MarcaDTO {
 
     public void setImagen_flag(String imagen_flag) {
         this.imagen_flag = imagen_flag;
+    }
+
+    public List<TabacoDTO> getTabacos() {
+        return tabacos;
+    }
+
+    public void setTabacos(List<TabacoDTO> tabacos) {
+        this.tabacos = tabacos;
     }
 }

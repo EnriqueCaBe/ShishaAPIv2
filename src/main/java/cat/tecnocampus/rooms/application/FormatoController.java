@@ -5,6 +5,8 @@ import cat.tecnocampus.rooms.application.exceptions.FormatoDoesExistsException;
 import cat.tecnocampus.rooms.persistence.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class FormatoController {
 
@@ -21,5 +23,9 @@ public class FormatoController {
         else{
             throw new FormatoDoesExistsException();
         }
+    }
+
+    public List<FormatoDTO> getAllFormato() {
+        return formatoDAO.getAllFormatos();
     }
 }

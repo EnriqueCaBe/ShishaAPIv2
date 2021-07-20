@@ -4,12 +4,10 @@ import cat.tecnocampus.rooms.application.FormatoController;
 
 import cat.tecnocampus.rooms.application.dtos.FormatoDTO;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Validated
 @RestController
@@ -27,6 +25,9 @@ public class FormatoRestController {
         formatoController.postFormato(formatoDTO);
     }
 
-
+    @GetMapping("/formato/all")
+    public List<FormatoDTO> getAllFormato(){
+        return formatoController.getAllFormato();
+    }
 
 }

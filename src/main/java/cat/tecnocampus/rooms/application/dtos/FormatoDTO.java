@@ -1,10 +1,20 @@
 package cat.tecnocampus.rooms.application.dtos;
 
 public class FormatoDTO {
+
+    private int id;
     private double gramos;
     private double precio;
 
     public FormatoDTO(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public double getGramos() {
         return gramos;

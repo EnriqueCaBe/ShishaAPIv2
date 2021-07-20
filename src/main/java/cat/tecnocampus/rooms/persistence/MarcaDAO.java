@@ -31,13 +31,13 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
     @Override
     public void insertMarca(MarcaDTO marcaDTO) {
         final String query = "insert into marca(name_marca,pais,pais_api,descripcion,imagen, imagen_flag) values(?,?,?,?,?,?)";
-        jdbcTemplate.update(query,marcaDTO.getNameMarca(), marcaDTO.getPais(), marcaDTO.getPais_api(), marcaDTO.getDescripcion(), marcaDTO.getImagen(), marcaDTO.getImagen_flag());
+        jdbcTemplate.update(query,marcaDTO.getName_marca(), marcaDTO.getPais(), marcaDTO.getPais_api(), marcaDTO.getDescripcion(), marcaDTO.getImagen(), marcaDTO.getImagen_flag());
     }
 
     @Override
     public boolean isMarcaExists(MarcaDTO marcaDTO) {
         final String query = "select name_marca from marca where name_marca = ?";
-        List<MarcaDTO> list = jdbcTemplate.query(query, marcasRowMapper,marcaDTO.getNameMarca());
+        List<MarcaDTO> list = jdbcTemplate.query(query, marcasRowMapper,marcaDTO.getName_marca());
         return list.size() != 0;
     }
 }

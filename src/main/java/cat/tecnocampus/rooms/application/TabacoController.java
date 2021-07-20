@@ -5,6 +5,8 @@ import cat.tecnocampus.rooms.application.exceptions.TabacoDoesExistsException;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class TabacoController {
 
@@ -18,6 +20,10 @@ public class TabacoController {
         if(tabacoDAO.isTabacoExists(tabaco)) {
             tabacoDAO.insertTabaco(tabaco);
         }
-        else throw new TabacoDoesExistsException(tabaco.getName());
+        else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
+    }
+
+    public List<TabacoDTO> getAllTabaco(){
+        return tabacoDAO.getAllTabaco();
     }
 }

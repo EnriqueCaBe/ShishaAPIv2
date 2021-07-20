@@ -36,4 +36,10 @@ public class FormatoDAO implements cat.tecnocampus.rooms.application.daosInterfa
         List<FormatoDTO> list = jdbcTemplate.query(query,formatosRowMapper,formatoDTO.getGramos(),formatoDTO.getPrecio());
         return list.size() != 0;
     }
+
+    @Override
+    public List<FormatoDTO> getAllFormatos() {
+        final String query = "select * from formato";
+        return jdbcTemplate.query(query, formatosRowMapper);
+    }
 }

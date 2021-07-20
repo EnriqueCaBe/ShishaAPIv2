@@ -22,32 +22,27 @@
     <div class="testbox" style="margin-top: 3%;">
         <div class="form">
             <div class="banner">
-                <h1>Insert Tabaco</h1>
+                <h1>Asociar Formato a Tabaco</h1>
             </div>
             <div class="item">
-                <p>Nombre Tabaco<span class="required">*</span></p>
-                <div class="name-item">
-                    <input id="name_tabaco" type="text" name="name" placeholder="Nombre Tabaco" required />
-                    <input id="name_api" type="text" name="name" placeholder="Nombre API" required />
-                </div>
-            </div>
-            <div class="item">
-                <p>Marca<span class="required">*</span></p>
-                <select id="marca">
+                <p>Tabaco<span class="required">*</span></p>
+                <select id="tabaco">
                     <option value="">-</option>
                 </select>
             </div>
             <div class="item">
-                <p>Descripci&oacute;n<span class="required">*</span></p>
-                <textarea id="descripcion" type="text" rows="5" required style="width: 98%; padding: 10px;"></textarea>
+                <p>Formato<span class="required">*</span></p>
+                <select id="formato">
+                    <option value="">-</option>
+                </select>
             </div>
             <div class="btn-block">
-                <button onclick="doIt()">Insertar Tabaco</button>
+                <button onclick="doIt()">Insertar Formato</button>
             </div>
         </div>
     </div>
     <script src="/assets/jquery-3.6.0.min.js"></script>
-    <script src="/js/insert_tabaco.js"></script>
+    <script src="/js/insert_ass_formato.js"></script>
 </body>
 
 </html>
