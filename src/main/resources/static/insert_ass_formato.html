@@ -1,48 +1,43 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>ShishaMixer</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style/style.css">
-    <style>
-
-    </style>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/style/form.css">
+   <link rel="stylesheet" href="/style/assets/toastr.css">
+   <title>Developer's Survey Form</title>
 </head>
-
 <body>
-    <div class="navbar">
-        <a href="insert_marca.html">Insert Marca</a>
-        <a href="insert_tabaco.html">Insert Tabaco</a>
-        <a href="insert_formato.html">Insert Formato</a>
-        <a href="insert_ass_formato.html">Formato/Tabaco</a>
-      </div>
-    <div class="testbox" style="margin-top: 3%;">
-        <div class="form">
-            <div class="banner">
-                <h1>Asociar Formato a Tabaco</h1>
-            </div>
-            <div class="item">
-                <p>Tabaco<span class="required">*</span></p>
-                <select id="tabaco">
-                    <option value="">-</option>
-                </select>
-            </div>
-            <div class="item">
-                <p>Formato<span class="required">*</span></p>
-                <select id="formato">
-                    <option value="">-</option>
-                </select>
-            </div>
-            <div class="btn-block">
-                <button onclick="doIt()">Insertar Formato</button>
-            </div>
-        </div>
-    </div>
-    <script src="/assets/jquery-3.6.0.min.js"></script>
-    <script src="/js/insert_ass_formato.js"></script>
-</body>
+   <div class="container">
+       <header>
+           <h1 id='title'>Insertar una Marca</h1>
+           <p id='description'>
+               Rellene los campos para añadir una Marca
+           </p>
+       </header>
 
+       <div id='survey-form'>
+        <div class='form-input'>
+            <p>Tabaco</p>
+            <select id='tabaco' class='form-input-size' required>
+                <option disabled selected value="">Selecciones un tabaco</option>
+            </select>
+        </div>
+        <div class='form-input'>
+            <p>Formato</p>
+            <select id='formato' class='form-input-size' required>
+                <option disabled selected value="">Selecciones un formato</option>
+            </select>
+        </div>
+
+           <div class='form-input'>
+               <button onclick="doIt()" id='submit'>Submit</button>
+           </div>
+        </div>
+   </div>
+   <script src="/assets/jquery-3.6.0.min.js"></script>
+   <script src="/js/insert_ass_formato.js"></script>
+   <script src="/assets/toastr.js"></script>
+</body>
 </html>
