@@ -1,7 +1,9 @@
 package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.MarcaController;
+import cat.tecnocampus.rooms.application.TabacoController;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
+import cat.tecnocampus.rooms.domain.Marca;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +14,7 @@ public class MarcaRestController {
 
     private MarcaController marcaController;
 
-    public MarcaRestController(MarcaController marcaController) {
+    public MarcaRestController(MarcaController marcaController, TabacoController tabacoController) {
         this.marcaController = marcaController;
     }
 
@@ -25,4 +27,15 @@ public class MarcaRestController {
     public List<MarcaDTO> getAllMarcas(){
         return marcaController.getAllMarcas();
     }
+
+    @GetMapping("/marca/tabaco")
+    public List<MarcaDTO> getAllMarcasAndTabacos(){
+        return marcaController.getAllMarcasAndTabacos();
+    }
+
+    @GetMapping("/marca/tabaco/formato")
+    public List<MarcaDTO> getAll(){
+        return marcaController.getAll();
+    }
+
 }
