@@ -29,7 +29,7 @@ async function getFormatos(){
     const formatos = await getJsonFormatos();
 
     formatos.map((formato)=>{
-        document.getElementById("formato").insertAdjacentHTML("beforeend",`<option value="${formato.id}">${formato.gramos}g / ${formato.precio}e</option>`)
+        document.getElementById("formato").insertAdjacentHTML("beforeend",`<option value="${formato.id}">${formato.gramos}g | ${formato.precio} ${"\&#x20ac"}</option>`)
     })
   }
 function getJsonFormatos() {
@@ -49,12 +49,17 @@ function getJsonFormatos() {
 
 async function doIt(){
     var assFormato = `{"tabaco_id":${document.getElementById("tabaco").value}, "formato_id":${document.getElementById("formato").value} }`;
-    await inserAssFormato(assFormato);
-    location.reload();
+    await insertAssFormato(assFormato);
+    limpiarCampos();
+}
+
+function limpiarCampos(){
+  document.getElementById("formato").value = 0;
+  document.getElementById("tabaco").value = 0;
 }
 
 
-  function inserAssFormato(assFormato){
+  function insertAssFormato(assFormato){
     return new Promise((resolve) => {
       fetch(`/ass_formato`, {
         method: 'POST',
@@ -62,6 +67,21 @@ async function doIt(){
         headers: {
           'Content-Type': 'application/json'
         }
+      }).then(function(response){
+        if(response.ok) {
+          toastr.success("Añadido correctamente");
+        } else {
+          toastr.error("Ya existe");
+        }
       }).then((res)=>resolve(res));
     });
+  }
+
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
   }

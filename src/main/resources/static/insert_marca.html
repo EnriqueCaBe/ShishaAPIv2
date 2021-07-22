@@ -1,62 +1,70 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>ShishaMixer</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style/style.css">
-    <style>
-
-    </style>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/style/form.css">
+   <link rel="stylesheet" href="/style/assets/toastr.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <title>ADMIN | INSERT MARCA</title>
 </head>
-
 <body>
-    <div class="navbar">
+   <div class="container">
+    <div class="topnav" id="myTopnav" >
+        <a href="index_admin.html" class="active"><i style="font-size: 100%;" class="fa fa-home"></i></a>
         <a href="insert_marca.html">Insert Marca</a>
         <a href="insert_tabaco.html">Insert Tabaco</a>
         <a href="insert_formato.html">Insert Formato</a>
-        <a href="insert_ass_formato.html">Formato/Tabaco</a>
+        <a href="insert_ass_formato.html">Asso.Tabaco/Formato</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
       </div>
-    <div class="testbox" style="margin-top: 3%;">
-        <div class="form">
-            <div class="banner">
-                <h1>Insert Marca</h1>
-            </div>
-            <div class="item">
-                <p>Nombre Marca<span class="required">*</span></p>
-                <div class="name-item">
-                    <input id="name_marca" type="text" name="name" placeholder="Nombre Marca" required />
-                    <input id="name_api" type="text" name="name" placeholder="Nombre API" required />
-                </div>
-            </div>
-            <div class="item">
-                <p>Pa&iacute;s<span class="required">*</span></p>
-                <div class="name-item">
-                    <input id="pais" type="text" name="name" placeholder="Pa&iacute;s" required />
-                    <input id="pais_api" type="text" name="name" placeholder="Pa&iacute;s API" required />
+       <header>
+           <h1 id='title'>Insertar una Marca</h1>
+           <p id='description'>
+               Rellene los campos para añadir una Marca
+           </p>
+       </header>
 
-                </div>
+       <div id='survey-form'>
+           <div class='form-input'>
+               <label>Nombre Marca</label>
+               <input type='text' id='name_marca' placeholder='Nombre Marca' class='form-input-size' required />
+           </div>
+           <div class='form-input'>
+               <label>Nombre API</label>
+               <input type='text' id='name_api' placeholder='Nombre API' class='form-input-size' required />
+           </div>
+           <div class='form-input'>
+            <label>Pa&iacute;s</label>
+            <input type='text' id='pais' placeholder='Pa&iacute;s' class='form-input-size' required />
             </div>
-            <div class="item">
-                <p>Descripci&oacute;n<span class="required">*</span></p>
-                <textarea id="descripcion" type="text" rows="5" required style="width: 98%; padding: 10px;"></textarea>
-            </div>
-            <div class="item">
-                <p>Im&aacute;genes<span class="required">*</span></p>
-                <div class="name-item">
-                    <input id="url_marca" type="text" name="name" placeholder="Imagen Marca" required />
-                    <input id="url_pais" type="text" name="name" placeholder="Imagen pais" required />
-                </div>
-            </div>
-            <div class="btn-block">
-                <button onclick="doIt()">Insertar Marca</button>
-            </div>
+        <div class='form-input'>
+            <label>Pa&iacute;s API</label>
+            <input type='text' id='pais_api' placeholder='Pa&iacute;s API' class='form-input-size' required />
         </div>
-    </div>
-    <script src="/assets/jquery-3.6.0.min.js"></script>
-    <script src="/js/insert_marca.js"></script>
-</body>
+           <div class='form-input'>
+               <p>Descripci&oacute;n</p>
+               <textarea id="descripcion" type='text' placeholder='La marca es...'></textarea>
+           </div>
+           <div class='form-input'>
+            <label>Im&aacute;gen Marca URL</label>
+            <input type='text' id='url_marca' placeholder='URL' class='form-input-size' required />
+            </div>
+            <div class='form-input'>
+                <label>Im&aacute;gen Pa&iacute;s</label>
+                <input type='text' id='url_pais' placeholder='URL' class='form-input-size' required />
+                </div>
 
+           <div class='form-input'>
+               <button onclick="doIt()" id='submit'>Submit</button>
+           </div>
+        </div>
+   </div>
+   <script src="/assets/jquery-3.6.0.min.js"></script>
+   <script src="/js/insert_marca.js"></script>
+   <script src="/assets/toastr.js"></script>
+</body>
 </html>

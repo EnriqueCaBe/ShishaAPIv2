@@ -4,11 +4,17 @@ $(document).ready(function(){
 });
 
 
-  function doIt(){
-    var formato = `{"gramos":${document.getElementById("gramos")}, "precio": ${document.getElementById("precio")}}`;
+  async function doIt(){
+    var formato = `{"gramos":${parseFloat(document.getElementById("gramos").value)}, "precio": ${parseFloat(document.getElementById("precio").value)}}`;
 
     await insertFormato(formato);
-    location.reload();
+    limpiarCampos();
+  }
+
+  function limpiarCampos(){
+    document.getElementById("gramos").value = 0;
+    document.getElementById("precio").value = 0;
+
   }
 
   function insertFormato(formato){
@@ -19,6 +25,21 @@ $(document).ready(function(){
         headers: {
           'Content-Type': 'application/json'
         }
+      }).then(function(response){
+        if(response.ok) {
+          toastr.success("Formato añadido correctamente");
+        } else {
+          toastr.error("Formato ya existe");
+        }
       }).then((res)=>resolve(res));
     });
+  }
+
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
   }

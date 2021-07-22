@@ -15,5 +15,5 @@ public interface TabacoDAO {
 
     List<TabacoDTO> getAllTabaco();
 
-    List<TabacoDTO> getTabacosByMarca(MarcaDTO marcaDTO);
+    List<TabacoDTO> getTabacosByMarca(MarcaDTO marca);
 }
