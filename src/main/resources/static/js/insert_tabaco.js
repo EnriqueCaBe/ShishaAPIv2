@@ -1,6 +1,8 @@
 $(document).ready(function(){
   getMarcas();
+
 });
+
 
 
 async function doIt(){
@@ -37,8 +39,13 @@ function insertTabaco(tabaco){
 
 async function getMarcas(){
   const marcas = await getJsonMarcas();
+  var letras_añadidas= [];
   marcas.map((marca)=>{
-      document.getElementById("marca").insertAdjacentHTML("beforeend",`<option value="${marca.name_marca}">${marca.name_marca}</option>`)
+    if(!letras_añadidas.includes(marca.name_marca.charAt(0))){
+      document.getElementById("marca").insertAdjacentHTML("beforeend",`<option disabled value="" id="${marca.name_marca.charAt(0)}">--${marca.name_marca.charAt(0)}</option>`);
+      letras_añadidas.push(marca.name_marca.charAt(0));
+    }
+    document.getElementById(marca.name_marca.charAt(0)).insertAdjacentHTML("afterend",`<option value="${marca.name_marca}">${marca.name_marca}</option>`);
   });
 }
 
@@ -55,4 +62,13 @@ function getJsonMarcas() {
       },
     });
   });
+}
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
 }

@@ -29,5 +29,4 @@ public class FormatoRestController {
     public List<FormatoDTO> getAllFormato(){
         return formatoController.getAllFormato();
     }
-
 }
