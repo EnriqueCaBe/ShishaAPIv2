@@ -8,6 +8,7 @@ import java.util.List;
 
 public class MarcaDTO {
 
+    private int id;
     private String name_marca;
     private String pais;
     private String pais_api;
@@ -17,6 +18,14 @@ public class MarcaDTO {
     private List<TabacoDTO> tabacos;
 
     public MarcaDTO(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName_marca() {
         return name_marca;

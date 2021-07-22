@@ -25,4 +25,9 @@ public class MarcaRestController {
     public List<MarcaDTO> getAllMarcas(){
         return marcaController.getAllMarcas();
     }
+
+    @GetMapping("/marca/tabacos")
+    public List<MarcaDTO> getMarcasAndTabacos(){
+        return marcaController.getMarcasAndTabacos();
+    }
 }

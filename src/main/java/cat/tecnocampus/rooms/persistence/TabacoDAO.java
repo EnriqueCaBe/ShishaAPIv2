@@ -1,5 +1,6 @@
 package cat.tecnocampus.rooms.persistence;
 
+import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
@@ -40,5 +41,11 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public List<TabacoDTO> getAllTabaco() {
         final String query = "select * from tabaco";
         return jdbcTemplate.query(query,tabacosRowMapper);
+    }
+
+    @Override
+    public List<TabacoDTO> getTabacosByMarca(MarcaDTO marcaDTO) {
+        final String query = "select * from tabaco where marca = ?";
+        return jdbcTemplate.query(query,tabacosRowMapper,marcaDTO.getName_marca());
     }
 }

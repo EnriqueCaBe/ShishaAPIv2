@@ -42,4 +42,9 @@ public class FormatoDAO implements cat.tecnocampus.rooms.application.daosInterfa
         final String query = "select * from formato";
         return jdbcTemplate.query(query, formatosRowMapper);
     }
+
+    @Override
+    public List<FormatoDTO> getFormatosByTabaco(TabacoDTO tabacoDTO) {
+        return null;
+    }
 }

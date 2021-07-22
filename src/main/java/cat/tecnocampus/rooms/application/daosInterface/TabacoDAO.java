@@ -1,6 +1,7 @@
 package cat.tecnocampus.rooms.application.daosInterface;
 
 import cat.tecnocampus.rooms.application.dtos.FormatoDTO;
+import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.domain.Tabaco;
 
@@ -13,4 +14,6 @@ public interface TabacoDAO {
     boolean isTabacoExists(TabacoDTO tabacoDTO);
 
     List<TabacoDTO> getAllTabaco();
+
+    List<TabacoDTO> getTabacosByMarca(MarcaDTO marcaDTO);
 }

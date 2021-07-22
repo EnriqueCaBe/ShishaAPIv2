@@ -40,4 +40,10 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
         List<MarcaDTO> list = jdbcTemplate.query(query, marcasRowMapper,marcaDTO.getName_marca());
         return list.size() != 0;
     }
+
+    @Override
+    public List<MarcaDTO> getMarcasAndTabacos() {
+        final String query = "select * from marca";
+        return jdbcTemplate.query(query,marcasRowMapper);
+    }
 }

@@ -11,4 +11,6 @@ public interface MarcaDAO {
     void insertMarca(MarcaDTO marcaDTO);
 
     boolean isMarcaExists(MarcaDTO marcaDTO);
+
+    List<MarcaDTO> getMarcasAndTabacos();
 }
