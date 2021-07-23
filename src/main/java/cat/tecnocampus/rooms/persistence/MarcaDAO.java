@@ -46,4 +46,12 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
         final String query = "select * from marca";
         return jdbcTemplate.query(query,marcasRowMapper);
     }
+
+    @Override
+    public MarcaDTO getMarcaById(int id) {
+        final String query = "select * from marca where id=?";
+        return jdbcTemplate.query(query, marcasRowMapper, id).get(0);
+    }
+
+
 }

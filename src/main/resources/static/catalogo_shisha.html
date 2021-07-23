@@ -9,7 +9,7 @@
 
 <body>
     <h1 id="userName" style="font-size: 50px; margin-top: 10%; color: black;"><u>Tabacos</u></h1>
-    <button id="myBtn" onclick="openFilter()" style="font-size: 20px; margin-left: 33%; width: 33%;">Filtros<i class="fa fa-filter" style="font-size: 20px; margin-left: 10px;"></i></button>
+    <button id="myBtn" onclick="openFilter()" style="font-size: 20px; margin-left: 37%; width: 25%;">Filtros<i class="fa fa-filter" style="font-size: 20px; margin-left: 10px;"></i></button>
 
     <div id="myModal" class="modal">
         <!-- Modal content -->
@@ -45,15 +45,19 @@
             </div>
         </div>
       </div>
+      <center><div id="loader" class="loader"></div></center>
     <div id="links">
-        <!-- <a class="link" href=""><img src="/images/hookah.png" style="width: 30px; float: left; margin-top: -1%;" >Catálogo Tabacos</a> -->
+            <div class="noticia" onclick="verTabaco(id)">
+                <img class="izquierda" src="https://i.ibb.co/pLSCjmH/tabak-musthave.png" style="width: 100px; height: 100px; object-fit:contain;">
+                <aside style="font-size: 30px; margin-top: 3%;">Pinkman</aside>
+                <aside style="margin-top: 3%;">Musthave Tobacco</aside>
+                <div class="reset"></div>
+                
+            </div>
+
     </div>
-
-
-
     <!-- Javascript -->
     <script src="/assets/jquery-3.6.0.min.js"></script>
     <script  src="/js/catalogo_shisha.js"></script>
-
 </body>
 </html>

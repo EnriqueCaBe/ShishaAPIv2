@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-07-2021 a las 18:25:36
+-- Tiempo de generación: 23-07-2021 a las 18:42:54
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -823,13 +823,13 @@ ALTER TABLE `tabaco_formato_asso`
 -- AUTO_INCREMENT de la tabla `formato`
 --
 ALTER TABLE `formato`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `tabaco`
@@ -841,7 +841,7 @@ ALTER TABLE `tabaco`
 -- AUTO_INCREMENT de la tabla `tabaco_formato_asso`
 --
 ALTER TABLE `tabaco_formato_asso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=392;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=393;
 
 --
 -- Restricciones para tablas volcadas

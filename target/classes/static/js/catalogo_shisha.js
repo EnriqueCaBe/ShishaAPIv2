@@ -4,8 +4,8 @@ $(document).ready(function(){
             document.getElementById("myModal").style.display = "none";
         }
       }
-      getMarcas();
-      getFormatos();
+      getTabacos();
+
 });
 
 function doIt(){
@@ -14,6 +14,8 @@ function doIt(){
 
 function openFilter(){
     document.getElementById("myModal").style.display = "block";
+    getMarcas();
+    getFormatos();
 }
 
 function closeFilter(){
@@ -64,6 +66,7 @@ async function getMarcas(){
         }
     })
   }
+
 function getJsonFormatos() {
   return new Promise((resolve) => {
     $.ajax({
@@ -77,4 +80,36 @@ function getJsonFormatos() {
       },
     });
   });
+}
+
+async function getTabacos(){
+  const tabacos = await getFirstTabacos();
+  document.getElementById("loader").style.display = "none";
+  tabacos.map((tabaco)=>{
+          document.getElementById("links").insertAdjacentHTML("beforeend",`<div class="noticia" onclick="verTabaco(${tabaco.id})">
+          <img class="izquierda" src="https://i.ibb.co/pLSCjmH/tabak-musthave.png" style="width: 100px; height: 100px; object-fit:contain;">
+          <aside style="font-size: 30px; margin-top: 5%;">${tabaco.name_tabaco}</aside>
+          <aside style="margin-top: 3%;">${tabaco.marca}</aside>
+          <div class="reset"></div>
+      </div>`);
+  });
+}
+
+function getFirstTabacos(){
+  return new Promise((resolve) => {
+    $.ajax({
+      url: `/tabaco/all`,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        resolve(data)
+      },
+      error: function () {
+      },
+    });
+  });
+}
+
+function verTabaco(id){
+  location.href = `tabaco.html?id=${id}`;
 }

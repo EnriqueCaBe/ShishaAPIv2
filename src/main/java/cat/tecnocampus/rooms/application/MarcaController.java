@@ -8,6 +8,7 @@ import cat.tecnocampus.rooms.persistence.MarcaDAO;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -38,6 +39,7 @@ public class MarcaController {
         for(MarcaDTO marca: marcas){
             marca.setTabacos(tabacoDAO.getTabacosByMarca(marca));
         }
+        Collections.shuffle(marcas);
         return marcas;
     }
 
@@ -50,5 +52,11 @@ public class MarcaController {
             }
         }
         return marcas;
+    }
+
+    public MarcaDTO getMarcaAndTabacos(int id) {
+        MarcaDTO marca = marcaDAO.getMarcaById(id);
+        marca.setTabacos(tabacoDAO.getTabacosByMarca(marca));
+        return marca;
     }
 }

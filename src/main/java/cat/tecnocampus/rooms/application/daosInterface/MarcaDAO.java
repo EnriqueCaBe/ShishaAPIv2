@@ -13,4 +13,6 @@ public interface MarcaDAO {
     boolean isMarcaExists(MarcaDTO marcaDTO);
 
     List<MarcaDTO> getMarcasAndTabacos();
+
+    MarcaDTO getMarcaById(int id);
 }
