@@ -26,4 +26,14 @@ public class TabacoRestController {
     public List<TabacoDTO> getAllTabaco(){
         return tabacoController.getAllTabaco();
     }
+
+    @PostMapping("/do")
+    public void setImages(){
+        tabacoController.setImages();
+    }
+
+    @GetMapping("/tabaco/{id}")
+    public TabacoDTO getTabacoById(@PathVariable int id){
+        return tabacoController.getTabacoById(id);
+    }
 }

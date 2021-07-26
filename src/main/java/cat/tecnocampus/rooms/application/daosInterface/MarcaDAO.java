@@ -15,4 +15,8 @@ public interface MarcaDAO {
     List<MarcaDTO> getMarcasAndTabacos();
 
     MarcaDTO getMarcaById(int id);
+
+    MarcaDTO getMarcaByName(String marca);
+
+    void getConnected();
 }

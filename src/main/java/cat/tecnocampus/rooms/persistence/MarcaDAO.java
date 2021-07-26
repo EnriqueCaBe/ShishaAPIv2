@@ -22,6 +22,12 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
                     .addKeys("name")
                     .newResultSetExtractor(MarcaDTO.class);
 
+    ResultSetExtractorImpl<Integer> integerResultSetExtractor =
+            JdbcTemplateMapperFactory
+                    .newInstance()
+                    .addKeys("codi")
+                    .newResultSetExtractor(Integer.class);
+
     @Override
     public List<MarcaDTO> getAllMarcas() {
         final String query = "select name_marca, pais, pais_api, descripcion, imagen, imagen_flag from marca order by 1";
@@ -51,6 +57,18 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
     public MarcaDTO getMarcaById(int id) {
         final String query = "select * from marca where id=?";
         return jdbcTemplate.query(query, marcasRowMapper, id).get(0);
+    }
+
+    @Override
+    public MarcaDTO getMarcaByName(String marca) {
+        final String query = "select * from marca where name_marca=?";
+        return jdbcTemplate.query(query, marcasRowMapper, marca).get(0);
+    }
+
+    @Override
+    public void getConnected() {
+        final String query = "select 1";
+        jdbcTemplate.query(query,integerResultSetExtractor).get(0);
     }
 
 

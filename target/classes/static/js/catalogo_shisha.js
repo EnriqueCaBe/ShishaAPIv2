@@ -87,8 +87,8 @@ async function getTabacos(){
   document.getElementById("loader").style.display = "none";
   tabacos.map((tabaco)=>{
           document.getElementById("links").insertAdjacentHTML("beforeend",`<div class="noticia" onclick="verTabaco(${tabaco.id})">
-          <img class="izquierda" src="https://i.ibb.co/pLSCjmH/tabak-musthave.png" style="width: 100px; height: 100px; object-fit:contain;">
-          <aside style="font-size: 30px; margin-top: 5%;">${tabaco.name_tabaco}</aside>
+          <img class="izquierda" src="${tabaco.imagen}" style="width: 100px; height: 100px; object-fit:contain;">
+          <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>
           <aside style="margin-top: 3%;">${tabaco.marca}</aside>
           <div class="reset"></div>
       </div>`);

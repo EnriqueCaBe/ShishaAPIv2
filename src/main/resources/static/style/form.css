@@ -17,7 +17,7 @@ body{
 
 .container{
   width: 100%;
-  margin: 3.2rem auto 0 auto;
+  /* margin: 3.2rem auto 0 auto; */
 }
 
 @media(min-width: 576px){
@@ -44,7 +44,7 @@ h1{
 #description{
   font-weight: 200;
   font-style: italic;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 #survey-form{
@@ -67,6 +67,7 @@ h1{
     outline: 0;
     border-style: none;
     margin-top: 0.4rem;  
+    font-size: 120%;
  }
 
  p{
@@ -163,5 +164,24 @@ h1{
       text-align: left;
     }
   }
+
+  table {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    font-family: 'Karla', sans-serif;
+  }
+  
+  th, td {
+    padding: 1em;
+    background: #ddd;
+    border-bottom: 2px solid grey;
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+  }
+
 
    

@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -9,7 +10,9 @@
 
 <body>
     <h1 id="userName" style="font-size: 50px; margin-top: 10%; color: black;"><u>Tabacos</u></h1>
-    <button id="myBtn" onclick="openFilter()" style="font-size: 20px; margin-left: 37%; width: 25%;">Filtros<i class="fa fa-filter" style="font-size: 20px; margin-left: 10px;"></i></button>
+    <button id="myBtn" onclick="openFilter()"
+        style="font-size: 120%; margin-left: 37%; width: 25%; font-family: 'Karla', sans-serif;">Filtros<i
+            class="fa fa-filter" style="font-size: 20px; margin-left: 10px;"></i></button>
 
     <div id="myModal" class="modal">
         <!-- Modal content -->
@@ -20,44 +23,48 @@
             </div>
             <div class='form-input'>
                 <label>Nombre</label>
-                <input type='text' id='name_tabaco' placeholder='Nombre Tabaco' class='form-input-size'/>
+                <input type='text' id='name_tabaco' placeholder='Nombre Tabaco' class='form-input-size' />
             </div>
             <div class='form-input'>
                 <p>Marca</p>
-                <select id='marca' class='form-input-size' >
+                <select id='marca' class='form-input-size'>
                     <option disabled selected value="">Selecciones una marca</option>
                 </select>
             </div>
             <div class='form-input'>
                 <p>Precio</p>
-                <select id='precio' class='form-input-size' >
+                <select id='precio' class='form-input-size'>
                     <option disabled selected value="">Selecciones un precio</option>
                 </select>
             </div>
             <div class='form-input'>
                 <p>Gramos</p>
-                <select id='gramos' class='form-input-size' >
+                <select id='gramos' class='form-input-size'>
                     <option disabled selected value="">Selecciones un gramaje</option>
                 </select>
             </div>
             <div class='form-input'>
-                <button onclick="doIt()" id='submit' style="margin-bottom: -10%; width: 33%; margin-left: 33%;">Buscar</button>
+                <button onclick="doIt()" id='submit'
+                    style="margin-bottom: -10%; width: 33%; margin-left: 33%;">Buscar</button>
             </div>
         </div>
-      </div>
-      <center><div id="loader" class="loader"></div></center>
+    </div>
+    <center>
+        <div id="loader" class="loader"></div>
+    </center>
     <div id="links">
-            <div class="noticia" onclick="verTabaco(id)">
+        <!-- <div class="noticia" onclick="verTabaco(id)">
                 <img class="izquierda" src="https://i.ibb.co/pLSCjmH/tabak-musthave.png" style="width: 100px; height: 100px; object-fit:contain;">
                 <aside style="font-size: 30px; margin-top: 3%;">Pinkman</aside>
                 <aside style="margin-top: 3%;">Musthave Tobacco</aside>
                 <div class="reset"></div>
                 
-            </div>
+            </div> -->
 
     </div>
     <!-- Javascript -->
     <script src="/assets/jquery-3.6.0.min.js"></script>
-    <script  src="/js/catalogo_shisha.js"></script>
+    <script src="/js/catalogo_shisha.js"></script>
 </body>
+
 </html>

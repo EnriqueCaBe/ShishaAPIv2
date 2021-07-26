@@ -1,3 +1,43 @@
-<h2>
-    Hola
-</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/style/form.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <title>ADMIN | INSERT FORMATO</title>
+</head>
+<body>
+   <div class="container">
+            <a href="javascript:history.back()" class="atras" style="color: white; font-size: 300%; margin-left: 5%; margin-bottom: 3%; margin-top: 3%;"><i class="fa fa-angle-double-left "></i></a>
+       <div id='survey-form'>
+           <div style=" object-fit:contain;">
+            <img id="imagen" src="" alt="" style="width: 84%; margin-left: 8%; object-fit:contain;">
+           </div>
+        <div class='form-input' style="margin-top: -3%; margin-bottom: -1%;">
+            <p style="font-size: 200%; font-weight: bold; text-align: center;"><u id="name"></u></p>
+        </div>
+        <div class='form-input'>
+            <label id='number-label' style="font-size: 150%; margin-bottom: -3%; font-weight: bold;">- Descripción:</label>
+            <p style="text-align: justify;" id="descripcion"></p>
+        </div>
+        <div class='form-input'>
+            <label id='number-label' style="font-size: 150%; font-weight: bold;">- País: <img id="imagen_flag" style="width: 25%; margin-left: 5%;" src=""></label>
+        </div>
+        <div class='form-input'>
+            <label id='number-label' style="font-size: 150%; font-weight: bold;">- Formatos:</label>
+            <table class="data" id="formatos">
+                <tr >
+                  <th style="background-color:rgb(194, 9, 178);">Gramos</th>
+                  <th style="background-color:rgb(194, 9, 178);">Precio</th>
+                </tr>
+              </table>
+        </div>
+
+        </div>
+   </div>
+   <script src="/assets/jquery-3.6.0.min.js"></script>
+   <script src="/js/tabaco.js"></script>
+</body>
+</html>

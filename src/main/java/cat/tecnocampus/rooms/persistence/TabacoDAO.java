@@ -39,12 +39,24 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
 
     @Override
     public List<TabacoDTO> getAllTabaco() {
-        final String query = "select * from tabaco limit 20";
+        final String query = "select * from tabaco limit 25";
         return jdbcTemplate.query(query,tabacosRowMapper);
     }
 
     public List<TabacoDTO> getTabacosByMarca(MarcaDTO marca) {
         final String query = "select * from tabaco where marca=?";
         return jdbcTemplate.query(query, tabacosRowMapper, marca.getName_marca());
+    }
+
+    @Override
+    public void updateImage(String imagen, int id) {
+        final String query = "update tabaco set imagen_flag=? where id=?";
+        jdbcTemplate.update(query, imagen,id);
+    }
+
+    @Override
+    public TabacoDTO getTabacoById(int id) {
+        final String query = "select * from tabaco where id=?";
+        return jdbcTemplate.query(query, tabacosRowMapper, id).get(0);
     }
 }

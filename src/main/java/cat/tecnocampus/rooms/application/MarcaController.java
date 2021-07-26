@@ -6,6 +6,7 @@ import cat.tecnocampus.rooms.application.exceptions.MarcaDoesExistsException;
 import cat.tecnocampus.rooms.persistence.FormatoDAO;
 import cat.tecnocampus.rooms.persistence.MarcaDAO;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -58,5 +59,10 @@ public class MarcaController {
         MarcaDTO marca = marcaDAO.getMarcaById(id);
         marca.setTabacos(tabacoDAO.getTabacosByMarca(marca));
         return marca;
+    }
+
+    @Scheduled(fixedRate = 60000)
+    public void getConnected(){
+        marcaDAO.getConnected();
     }
 }

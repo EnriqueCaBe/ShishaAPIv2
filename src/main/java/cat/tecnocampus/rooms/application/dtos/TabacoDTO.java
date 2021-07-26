@@ -9,6 +9,8 @@ public class TabacoDTO {
     private String name_api;
     private String descripcion;
     private String marca;
+    private String imagen;
+    private String imagen_flag;
     private List<FormatoDTO> formatos;
 
 
@@ -60,5 +62,21 @@ public class TabacoDTO {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getImagen_flag() {
+        return imagen_flag;
+    }
+
+    public void setImagen_flag(String imagen_flag) {
+        this.imagen_flag = imagen_flag;
     }
 }
