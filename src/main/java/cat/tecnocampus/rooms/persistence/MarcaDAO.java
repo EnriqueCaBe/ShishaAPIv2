@@ -30,7 +30,7 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
 
     @Override
     public List<MarcaDTO> getAllMarcas() {
-        final String query = "select name_marca, pais, pais_api, descripcion, imagen, imagen_flag from marca order by 1";
+        final String query = "select id,name_marca, pais, pais_api, descripcion, imagen, imagen_flag from marca order by 2";
         return jdbcTemplate.query(query, marcasRowMapper);
     }
 

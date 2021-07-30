@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 :root {
-    --bgColor:#800080;
+    --bgColor:#3498DB;
     --accentColor: #E6E6E6;
     --font: 'Karla', sans-serif;
 }
@@ -39,11 +39,11 @@ body{
 #submit{
     width: 100%;
     padding: 0.8rem;
-    background: rgb(194, 9, 178);
+    background: var(--bgColor);
     color: white;
     border-radius: 0.2rem;
     cursor: pointer;
-    border: none;
+    border: 1px solid black;
    }
    
 .link{
@@ -76,6 +76,7 @@ div.noticia {
   font-size: 1rem;
   font-family: var(--font);
   border: solid var(--accentColor) 2px;
+  -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.59);
 }
 
 div.noticia:hover{
@@ -139,7 +140,7 @@ div.reset {
   }
 
   #survey-form{
-    background: grey;
+    background: white;
     padding: 2.3rem 0.5rem;
     border-radius: 0.3rem;
     color: black;
@@ -205,6 +206,8 @@ div.reset {
   background-color: #E6E6E6;
   border: 1px solid rgba(0, 0, 0, 0.8);
   text-align: center;
-  margin: 2%;
+  margin: 10px;
   border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.59);
+  height: 200px;
 }

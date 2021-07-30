@@ -40,7 +40,6 @@ public class MarcaController {
         for(MarcaDTO marca: marcas){
             marca.setTabacos(tabacoDAO.getTabacosByMarca(marca));
         }
-        Collections.shuffle(marcas);
         return marcas;
     }
 
