@@ -2,6 +2,7 @@ package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.TabacoController;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
+import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,5 +36,10 @@ public class TabacoRestController {
     @GetMapping("/tabaco/{id}")
     public TabacoDTO getTabacoById(@PathVariable int id){
         return tabacoController.getTabacoById(id);
+    }
+
+    @GetMapping("/tabaco/search")
+    public List<TabacoDTO> getTabacosBySearch(@RequestBody TabacoSearchDTO tabacoSearchDTO){
+        return tabacoController.getTabacosBySearch(tabacoSearchDTO);
     }
 }

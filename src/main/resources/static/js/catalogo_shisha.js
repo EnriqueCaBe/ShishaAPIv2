@@ -113,3 +113,7 @@ function getFirstTabacos(){
 function verTabaco(id){
   location.href = `tabaco.html?id=${id}`;
 }
+
+function buscarTabacos(){
+  location.href = `tabacos_search.html?name=${document.getElementById("name_tabaco").value}&marca=${document.getElementById("marca").value}&precio=${document.getElementById("precio").value}&gramos=${document.getElementById("gramos").value}`
+}

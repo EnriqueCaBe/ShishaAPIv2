@@ -2,11 +2,13 @@ package cat.tecnocampus.rooms.persistence;
 
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
+import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -58,5 +60,34 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public TabacoDTO getTabacoById(int id) {
         final String query = "select * from tabaco where id=?";
         return jdbcTemplate.query(query, tabacosRowMapper, id).get(0);
+    }
+
+    @Override
+    public List<TabacoDTO> getTabacosBySearch(TabacoSearchDTO tabacoSearchDTO) {
+        return null;
+    }
+
+    @Override
+    public List<TabacoDTO> getTabacosByName(String tabaco_name) {
+        final String query = "select * from tabaco where name_tabaco = ?";
+        return jdbcTemplate.query(query,tabacosRowMapper,tabaco_name);
+    }
+
+    @Override
+    public Collection<? extends TabacoDTO> getTabacosByMarcaName(String marca) {
+        final String query = "select * from tabaco where marca = ?" ;
+        return jdbcTemplate.query(query,tabacosRowMapper,marca);
+    }
+
+    @Override
+    public Collection<? extends TabacoDTO> getTabacosByGramos(double gramos) {
+        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.gramos=?";
+        return jdbcTemplate.query(query,tabacosRowMapper,gramos);
+    }
+
+    @Override
+    public Collection<? extends TabacoDTO> getTabacosByPrecio(double precio) {
+        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.precio=?";
+        return jdbcTemplate.query(query,tabacosRowMapper,precio);
     }
 }

@@ -1,25 +1,51 @@
-$(document).ready(function(){
-    window.onclick = function(event) {
-        if (event.target == document.getElementById("myModal")) {
-            document.getElementById("myModal").style.display = "none";
-        }
-      }
-      getTabacos();
+var tabaco_name;
+var marca;
+var precio;
+var gramos;
+var query;
 
+$(document).ready(function(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString)
+    var pluginArrayArg = new Array();
+    tabaco_name = urlParams.get('name');
+    if(!tabaco_name == ""){
+        var jsonArg1 = new Object();
+        jsonArg1.name = 'tabaco_name';
+        jsonArg1.value = tabaco_name;
+        console.log(jsonArg1);
+        pluginArrayArg.push(jsonArg1);
+    }
+    marca = urlParams.get('marca');
+    if(!marca == ""){
+        var jsonArg2 = new Object();
+        jsonArg2.name = 'marca';
+        jsonArg2.value = marca;
+        console.log(jsonArg2);
+        pluginArrayArg.push(jsonArg2);
+    }
+    precio = urlParams.get('precio');
+    if(!precio == ""){
+        var jsonArg3 = new Object();
+        jsonArg3.name = 'precio';
+        jsonArg3.value = precio;
+        console.log(jsonArg3)
+        pluginArrayArg.push(jsonArg3);
+    }
+    gramos = urlParams.get('gramos');
+    if(!gramos == ""){
+        var jsonArg4 = new Object();
+        jsonArg4.name = 'gramos';
+        jsonArg4.value = gramos;
+        console.log(jsonArg4)
+        pluginArrayArg.push(jsonArg4);
+    }
+    var jsonArray = JSON.parse(JSON.stringify(pluginArrayArg));
+    console.log(jsonArray);
 });
 
 function doIt(){
   console.log("Hole");
-}
-
-function openFilter(){
-    document.getElementById("myModal").style.display = "block";
-    getMarcas();
-    getFormatos();
-}
-
-function closeFilter(){
-    document.getElementById("myModal").style.display = "none";
 }
 
 async function getMarcas(){

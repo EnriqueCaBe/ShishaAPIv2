@@ -30,7 +30,7 @@ document.getElementById("loader").style.display = "none";
     `<div class="grid-item" onclick="verMarca(${marca.id})">
         <div style="width: 95%; padding: 2.5%; padding-top: 10%;">
             <img src="${marca.imagen}" style="width: 80%; height:140px; object-fit:contain;">
-            <aside style="font-size: 125%; margin-top: 3%; font-family: 'Karla',sans-serif;">${marca.name_marca} (${marca.tabacos.length})</aside>
+            <aside style="font-size: 125%; margin-top: 3%; font-family: 'Karla',sans-serif;">${marca.name_marca}</aside>
         </div>
     </div>`)
     });
@@ -39,7 +39,7 @@ document.getElementById("loader").style.display = "none";
   function getJsonMarcas() {
     return new Promise((resolve) => {
       $.ajax({
-        url: `/marca/tabaco`,
+        url: `/marca/all`,
         type: "GET",
         dataType: "json",
         success: function (data) {

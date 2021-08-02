@@ -4,12 +4,12 @@ import cat.tecnocampus.rooms.application.daosInterface.FormatoDAO;
 import cat.tecnocampus.rooms.application.daosInterface.MarcaDAO;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
+import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
 import cat.tecnocampus.rooms.application.exceptions.TabacoDoesExistsException;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class TabacoController {
@@ -49,5 +49,35 @@ public class TabacoController {
         TabacoDTO tabaco = tabacoDAO.getTabacoById(id);
         tabaco.setFormatos(formatoDAO.getFormatosByTabaco(tabaco));
         return tabaco;
+    }
+
+    public List<TabacoDTO> getTabacosBySearch(TabacoSearchDTO tabacoSearchDTO) {
+        List<TabacoDTO> finalList = new ArrayList<>();
+        List<TabacoDTO> list1 = new ArrayList<>();
+        List<TabacoDTO> list2 = new ArrayList<>();
+        List<TabacoDTO> list3 = new ArrayList<>();
+        List<TabacoDTO> list4 = new ArrayList<>();
+        Collection<TabacoDTO> similar = new HashSet<TabacoDTO>();
+        if(tabacoSearchDTO.getTabaco_name()!=null){
+            list1.addAll(tabacoDAO.getTabacosByName( tabacoSearchDTO.getTabaco_name()));
+            similar.addAll(list1);
+        }
+        if(tabacoSearchDTO.getMarca()!=null){
+            list2.addAll(tabacoDAO.getTabacosByMarcaName(tabacoSearchDTO.getMarca()));
+            if(similar.isEmpty()) similar.addAll(list2);
+            else similar.retainAll(list2);
+        }
+        if(tabacoSearchDTO.getGramos()!=0){
+            list3.addAll(tabacoDAO.getTabacosByGramos(tabacoSearchDTO.getGramos()));
+            if(similar.isEmpty()) similar.addAll(list3);
+            else similar.retainAll(list3);
+        }
+        if(tabacoSearchDTO.getPrecio()!=0){
+            list4.addAll(tabacoDAO.getTabacosByPrecio(tabacoSearchDTO.getPrecio()));
+            if(similar.isEmpty()) return list4;
+            else similar.retainAll(list4);
+        }
+        finalList.addAll(similar);
+        return finalList;
     }
 }
