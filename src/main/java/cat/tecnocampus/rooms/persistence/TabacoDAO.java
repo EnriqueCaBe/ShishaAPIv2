@@ -28,25 +28,25 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
 
     @Override
     public void insertTabaco(TabacoDTO tabaco) {
-        final String query = "insert into tabaco(name_tabaco,name_api, descripcion, marca) values(?,?,?,?)";
-        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca());
+        final String query = "insert into tabaco(name_tabaco,name_api, descripcion, marca, imagen, imagen_flag) values(?,?,?,?,?,?)";
+        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag());
     }
 
     @Override
     public boolean isTabacoExists(TabacoDTO tabacoDTO) {
-        final String query = "select name_tabaco from tabaco where name_tabaco = ?";
-        List<TabacoDTO> list = jdbcTemplate.query(query,tabacosRowMapper, tabacoDTO.getName_tabaco());
+        final String query = "select name_tabaco from tabaco where name_api = ?";
+        List<TabacoDTO> list = jdbcTemplate.query(query,tabacosRowMapper, tabacoDTO.getName_api());
         return list.size() != 0;
     }
 
     @Override
     public List<TabacoDTO> getAllTabaco() {
-        final String query = "select * from tabaco limit 25";
+        final String query = "select * from tabaco order by name_tabaco";
         return jdbcTemplate.query(query,tabacosRowMapper);
     }
 
     public List<TabacoDTO> getTabacosByMarca(MarcaDTO marca) {
-        final String query = "select * from tabaco where marca=?";
+        final String query = "select * from tabaco where marca=? order by name_tabaco";
         return jdbcTemplate.query(query, tabacosRowMapper, marca.getName_marca());
     }
 
@@ -81,13 +81,13 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
 
     @Override
     public Collection<? extends TabacoDTO> getTabacosByGramos(double gramos) {
-        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.gramos=?";
+        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca, tabaco.imagen, tabaco.imagen_flag  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.gramos=?";
         return jdbcTemplate.query(query,tabacosRowMapper,gramos);
     }
 
     @Override
     public Collection<? extends TabacoDTO> getTabacosByPrecio(double precio) {
-        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.precio=?";
+        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca, tabaco.imagen, tabaco.imagen_flag  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.precio=?";
         return jdbcTemplate.query(query,tabacosRowMapper,precio);
     }
 }

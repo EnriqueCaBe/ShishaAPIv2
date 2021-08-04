@@ -46,7 +46,7 @@ public class FormatoDAO implements cat.tecnocampus.rooms.application.daosInterfa
     @Override
     public List<FormatoDTO> getFormatosByTabaco(TabacoDTO tabacoDTO) {
         final String query = "select gramos,precio from formato join tabaco_formato_asso on formato.id=tabaco_formato_asso.formato_id " +
-                "JOIN tabaco on tabaco_formato_asso.tabaco_id=tabaco.id where tabaco.id=?";
+                "JOIN tabaco on tabaco_formato_asso.tabaco_id=tabaco.id where tabaco.id=? order by gramos";
         return jdbcTemplate.query(query, formatosRowMapper,tabacoDTO.getId());
 
     }

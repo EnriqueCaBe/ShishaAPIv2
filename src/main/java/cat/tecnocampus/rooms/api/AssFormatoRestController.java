@@ -21,4 +21,6 @@ public class AssFormatoRestController {
     public void insertAssFormato(@RequestBody @Valid AssFormatoDTO assFormatoDTO){
         assFormatoController.insertAssFormato(assFormatoDTO);
     }
+
+
 }

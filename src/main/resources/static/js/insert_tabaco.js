@@ -1,12 +1,12 @@
 $(document).ready(function(){
   getMarcas();
-
 });
 
 
 
 async function doIt(){
-  const tabaco = `{"name_tabaco": "${document.getElementById("name_tabaco").value}" ,"name_api": "${document.getElementById("name_api").value}" ,"descripcion": "${document.getElementById("descripcion").value}" ,"marca": "${document.getElementById("marca").value}"}`;
+  const tabaco = `{"name_tabaco": "${document.getElementById("name_tabaco").value}" ,"name_api": "${document.getElementById("name_api").value}" ,
+  "descripcion": "${document.getElementById("descripcion").value}" ,"marca": "${document.getElementById("marca").value}", "imagen":null, "imagen_flag":null}`;
     
   await insertTabaco(tabaco);
   limpiarCampos();

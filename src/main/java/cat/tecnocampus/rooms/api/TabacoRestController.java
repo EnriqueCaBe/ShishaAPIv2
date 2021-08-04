@@ -42,4 +42,11 @@ public class TabacoRestController {
     public List<TabacoDTO> getTabacosBySearch(@RequestBody TabacoSearchDTO tabacoSearchDTO){
         return tabacoController.getTabacosBySearch(tabacoSearchDTO);
     }
+
+
+
+    @PostMapping("/ass_formato/all/{marca}/{formato}")
+    public void assFormato(@PathVariable int marca, @PathVariable int formato){
+        tabacoController.assoFormatoByMarca(marca,formato);
+    }
 }

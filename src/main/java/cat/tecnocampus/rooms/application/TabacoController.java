@@ -2,10 +2,12 @@ package cat.tecnocampus.rooms.application;
 
 import cat.tecnocampus.rooms.application.daosInterface.FormatoDAO;
 import cat.tecnocampus.rooms.application.daosInterface.MarcaDAO;
+import cat.tecnocampus.rooms.application.dtos.AssFormatoDTO;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
 import cat.tecnocampus.rooms.application.exceptions.TabacoDoesExistsException;
+import cat.tecnocampus.rooms.persistence.AssFormatoDAO;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
 import org.springframework.stereotype.Component;
 
@@ -17,17 +19,20 @@ public class TabacoController {
     private TabacoDAO tabacoDAO;
     private MarcaDAO marcaDAO;
     private FormatoDAO formatoDAO;
+    private AssFormatoDAO assFormatoDAO;
 
-    public TabacoController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO, FormatoDAO formatoDAO) {
+    public TabacoController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO, FormatoDAO formatoDAO, AssFormatoDAO assFormatoDAO) {
         this.tabacoDAO = tabacoDAO;
         this.marcaDAO = marcaDAO;
         this.formatoDAO = formatoDAO;
+        this.assFormatoDAO = assFormatoDAO;
     }
 
     public void insertTabaco(TabacoDTO tabaco) {
-        if(tabacoDAO.isTabacoExists(tabaco)) {
+        if(!tabacoDAO.isTabacoExists(tabaco)) {
             MarcaDTO marca = marcaDAO.getMarcaByName(tabaco.getMarca());
             tabaco.setImagen(marca.getImagen());
+            tabaco.setImagen_flag(marca.getImagen_flag());
             tabacoDAO.insertTabaco(tabaco);
         }
         else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
@@ -79,5 +84,13 @@ public class TabacoController {
         }
         finalList.addAll(similar);
         return finalList;
+    }
+
+    public void assoFormatoByMarca(int idmarca, int idformato){
+        MarcaDTO marca = marcaDAO.getMarcaById(idmarca);
+        List<TabacoDTO> list = tabacoDAO.getTabacosByMarca(marca);
+        for(TabacoDTO tabacoDTO: list){
+            assFormatoDAO.insertAssFormato(new AssFormatoDTO(tabacoDTO.getId(),idformato));
+        }
     }
 }

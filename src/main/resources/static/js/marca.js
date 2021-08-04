@@ -9,21 +9,42 @@ $(document).ready(function(){
 
 async function putDatos(){
     const marca = await getTabacosByMarca();
-    console.log(marca);
 
     document.getElementById("name_marca").innerHTML = marca.name_marca;
-    document.getElementById("imagen").src = marca.imagen;
-
+    document.getElementById("imagen").src = marca.imagen; 
+    var letras=[];
     marca.tabacos.map((tabaco)=>{
-        document.getElementById("links").insertAdjacentHTML("beforeend",
-        `<div class="noticia" onclick="verTabaco(${tabaco.id})">
-            <img class="izquierda" src="${tabaco.imagen}"
-                style="width: 100px; height: 100px; object-fit:contain;">
-            <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>
-            <aside style="margin-top: 3%;">${tabaco.marca}</aside>
-            <div class="reset"></div>
-        </div>`);
-    })
+
+        if(tabaco.name_tabaco.charAt(0).match(/^[0-9]+$/)){
+            if(!letras.includes("num")){
+                document.getElementById("links").insertAdjacentHTML("beforeend",`<h1 id="num" style="width: 100%; text-align: center;">0-9</h1>`);
+                letras.push("num");
+            }
+            document.getElementById("num").insertAdjacentHTML("beforeend",
+            `<div class="noticia" onclick="verTabaco(${tabaco.id})">
+                <img class="izquierda" src="${tabaco.imagen}"
+                    style="width: 100px; height: 100px; object-fit:contain;">
+                <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>
+                <aside style="margin-top: 3%;">${tabaco.marca}</aside>
+                <div class="reset"></div>
+            </div>`);
+        }
+
+        else{
+            if(!letras.includes(tabaco.name_tabaco.charAt(0))){
+                document.getElementById("links").insertAdjacentHTML("beforeend",`<h1 id="${tabaco.name_tabaco.charAt(0)}" style="width: 100%; text-align: center;">${tabaco.name_tabaco.charAt(0)}</h1>`);
+                letras.push(tabaco.name_tabaco.charAt(0));
+              }
+            document.getElementById(tabaco.name_tabaco.charAt(0)).insertAdjacentHTML("beforeend",
+            `<div class="noticia" onclick="verTabaco(${tabaco.id})">
+                <img class="izquierda" src="${tabaco.imagen}"
+                    style="width: 100px; height: 100px; object-fit:contain;">
+                <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>
+                <aside style="margin-top: 3%;">${tabaco.marca}</aside>
+                <div class="reset"></div>
+            </div>`);
+        }
+    });
 }
 
 function getTabacosByMarca(){
