@@ -9,6 +9,10 @@ import cat.tecnocampus.rooms.persistence.TabacoDAO;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +21,7 @@ public class MarcaController {
 
     private final MarcaDAO marcaDAO;
     private final TabacoDAO tabacoDAO;
-    private final  FormatoDAO formatoDAO;
+    private final FormatoDAO formatoDAO;
 
     public MarcaController(MarcaDAO marcaDAO, TabacoDAO tabacoDAO, FormatoDAO formatoDAO) {
         this.marcaDAO = marcaDAO;
@@ -26,18 +30,18 @@ public class MarcaController {
     }
 
     public void postMarca(MarcaDTO marca) {
-        if(!marcaDAO.isMarcaExists(marca)) {
+        if (!marcaDAO.isMarcaExists(marca)) {
             marcaDAO.insertMarca(marca);
-        }
-        else throw new MarcaDoesExistsException(marca.getName_marca());
+        } else throw new MarcaDoesExistsException(marca.getName_marca());
     }
 
     public List<MarcaDTO> getAllMarcas() {
         return marcaDAO.getAllMarcas();
     }
+
     public List<MarcaDTO> getAllMarcasAndTabacos() {
         List<MarcaDTO> marcas = marcaDAO.getAllMarcas();
-        for(MarcaDTO marca: marcas){
+        for (MarcaDTO marca : marcas) {
             marca.setTabacos(tabacoDAO.getTabacosByMarca(marca));
         }
         return marcas;
@@ -45,9 +49,9 @@ public class MarcaController {
 
     public List<MarcaDTO> getAll() {
         List<MarcaDTO> marcas = marcaDAO.getAllMarcas();
-        for(MarcaDTO marca: marcas){
+        for (MarcaDTO marca : marcas) {
             marca.setTabacos(tabacoDAO.getTabacosByMarca(marca));
-            for(TabacoDTO tabacoDTO: marca.getTabacos()){
+            for (TabacoDTO tabacoDTO : marca.getTabacos()) {
                 tabacoDTO.setFormatos(formatoDAO.getFormatosByTabaco(tabacoDTO));
             }
         }
@@ -61,7 +65,13 @@ public class MarcaController {
     }
 
     @Scheduled(fixedRate = 60000)
-    public void getConnected(){
-        marcaDAO.getConnected();
+    public static void getStatus() throws IOException {
+        try {
+            URL urlObj = new URL("https://frogsmoke.herokuapp.com/");
+            HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
+            con.setRequestMethod("GET");
+            con.setConnectTimeout(3000);
+            con.connect();
+        } catch (Exception e) {}
     }
 }

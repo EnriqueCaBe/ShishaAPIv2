@@ -1,9 +1,4 @@
 $(document).ready(function(){
-  Push.Permission.request();
-
-
-
-
   });
 
 

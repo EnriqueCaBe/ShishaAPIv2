@@ -30,4 +30,8 @@ public interface TabacoDAO {
     Collection<? extends TabacoDTO> getTabacosByGramos(double gramos);
 
     Collection<? extends TabacoDTO> getTabacosByPrecio(double precio);
+
+    void updateTabaco(TabacoDTO tabacoDTO);
+
+    boolean canUpdate(TabacoDTO tabacoDTO);
 }

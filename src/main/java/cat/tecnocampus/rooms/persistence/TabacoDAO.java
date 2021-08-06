@@ -90,4 +90,16 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
         final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca, tabaco.imagen, tabaco.imagen_flag  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.precio=?";
         return jdbcTemplate.query(query,tabacosRowMapper,precio);
     }
+
+    @Override
+    public void updateTabaco(TabacoDTO tabacoDTO) {
+        final String query = "update tabaco set name_tabaco=?, name_api=?, descripcion=?, marca=?, imagen=?, imagen_flag=? where id=?";
+        jdbcTemplate.update(query,tabacoDTO.getName_tabaco(),tabacoDTO.getName_api(),tabacoDTO.getDescripcion(), tabacoDTO.getMarca(),tabacoDTO.getImagen(),tabacoDTO.getImagen_flag(),tabacoDTO.getId());
+    }
+
+    public boolean canUpdate(TabacoDTO tabacoDTO) {
+        final String query = "select name_api from tabaco where name_api=?";
+        List<TabacoDTO> list = jdbcTemplate.query(query, tabacosRowMapper, tabacoDTO.getName_api());
+        return list.size() == 1;
+    }
 }

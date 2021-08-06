@@ -6,6 +6,7 @@ import cat.tecnocampus.rooms.application.dtos.AssFormatoDTO;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
+import cat.tecnocampus.rooms.application.exceptions.CantUpdateTabacoException;
 import cat.tecnocampus.rooms.application.exceptions.TabacoDoesExistsException;
 import cat.tecnocampus.rooms.persistence.AssFormatoDAO;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
@@ -91,6 +92,15 @@ public class TabacoController {
         List<TabacoDTO> list = tabacoDAO.getTabacosByMarca(marca);
         for(TabacoDTO tabacoDTO: list){
             assFormatoDAO.insertAssFormato(new AssFormatoDTO(tabacoDTO.getId(),idformato));
+        }
+    }
+
+    public void updateTabaco(TabacoDTO tabacoDTO) {
+        if(tabacoDAO.canUpdate(tabacoDTO)){
+            tabacoDAO.updateTabaco(tabacoDTO);
+        }
+        else{
+            throw new CantUpdateTabacoException(tabacoDTO);
         }
     }
 }

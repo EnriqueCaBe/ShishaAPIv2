@@ -43,7 +43,10 @@ public class TabacoRestController {
         return tabacoController.getTabacosBySearch(tabacoSearchDTO);
     }
 
-
+    @PostMapping("/tabaco/update")
+    public void updateTabaco(@RequestBody TabacoDTO tabacoDTO){
+        tabacoController.updateTabaco(tabacoDTO);
+    }
 
     @PostMapping("/ass_formato/all/{marca}/{formato}")
     public void assFormato(@PathVariable int marca, @PathVariable int formato){
