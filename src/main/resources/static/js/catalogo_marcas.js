@@ -29,7 +29,7 @@ document.getElementById("loader").style.display = "none";
         document.getElementById("marcas").insertAdjacentHTML("beforeend",
     `<div class="grid-item" onclick="verMarca(${marca.id})">
         <div style="width: 95%; padding: 2.5%; padding-top: 10%;">
-            <img src="${marca.imagen}" style="width: 80%; height:140px; object-fit:contain; border-radius: 5px;">
+            <img src="${marca.imagen}" style="width: 140px; height:140px; object-fit:contain; border-radius: 10px;">
             <aside style="font-size: 125%; margin-top: 3%; font-family: 'Karla',sans-serif;">${marca.name_marca}</aside>
         </div>
     </div>`)

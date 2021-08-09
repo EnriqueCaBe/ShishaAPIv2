@@ -130,7 +130,7 @@ async function getMarcas(){
       document.getElementById("marca").insertAdjacentHTML("beforeend",`<option disabled value="" id="${marca.name_marca.charAt(0)}">--${marca.name_marca.charAt(0)}</option>`);
       letras_añadidas.push(marca.name_marca.charAt(0));
     }
-    document.getElementById(marca.name_marca.charAt(0)).insertAdjacentHTML("afterend",`<option value="${marca.name_marca}">${marca.name_marca}</option>`);
+    document.getElementById(marca.name_marca.charAt(0)).insertAdjacentHTML("afterend",`<option value="${marca.id}">${marca.name_marca}</option>`);
   });
 }
 

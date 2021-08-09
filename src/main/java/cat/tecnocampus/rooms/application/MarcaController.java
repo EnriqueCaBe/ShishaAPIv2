@@ -65,7 +65,7 @@ public class MarcaController {
     }
 
     @Scheduled(fixedRate = 60000)
-    public static void getStatus() throws IOException {
+    public static void getStatus(){
         try {
             URL urlObj = new URL("https://frogsmoke.herokuapp.com/");
             HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();

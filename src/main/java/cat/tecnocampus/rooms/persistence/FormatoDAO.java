@@ -39,7 +39,7 @@ public class FormatoDAO implements cat.tecnocampus.rooms.application.daosInterfa
 
     @Override
     public List<FormatoDTO> getAllFormatos() {
-        final String query = "select * from formato";
+        final String query = "select * from formato order by precio";
         return jdbcTemplate.query(query, formatosRowMapper);
     }
 
