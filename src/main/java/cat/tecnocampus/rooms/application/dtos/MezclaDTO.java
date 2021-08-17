@@ -5,6 +5,8 @@ import java.util.List;
 public class MezclaDTO {
     private int id;
     private String name;
+    private String estilo;
+    private String paqueo;
     private List<PorcentajeDTO> tabacos;
 
     public MezclaDTO() {
@@ -24,6 +26,22 @@ public class MezclaDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEstilo() {
+        return estilo;
+    }
+
+    public void setEstilo(String estilo) {
+        this.estilo = estilo;
+    }
+
+    public String getPaqueo() {
+        return paqueo;
+    }
+
+    public void setPaqueo(String paqueo) {
+        this.paqueo = paqueo;
     }
 
     public List<PorcentajeDTO> getTabacos() {
