@@ -6,48 +6,22 @@ $(document).ready(function () {
   mezcla_id = urlParams.get("id");
 
   putDatos();
-
-  var num = [20, 20, 20, 20, 20];
-  var ctx = document.getElementById("myChart");
-  var myChart = new Chart(ctx, {
-    type: "doughnut",
-    data: {
-      datasets: [
-        {
-          backgroundColor: [
-            "#390099",
-            "#9E0059",
-            "#FF0054",
-            "#FF5400",
-            "#FFBD00",
-          ],
-          data: num,
-        },
-      ],
-    },
-    options: {
-      legend: {
-        display: false,
-      },
-    },
-  });
 });
 
 async function putDatos() {
-  const mezcla = await getMezcla();
 
+  const mezcla = await getMezcla();
   document.getElementById("name").innerHTML = mezcla.name;
-  document.getElementById("estilo").src = mezcla.estilo.toUpperCase();
+  document.getElementById("estilo").innerHTML = mezcla.estilo.toUpperCase();
   document.getElementById("paqueo").innerHTML = mezcla.paqueo.toUpperCase();
 
   var nums = [];
 
   mezcla.tabacos.map((porcentaje) => {
-    const tabaco = getTabaco(porcentaje.tabacoDTO);
     document.getElementById("formatos").insertAdjacentHTML(
       "beforeend",
       `<tr>
-        <td onclick=verTabaco(${tabaco.id})>${tabaco.name_tabaco}</td>
+        <td onclick=verTabaco(${porcentaje.tabacoDTO})>${porcentaje.tabaco_name}</td>
         <td>${porcentaje.porcentaje}%</td>
       </tr>`
     );
@@ -76,20 +50,6 @@ async function putDatos() {
         display: false,
       },
     },
-  });
-}
-
-function getTabaco(id) {
-  return new Promise((resolve) => {
-    $.ajax({
-      url: `/tabaco/${id}`,
-      type: "GET",
-      dataType: "json",
-      success: function (data) {
-        resolve(data);
-      },
-      error: function () {},
-    });
   });
 }
 
