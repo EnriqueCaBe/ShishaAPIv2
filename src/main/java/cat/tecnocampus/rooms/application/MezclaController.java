@@ -13,9 +13,9 @@ import java.util.List;
 @Component
 public class MezclaController {
 
-    MezclaDAO mezclaDAO;
-    PorcentajeDAO porcentajeDAO;
-    TabacoDAO tabacoDAO;
+    private final MezclaDAO mezclaDAO;
+    private final PorcentajeDAO porcentajeDAO;
+    private final TabacoDAO tabacoDAO;
 
     public MezclaController(MezclaDAO mezclaDAO, PorcentajeDAO porcentajeDAO, TabacoDAO tabacoDAO) {
         this.mezclaDAO = mezclaDAO;

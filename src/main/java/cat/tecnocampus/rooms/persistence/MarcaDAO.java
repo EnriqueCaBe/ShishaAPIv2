@@ -71,5 +71,11 @@ public class MarcaDAO implements cat.tecnocampus.rooms.application.daosInterface
         jdbcTemplate.query(query,integerResultSetExtractor).get(0);
     }
 
+    @Override
+    public void deleteMarca(int id) {
+        final String query = "delete from marca where id=?";
+        jdbcTemplate.update(query,id);
+    }
+
 
 }

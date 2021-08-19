@@ -17,10 +17,10 @@ import java.util.*;
 @Component
 public class TabacoController {
 
-    private TabacoDAO tabacoDAO;
-    private MarcaDAO marcaDAO;
-    private FormatoDAO formatoDAO;
-    private AssFormatoDAO assFormatoDAO;
+    private final TabacoDAO tabacoDAO;
+    private final MarcaDAO marcaDAO;
+    private final FormatoDAO formatoDAO;
+    private final AssFormatoDAO assFormatoDAO;
 
     public TabacoController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO, FormatoDAO formatoDAO, AssFormatoDAO assFormatoDAO) {
         this.tabacoDAO = tabacoDAO;
@@ -30,24 +30,25 @@ public class TabacoController {
     }
 
     public void insertTabaco(TabacoDTO tabaco) {
-        if(!tabacoDAO.isTabacoExists(tabaco)) {
+        if (!tabacoDAO.isTabacoExists(tabaco)) {
             MarcaDTO marca = marcaDAO.getMarcaByName(tabaco.getMarca());
-            tabaco.setImagen(marca.getImagen());
+            if (tabaco.getImagen().equals("")) {
+                tabaco.setImagen(marca.getImagen());
+            }
             tabaco.setImagen_flag(marca.getImagen_flag());
             tabacoDAO.insertTabaco(tabaco);
-        }
-        else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
+        } else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
     }
 
-    public void setImages(){
+    public void setImages() {
         List<TabacoDTO> list = tabacoDAO.getAllTabaco();
-        for(TabacoDTO tabacoDTO: list){
+        for (TabacoDTO tabacoDTO : list) {
             MarcaDTO marcaDTO = marcaDAO.getMarcaByName(tabacoDTO.getMarca());
             tabacoDAO.updateImage(marcaDTO.getImagen_flag(), tabacoDTO.getId());
         }
     }
 
-    public List<TabacoDTO> getAllTabaco(){
+    public List<TabacoDTO> getAllTabaco() {
         return tabacoDAO.getAllTabaco();
     }
 
@@ -64,42 +65,41 @@ public class TabacoController {
         List<TabacoDTO> list3 = new ArrayList<>();
         List<TabacoDTO> list4 = new ArrayList<>();
         Collection<TabacoDTO> similar = new HashSet<TabacoDTO>();
-        if(tabacoSearchDTO.getTabaco_name()!=null){
-            list1.addAll(tabacoDAO.getTabacosByName( tabacoSearchDTO.getTabaco_name()));
+        if (tabacoSearchDTO.getTabaco_name() != null) {
+            list1.addAll(tabacoDAO.getTabacosByName(tabacoSearchDTO.getTabaco_name()));
             similar.addAll(list1);
         }
-        if(tabacoSearchDTO.getMarca()!=null){
+        if (tabacoSearchDTO.getMarca() != null) {
             list2.addAll(tabacoDAO.getTabacosByMarcaName(tabacoSearchDTO.getMarca()));
-            if(similar.isEmpty()) similar.addAll(list2);
+            if (similar.isEmpty()) similar.addAll(list2);
             else similar.retainAll(list2);
         }
-        if(tabacoSearchDTO.getGramos()!=0){
+        if (tabacoSearchDTO.getGramos() != 0) {
             list3.addAll(tabacoDAO.getTabacosByGramos(tabacoSearchDTO.getGramos()));
-            if(similar.isEmpty()) similar.addAll(list3);
+            if (similar.isEmpty()) similar.addAll(list3);
             else similar.retainAll(list3);
         }
-        if(tabacoSearchDTO.getPrecio()!=0){
+        if (tabacoSearchDTO.getPrecio() != 0) {
             list4.addAll(tabacoDAO.getTabacosByPrecio(tabacoSearchDTO.getPrecio()));
-            if(similar.isEmpty()) return list4;
+            if (similar.isEmpty()) return list4;
             else similar.retainAll(list4);
         }
         finalList.addAll(similar);
         return finalList;
     }
 
-    public void assoFormatoByMarca(int idmarca, int idformato){
+    public void assoFormatoByMarca(int idmarca, int idformato) {
         MarcaDTO marca = marcaDAO.getMarcaById(idmarca);
         List<TabacoDTO> list = tabacoDAO.getTabacosByMarca(marca);
-        for(TabacoDTO tabacoDTO: list){
-            assFormatoDAO.insertAssFormato(new AssFormatoDTO(tabacoDTO.getId(),idformato));
+        for (TabacoDTO tabacoDTO : list) {
+            assFormatoDAO.insertAssFormato(new AssFormatoDTO(tabacoDTO.getId(), idformato));
         }
     }
 
     public void updateTabaco(TabacoDTO tabacoDTO) {
-        if(tabacoDAO.canUpdate(tabacoDTO)){
+        if (tabacoDAO.canUpdate(tabacoDTO)) {
             tabacoDAO.updateTabaco(tabacoDTO);
-        }
-        else{
+        } else {
             throw new CantUpdateTabacoException(tabacoDTO);
         }
     }

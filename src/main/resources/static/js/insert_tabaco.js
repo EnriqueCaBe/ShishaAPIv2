@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 async function doIt(){
   const tabaco = `{"name_tabaco": "${document.getElementById("name_tabaco").value}" ,"name_api": "${document.getElementById("name_api").value}" ,
-  "descripcion": "${document.getElementById("descripcion").value}" ,"marca": "${document.getElementById("marca").value}", "imagen":null, "imagen_flag":null}`;
+  "descripcion": "${document.getElementById("descripcion").value}" ,"marca": "${document.getElementById("marca").value}", "imagen":"${document.getElementById("imagen").value}", "imagen_flag":null}`;
     
   await insertTabaco(tabaco);
   limpiarCampos();
@@ -17,6 +17,7 @@ function limpiarCampos(){
   document.getElementById("name_api").value = "";
   document.getElementById("marca").value = "";
   document.getElementById("descripcion").value = "";
+  document.getElementById("imagen").value = "";
 }
 
 function insertTabaco(tabaco){

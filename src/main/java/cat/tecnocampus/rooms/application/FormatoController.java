@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class FormatoController {
 
-    FormatoDAO formatoDAO;
+    private final FormatoDAO formatoDAO;
 
     public FormatoController(FormatoDAO formatoDAO) {
         this.formatoDAO = formatoDAO;

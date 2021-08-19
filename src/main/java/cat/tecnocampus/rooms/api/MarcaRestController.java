@@ -41,4 +41,9 @@ public class MarcaRestController {
     public MarcaDTO getMarcaAndTabacos(@PathVariable int id){
         return marcaController.getMarcaAndTabacos(id);
     }
+
+    @DeleteMapping("/marca/{id}")
+    public void deleteMarca(@PathVariable int id){
+
+    }
 }

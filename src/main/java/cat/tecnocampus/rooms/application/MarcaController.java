@@ -64,6 +64,10 @@ public class MarcaController {
         return marca;
     }
 
+    public void deleteMarca(int id){
+        marcaDAO.deleteMarca(id);
+    }
+
     @Scheduled(fixedRate = 60000)
     public static void getStatus(){
         try {

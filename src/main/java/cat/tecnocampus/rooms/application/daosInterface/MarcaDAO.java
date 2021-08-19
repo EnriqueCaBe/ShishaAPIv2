@@ -19,4 +19,6 @@ public interface MarcaDAO {
     MarcaDTO getMarcaByName(String marca);
 
     void getConnected();
+
+    void deleteMarca(int id);
 }

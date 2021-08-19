@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class AssFormatoController {
 
-    private AssFormatoDAO assFormatoDAO;
+    private final AssFormatoDAO assFormatoDAO;
 
     public AssFormatoController(AssFormatoDAO assFormatoDAO) {
         this.assFormatoDAO = assFormatoDAO;
