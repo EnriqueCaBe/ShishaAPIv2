@@ -51,4 +51,5 @@ public class MezclaDTO {
     public void setTabacos(List<PorcentajeDTO> tabacos) {
         this.tabacos = tabacos;
     }
+
 }

@@ -2,9 +2,7 @@ package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.MezclaController;
 import cat.tecnocampus.rooms.application.dtos.MezclaDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,10 @@ public class MezclaRestController {
     @GetMapping("/mezcla/all")
     public List<MezclaDTO> getAllMezclas(){
         return mezclaController.getAllMezclas();
+    }
+
+    @PostMapping("/mezcla")
+    public int insertMezcla(@RequestBody MezclaDTO mezclaDTO){
+       return  mezclaController.insertMezcla(mezclaDTO);
     }
 }

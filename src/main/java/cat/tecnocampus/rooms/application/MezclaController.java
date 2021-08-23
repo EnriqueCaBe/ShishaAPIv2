@@ -36,4 +36,9 @@ public class MezclaController {
         }
         return mezclaDTO;
     }
+
+    public int insertMezcla(MezclaDTO mezclaDTO) {
+        mezclaDAO.insertMezcla(mezclaDTO);
+        return mezclaDAO.getMezclaIdByName(mezclaDTO.getName());
+    }
 }

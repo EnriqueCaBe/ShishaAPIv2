@@ -8,4 +8,8 @@ public interface MezclaDAO {
     List<MezclaDTO> getAllMezclas();
 
     MezclaDTO getMezclaById(int id);
+
+    void insertMezcla(MezclaDTO mezclaDTO);
+
+    int getMezclaIdByName(String name);
 }

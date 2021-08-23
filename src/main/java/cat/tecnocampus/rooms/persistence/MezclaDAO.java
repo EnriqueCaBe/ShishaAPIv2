@@ -24,6 +24,13 @@ public class MezclaDAO implements cat.tecnocampus.rooms.application.daosInterfac
                     .addKeys("name")
                     .newResultSetExtractor(MezclaDTO.class);
 
+    ResultSetExtractorImpl<Integer> intRowMapper =
+            JdbcTemplateMapperFactory
+                    .newInstance()
+                    .addKeys("name")
+                    .newResultSetExtractor(Integer.class);
+
+
 
     @Override
     public List<MezclaDTO> getAllMezclas() {
@@ -35,5 +42,17 @@ public class MezclaDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public MezclaDTO getMezclaById(int id) {
         final String query = "select * from mezcla where id = ?";
         return jdbcTemplate.query(query,mezclaRowMapper,id).get(0);
+    }
+
+    @Override
+    public void insertMezcla(MezclaDTO mezclaDTO) {
+        final String query = "insert into mezcla(name, estilo, paqueo) values(?,?,?)";
+        jdbcTemplate.update(query, mezclaDTO.getName(), mezclaDTO.getEstilo(),mezclaDTO.getPaqueo());
+    }
+
+    @Override
+    public int getMezclaIdByName(String name) {
+        final String query = "select id from mezcla where name = ?";
+        return jdbcTemplate.query(query,intRowMapper,name).get(0);
     }
 }
