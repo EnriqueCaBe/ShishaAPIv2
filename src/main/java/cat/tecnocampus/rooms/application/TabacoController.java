@@ -12,6 +12,10 @@ import cat.tecnocampus.rooms.persistence.AssFormatoDAO;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Component
@@ -102,5 +106,25 @@ public class TabacoController {
         } else {
             throw new CantUpdateTabacoException(tabacoDTO);
         }
+    }
+
+    public List<TabacoDTO> getNewTabacos() {
+
+        return tabacoDAO.getNewTabacos(getLastWeekDateTime(),getActualDateTime());
+    }
+
+    private String getActualDateTime() {
+        Date date = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        df.setTimeZone(TimeZone.getTimeZone("Europe/Madrid"));
+        return df.format(date);
+    }
+
+    private String getLastWeekDateTime(){
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        System.out.println(dateFormat.format(cal.getTime()));
+        return dateFormat.format(cal.getTime());
     }
 }

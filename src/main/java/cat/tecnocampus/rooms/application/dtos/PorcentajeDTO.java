@@ -22,6 +22,17 @@ public class PorcentajeDTO {
         return porcentaje;
     }
 
+    @Override
+    public String toString() {
+        return "PorcentajeDTO{" +
+                "id=" + id +
+                ", porcentaje=" + porcentaje +
+                ", tabaco=" + tabaco +
+                ", tabaco_name='" + tabaco_name + '\'' +
+                ", mezcla=" + mezcla +
+                '}';
+    }
+
     public void setPorcentaje(double porcentaje) {
         this.porcentaje = porcentaje;
     }
@@ -48,5 +59,13 @@ public class PorcentajeDTO {
 
     public void setMezcla(int mezcla) {
         this.mezcla = mezcla;
+    }
+
+    public int getTabaco() {
+        return tabaco;
+    }
+
+    public void setTabaco(int tabaco) {
+        this.tabaco = tabaco;
     }
 }

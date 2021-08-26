@@ -2,11 +2,15 @@ package cat.tecnocampus.rooms.persistence;
 
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.MezclaDTO;
+import cat.tecnocampus.rooms.application.dtos.PorcentajeDTO;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -54,5 +58,27 @@ public class MezclaDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public int getMezclaIdByName(String name) {
         final String query = "select id from mezcla where name = ?";
         return jdbcTemplate.query(query,intRowMapper,name).get(0);
+    }
+
+    @Override
+    public void insertPorcentajesByMezcla(int mezcla, List<PorcentajeDTO> list) {
+        final String query = "insert into porcentaje(porcentaje,tabaco,mezcla) values(?,?,?)";
+
+        jdbcTemplate.batchUpdate(query, new BatchPreparedStatementSetter() {
+
+            @Override
+            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                PorcentajeDTO porcentajeDTO = list.get(i);
+                preparedStatement.setDouble(1, porcentajeDTO.getPorcentaje());
+                preparedStatement.setInt(2, porcentajeDTO.getTabaco());
+                preparedStatement.setInt(3, porcentajeDTO.getMezcla());
+
+            }
+
+            @Override
+            public int getBatchSize() {
+                return list.size();
+            }
+        });
     }
 }

@@ -5,51 +5,90 @@ $(document).ready(function () {
   getTabacos();
 });
 
+async function doIt() {
+  await insertMezcla(`
+    {"id":null,"name":"${
+      document.getElementById("name_mezcla").value
+    }","estilo":"${document.getElementById("estilo").value}","paqueo":"${
+    document.getElementById("paqueo").value
+  }","tabacos":null}`);
 
-async function doIt(){
- const id_mezcla = await insertMezcla(JSON.parse(`
-  {"id":null,"name":"${document.getElementById("name_mezcla").value}","estilo":"${document.getElementById("estilo").value}","paqueo":"${document.getElementById("paqueo").value}","tabacos":null}`));
+  const o = await getMezclaByName(document.getElementById("name_mezcla").value);
 
-  var json_porcetajes=[];
+  var json_porcetajes = [];
 
-  total_porcentajes.map((porcetaje)=>{
-    json_porcetajes.push(`
+  total_porcentajes.map((porcetaje) => {
+    json_porcetajes.push(JSON.parse(`
     {
-      "id":null,
-      "porcetaje":${document.getElementById(`porcentaje${porcetaje}`).value},
+      "id": 0,
+      "porcentaje":${document.getElementById(`porcentaje${porcetaje}`).value},
       "tabaco":${document.getElementById(`tabaco${porcetaje}`).value},
       "tabaco_name":"${$(`#tabaco${porcetaje} option:selected`).text()}",
-      "mezcla":${id_mezcla}
-    }`);
-  });
-  console.log(json_porcetajes);
-
-  console.log(document.getElementById("name_mezcla").value)
-  console.log(total_porcentajes);
-  console.log(document.getElementById("estilo").value)
-  console.log(document.getElementById("paqueo").value)
-  total_porcentajes.map((porcentaje)=>{
-    console.log(document.getElementById(porcentaje).value);
-    console.log($(`#${porcentaje} option:selected`).text())
+      "mezcla":${o}
+    }`));
   });
 
+  await insertPorcentajes(json_porcetajes,o);
 }
 
-function insertMezcla(json){
+function insertPorcentajes(porcentajes,mezcla){
+  return new Promise((resolve) => {
+    fetch(`/porcentajes/${mezcla}`, {
+      method: "POST",
+      body: JSON.stringify(porcentajes),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      success: function (data) {
+        resolve(data);
+      }
+    })
+      .then(function (response) {
+        if (response.ok) {
+          toastr.success("Mezcla añadida correctamente");
+        } else {
+          toastr.error("Error al insertar Mezcla");
+        }
+      })
+      .then((res) => {
+        resolve(res);
+      });
+  });
+}
+
+function getMezclaByName(name) {
+  return new Promise((resolve) => {
+    $.ajax({
+      url: `/mezcla/name/${name}`,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        resolve(data);
+      },
+      error: function () {},
+    });
+  });
+}
+
+function insertMezcla(json) {
   return new Promise((resolve) => {
     fetch(`/mezcla`, {
-      method: 'POST',
+      method: "POST",
       body: json,
       headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(function(response){
-      if(response.ok) {
-        toastr.success("Mezcla añadida correctamente");
-      } else {
-        toastr.error("Mezcla ya existe");
-      }
-    }).then((res)=>resolve(res));
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (response) {
+        if (response.ok) {
+          toastr.success("Porcentajes añadidos correctamente");
+        } else {
+          toastr.error("Error al insertar los porcentajes");
+        }
+      })
+      .then((res) => {
+        resolve(res);
+      });
   });
 }
 
@@ -101,5 +140,3 @@ function getTabacosFromBBDD() {
     });
   });
 }
-
-

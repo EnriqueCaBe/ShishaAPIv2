@@ -43,6 +43,11 @@ public class TabacoRestController {
         return tabacoController.getTabacosBySearch(tabacoSearchDTO);
     }
 
+    @GetMapping("/tabaco/new")
+    public List<TabacoDTO> getNewTabacos(){
+        return tabacoController.getNewTabacos();
+    }
+
     @PostMapping("/tabaco/update")
     public void updateTabaco(@RequestBody TabacoDTO tabacoDTO){
         tabacoController.updateTabaco(tabacoDTO);

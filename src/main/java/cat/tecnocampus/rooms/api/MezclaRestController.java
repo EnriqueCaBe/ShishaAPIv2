@@ -2,8 +2,10 @@ package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.MezclaController;
 import cat.tecnocampus.rooms.application.dtos.MezclaDTO;
+import cat.tecnocampus.rooms.application.dtos.PorcentajeDTO;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.PastOrPresent;
 import java.util.List;
 
 @RestController
@@ -26,7 +28,18 @@ public class MezclaRestController {
     }
 
     @PostMapping("/mezcla")
-    public int insertMezcla(@RequestBody MezclaDTO mezclaDTO){
-       return  mezclaController.insertMezcla(mezclaDTO);
+    public void insertMezcla(@RequestBody MezclaDTO mezclaDTO){
+       mezclaController.insertMezcla(mezclaDTO);
     }
+
+    @GetMapping("/mezcla/name/{name}")
+    public int getMezclaIdByName(@PathVariable String name){
+        return mezclaController.getMezclaIdByName(name);
+    }
+
+    @PostMapping("/porcentajes/{mezcla}")
+    public void insertPorcentajes(@PathVariable int mezcla, @RequestBody List<PorcentajeDTO> list){
+        mezclaController.insertPorcentajesByMezcla(mezcla,list);
+    }
+
 }

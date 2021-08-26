@@ -11,6 +11,7 @@ public class TabacoDTO {
     private String marca;
     private String imagen;
     private String imagen_flag;
+    private String fecha_publicacion;
     private List<FormatoDTO> formatos;
 
 
@@ -78,5 +79,13 @@ public class TabacoDTO {
 
     public void setImagen_flag(String imagen_flag) {
         this.imagen_flag = imagen_flag;
+    }
+
+    public String getFecha_publicacion() {
+        return fecha_publicacion;
+    }
+
+    public void setFecha_publicacion(String fecha_publicacion) {
+        this.fecha_publicacion = fecha_publicacion;
     }
 }

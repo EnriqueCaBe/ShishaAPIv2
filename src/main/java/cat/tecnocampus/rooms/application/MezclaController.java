@@ -37,8 +37,16 @@ public class MezclaController {
         return mezclaDTO;
     }
 
-    public int insertMezcla(MezclaDTO mezclaDTO) {
+    public void insertMezcla(MezclaDTO mezclaDTO) {
         mezclaDAO.insertMezcla(mezclaDTO);
-        return mezclaDAO.getMezclaIdByName(mezclaDTO.getName());
+        mezclaDAO.getMezclaIdByName(mezclaDTO.getName());
+    }
+
+    public int getMezclaIdByName(String name) {
+        return mezclaDAO.getMezclaIdByName(name);
+    }
+
+    public void insertPorcentajesByMezcla(int mezcla, List<PorcentajeDTO> list) {
+        mezclaDAO.insertPorcentajesByMezcla(mezcla,list);
     }
 }

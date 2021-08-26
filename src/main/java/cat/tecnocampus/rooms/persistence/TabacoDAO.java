@@ -102,4 +102,9 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
         List<TabacoDTO> list = jdbcTemplate.query(query, tabacosRowMapper, tabacoDTO.getName_api());
         return list.size() == 1;
     }
+
+    public List<TabacoDTO> getNewTabacos(String lastWeekDateTime, String actualDateTime) {
+        final String query = "select * from tabaco where fecha_publicacion<?";
+        return jdbcTemplate.query(query, tabacosRowMapper,actualDateTime);
+    }
 }
