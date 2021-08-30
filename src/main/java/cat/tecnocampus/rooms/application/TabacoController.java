@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Component
@@ -40,6 +38,7 @@ public class TabacoController {
                 tabaco.setImagen(marca.getImagen());
             }
             tabaco.setImagen_flag(marca.getImagen_flag());
+            tabaco.setFecha_publicacion(getActualDateTime());
             tabacoDAO.insertTabaco(tabaco);
         } else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
     }
@@ -122,9 +121,8 @@ public class TabacoController {
 
     private String getLastWeekDateTime(){
         final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -7);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        System.out.println(dateFormat.format(cal.getTime()));
+        cal.add(Calendar.DATE, -1);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(cal.getTime());
     }
 }

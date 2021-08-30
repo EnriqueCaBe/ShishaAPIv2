@@ -28,8 +28,8 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
 
     @Override
     public void insertTabaco(TabacoDTO tabaco) {
-        final String query = "insert into tabaco(name_tabaco,name_api, descripcion, marca, imagen, imagen_flag) values(?,?,?,?,?,?)";
-        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag());
+        final String query = "insert into tabaco(name_tabaco,name_api, descripcion, marca, imagen, imagen_flag,fecha_publicacion,novedad) values(?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag(),tabaco.getFecha_publicacion(),'T');
     }
 
     @Override
@@ -104,7 +104,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     }
 
     public List<TabacoDTO> getNewTabacos(String lastWeekDateTime, String actualDateTime) {
-        final String query = "select * from tabaco where fecha_publicacion<?";
-        return jdbcTemplate.query(query, tabacosRowMapper,actualDateTime);
+        final String query = "select * from tabaco where fecha_publicacion between ? and ?";
+        return jdbcTemplate.query(query, tabacosRowMapper,lastWeekDateTime,actualDateTime);
     }
 }
