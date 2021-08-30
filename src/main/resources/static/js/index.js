@@ -2,11 +2,6 @@ $(document).ready(function(){
   comprovarNovedades();
   });
 
-
-  function doIt(){
-    console.log("Hole");
-  }
-
   async function comprovarNovedades(){
     const novedades = await cargarNovedades();
     if(novedades.length > 0){
@@ -28,4 +23,8 @@ $(document).ready(function(){
         },
       });
     });
+  }
+
+  function verInfo(){
+    location.href = "info.html";
   }
