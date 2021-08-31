@@ -35,5 +35,9 @@ public interface TabacoDAO {
 
     boolean canUpdate(TabacoDTO tabacoDTO);
 
-    List<TabacoDTO> getNewTabacos(String lastWeekDate,String actualDateTime);
+    List<TabacoDTO> getNewTabacos();
+
+    void updateNovedades(List<TabacoDTO> list);
+
+    List<TabacoDTO> getLastNovedades(String last2WeeksDateTime, String lastWeekDateTime);
 }

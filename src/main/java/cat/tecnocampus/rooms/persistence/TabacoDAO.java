@@ -5,9 +5,12 @@ import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 
@@ -103,8 +106,33 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
         return list.size() == 1;
     }
 
-    public List<TabacoDTO> getNewTabacos(String lastWeekDateTime, String actualDateTime) {
+    public List<TabacoDTO> getNewTabacos() {
+        final String query = "select * from tabaco where novedad='T'";
+        return jdbcTemplate.query(query, tabacosRowMapper);
+    }
+
+    @Override
+    public void updateNovedades(List<TabacoDTO> list) {
+        final String query = "update tabaco set novedad='F' where id=?";
+
+        jdbcTemplate.batchUpdate(query, new BatchPreparedStatementSetter() {
+
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                TabacoDTO tabacoDTO = list.get(i);
+                ps.setInt(1, tabacoDTO.getId());
+            }
+
+            @Override
+            public int getBatchSize() {
+                return list.size();
+            }
+        });
+    }
+
+    @Override
+    public List<TabacoDTO> getLastNovedades(String last2WeeksDateTime, String lastWeekDateTime) {
         final String query = "select * from tabaco where fecha_publicacion between ? and ?";
-        return jdbcTemplate.query(query, tabacosRowMapper,lastWeekDateTime,actualDateTime);
+        return jdbcTemplate.query(query,tabacosRowMapper, last2WeeksDateTime,lastWeekDateTime);
     }
 }

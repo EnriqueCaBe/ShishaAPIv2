@@ -5,8 +5,6 @@ import cat.tecnocampus.rooms.application.dtos.AssFormatoDTO;
 import cat.tecnocampus.rooms.application.exceptions.AssFormatoDoesExistsException;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class AssFormatoController {
 

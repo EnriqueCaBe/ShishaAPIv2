@@ -10,6 +10,7 @@ import cat.tecnocampus.rooms.application.exceptions.CantUpdateTabacoException;
 import cat.tecnocampus.rooms.application.exceptions.TabacoDoesExistsException;
 import cat.tecnocampus.rooms.persistence.AssFormatoDAO;
 import cat.tecnocampus.rooms.persistence.TabacoDAO;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
@@ -39,6 +40,7 @@ public class TabacoController {
             }
             tabaco.setImagen_flag(marca.getImagen_flag());
             tabaco.setFecha_publicacion(getActualDateTime());
+            tabaco.setNovedad("T");
             tabacoDAO.insertTabaco(tabaco);
         } else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
     }
@@ -108,8 +110,7 @@ public class TabacoController {
     }
 
     public List<TabacoDTO> getNewTabacos() {
-
-        return tabacoDAO.getNewTabacos(getLastWeekDateTime(),getActualDateTime());
+        return tabacoDAO.getNewTabacos();
     }
 
     private String getActualDateTime() {
@@ -119,9 +120,22 @@ public class TabacoController {
         return df.format(date);
     }
 
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void comprovarNevedades(){
+        List<TabacoDTO> list = tabacoDAO.getLastNovedades(getLast2WeeksDateTime(),getLastWeekDateTime());
+        tabacoDAO.updateNovedades(list);
+    }
+
     private String getLastWeekDateTime(){
         final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -1);
+        cal.add(Calendar.DATE, -7);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(cal.getTime());
+    }
+
+    private String getLast2WeeksDateTime(){
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -14);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(cal.getTime());
     }
