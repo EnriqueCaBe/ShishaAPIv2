@@ -3,19 +3,23 @@ package cat.tecnocampus.rooms.api;
 import cat.tecnocampus.rooms.application.TabacoController;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
+import cat.tecnocampus.rooms.application.services.CreatePDF;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class TabacoRestController {
 
-    private TabacoController tabacoController;
+    private final TabacoController tabacoController;
+    private CreatePDF createPDF;
 
-    public TabacoRestController(TabacoController tabacoController) {
+    public TabacoRestController(TabacoController tabacoController, CreatePDF createPDF) {
         this.tabacoController = tabacoController;
+        this.createPDF = createPDF;
     }
 
     @PostMapping("/tabaco")
@@ -56,5 +60,10 @@ public class TabacoRestController {
     @PostMapping("/ass_formato/all/{marca}/{formato}")
     public void assFormato(@PathVariable int marca, @PathVariable int formato){
         tabacoController.assoFormatoByMarca(marca,formato);
+    }
+
+    @GetMapping("/document")
+    public void create() throws FileNotFoundException {
+        createPDF.createFile();
     }
 }

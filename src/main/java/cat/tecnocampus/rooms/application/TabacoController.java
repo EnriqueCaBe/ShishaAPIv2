@@ -49,7 +49,7 @@ public class TabacoController {
         List<TabacoDTO> list = tabacoDAO.getAllTabaco();
         for (TabacoDTO tabacoDTO : list) {
             MarcaDTO marcaDTO = marcaDAO.getMarcaByName(tabacoDTO.getMarca());
-            tabacoDAO.updateImage(marcaDTO.getImagen_flag(), tabacoDTO.getId());
+            tabacoDAO.updateImage(marcaDTO.getImagen(), tabacoDTO.getId());
         }
     }
 

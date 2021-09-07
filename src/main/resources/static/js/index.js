@@ -1,36 +1,6 @@
 $(document).ready(function(){
   comprovarNovedades();
-  notifyMe();
   });
-
-  function  notifyMe()  {  
-    if  (!("Notification"  in  window))  {   
-        alert("Este navegador no soporta notificaciones de escritorio");  
-    }  
-    else  if  (Notification.permission  ===  "granted")  {
-        var  options  =   {
-            body:   "Descripción o cuerpo de la notificación",
-            icon:   "url_del_icono.jpg",
-            dir :   "ltr"
-        };
-        var  notification  =  new  Notification("Hola :D", options);
-    }  
-    else  if  (Notification.permission  !==  'denied')  {
-        Notification.requestPermission(function (permission)  {
-            if  (!('permission'  in  Notification))  {
-                Notification.permission  =  permission;
-            }
-            if  (permission  ===  "granted")  {
-                var  options  =   {
-                    body:   "Descripción o cuerpo de la notificación",
-		            icon:   "url_del_icono.jpg",
-		            dir :   "ltr"
-                };     
-                var  notification  =  new  Notification("Hola :)", options);
-            }   
-        });  
-    }
-}
 
   async function comprovarNovedades(){
     const novedades = await cargarNovedades();
@@ -47,7 +17,7 @@ $(document).ready(function(){
         type: "GET",
         dataType: "json",
         success: function (data) {
-          resolve(data)
+          resolve(data);
         },
         error: function () {
         },

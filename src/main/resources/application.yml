@@ -3,6 +3,5 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://remotemysql.com:3306/E8QnmRwBGQ
-    username: E8QnmRwBGQ
-    password: T68HZaWwLR
+    url: jdbc:mysql://localhost:3306/frogsmoke
+    username: root
