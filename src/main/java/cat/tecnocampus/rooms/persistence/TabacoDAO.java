@@ -32,7 +32,7 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     @Override
     public void insertTabaco(TabacoDTO tabaco) {
         final String query = "insert into tabaco(name_tabaco,name_api, descripcion, marca, imagen, imagen_flag,fecha_publicacion,novedad) values(?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag(),tabaco.getFecha_publicacion(),"F");
+        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag(),tabaco.getFecha_publicacion(),"T");
     }
 
     @Override

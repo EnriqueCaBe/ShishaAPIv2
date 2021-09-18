@@ -9,7 +9,7 @@ async function getNovedades() {
     document.getElementById("links").insertAdjacentHTML(
       "beforeend",
       `
-        <div class="noticia" onclick="verTabaco(${tabaco.id})">
+        <div class="noticia" onclick="verTabaco(${tabaco.id})" data-aos="fade-right">
 
             <div style="position: relative; left: 0; top: 0;">
                 <img class="izquierda" src="${tabaco.imagen}" style="width: 100px; height: 100px; object-fit:contain;z-index: 0;">

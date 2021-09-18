@@ -5,7 +5,7 @@ $(document).ready(function(){
         }
       }
       getMarcas();
-
+      AOS.init();
 });
 
 function doIt(){
@@ -27,10 +27,10 @@ const marcas = await getJsonMarcas();
 document.getElementById("loader").style.display = "none";
     marcas.map((marca)=>{
         document.getElementById("marcas").insertAdjacentHTML("beforeend",
-    `<div class="grid-item" onclick="verMarca(${marca.id})">
+    `<div class="grid-item" onclick="verMarca(${marca.id})" data-aos="zoom-in">
         <div style="width: 95%; padding: 2.5%; padding-top: 10%;">
             <img src="${marca.imagen}" style="width: 140px; height:140px; object-fit:contain; border-radius: 10px;">
-            <aside style="font-size: 125%; margin-top: 3%; font-family: 'Karla',sans-serif;">${marca.name_marca}</aside>
+            <aside style="font-size: 125%; margin-top: 3%; font-family: 'Karla',sans-serif; color: black;">${marca.name_marca}</aside>
         </div>
     </div>`)
     });

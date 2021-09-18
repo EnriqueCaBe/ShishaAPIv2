@@ -1,0 +1,23 @@
+version: "2.1"
+
+services:
+  shisha-app:
+    restart: always
+    build: .
+    mem_limit: 350m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9000:8080"
+  db:
+    image: jc21/mariadb-aria:latest
+    restart: unless-stopped
+    ports:
+      - "9001:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=frogsmoke
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+    volumes:
+      - ./data/mysql:/var/lib/mysql

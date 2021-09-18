@@ -17,11 +17,11 @@ async function putDatos(){
 
         if(tabaco.name_tabaco.charAt(0).match(/^[0-9]+$/)){
             if(!letras.includes("num")){
-                document.getElementById("links").insertAdjacentHTML("beforeend",`<h1 id="num" style="width: 100%; text-align: center;">0-9</h1>`);
+                document.getElementById("links").insertAdjacentHTML("beforeend",`<h1 id="num" style="width: 100%; text-align: center;" data-aos="fade-right">0-9</h1>`);
                 letras.push("num");
             }
             document.getElementById("num").insertAdjacentHTML("beforeend",
-            `<div class="noticia" onclick="verTabaco(${tabaco.id})">
+            `<div class="noticia" onclick="verTabaco(${tabaco.id})" data-aos="fade-right">
                 <img class="izquierda" src="${tabaco.imagen}"
                     style="width: 100px; height: 100px; object-fit:contain;">
                 <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>
@@ -32,11 +32,11 @@ async function putDatos(){
 
         else{
             if(!letras.includes(tabaco.name_tabaco.charAt(0))){
-                document.getElementById("links").insertAdjacentHTML("beforeend",`<h1 id="${tabaco.name_tabaco.charAt(0)}" style="width: 100%; text-align: center;">${tabaco.name_tabaco.charAt(0)}</h1>`);
+                document.getElementById("links").insertAdjacentHTML("beforeend",`<h1 id="${tabaco.name_tabaco.charAt(0)}" style="width: 100%; text-align: center;" data-aos="fade-right">${tabaco.name_tabaco.charAt(0)}</h1>`);
                 letras.push(tabaco.name_tabaco.charAt(0));
               }
             document.getElementById(tabaco.name_tabaco.charAt(0)).insertAdjacentHTML("beforeend",
-            `<div class="noticia" onclick="verTabaco(${tabaco.id})">
+            `<div class="noticia" onclick="verTabaco(${tabaco.id})" data-aos="fade-right">
                 <img class="izquierda" src="${tabaco.imagen}"
                     style="width: 100px; height: 100px; object-fit:contain;">
                 <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>

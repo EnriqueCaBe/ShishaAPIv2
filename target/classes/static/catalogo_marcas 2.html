@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>ShishaMixer | Tabacos</title>
+    <link rel="stylesheet" href="/style/indexstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <head>
+        <img src="/images/Shisha_Mixer.png" style="width: 20%; margin-left: 40%;" >
+    </head>
+        <h1 id="userName" style="font-size: 50px;margin-top: 2%; color: black;"><u>Marcas</u></h1>
+        <button id="myBtn" onclick="openFilter()" class="filterButton"
+            style="font-size: 120%; margin-left: 35%; width: 30%; font-family: 'Karla', sans-serif;" >Filtros<i
+                class="fa fa-filter" style="font-size: 20px; margin-left: 10px;"></i></button>
+
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content" id="survey-form" style="border: 2px solid white;">
+            <span class="close" onclick="closeFilter()">&times;</span>
+            <div class='form-input'>
+                <label style="font-size: 30px; ;"><u>Filtros:</u></label>
+            </div>
+            <div class='form-input'>
+                <label>Nombre</label>
+                <input type='text' id='name_marca' placeholder='Nombre Tabaco' class='form-input-size' />
+            </div>
+            <div class='form-input'>
+                <p>Pais</p>
+                <select id='dropdown' class='form-input-size'>
+                    <option disabled selected value>selecciona una marca...</option>
+                </select>
+            </div>
+            <div class='form-input'>
+                <button onclick="doIt()" id='submit'
+                    style="margin-bottom: -10%; width: 33%; margin-left: 33%;">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <center>
+        <div id="loader" class="loader"></div>
+    </center>
+    <div class="grid-container" id="marcas" style="margin-top: 5%;">
+    </div>
+    <!-- Javascript -->
+    <script src="/assets/jquery-3.6.0.min.js"></script>
+    <script src="/js/catalogo_marcas.js"></script>
+</body>
+
+</html>
