@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class TabacoRestController {
 
     private final TabacoController tabacoController;
