@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style/form.css">
+    <link rel="stylesheet" href="/style/assets/toastr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ADMIN | ASS.FORMATO/TABACO</title>
+</head>
+
+<body>
+    <div class="container">
+        <a href="javascript:history.back()" class="atras"
+            style="color: white; font-size: 300%; margin-left: 5%; margin-bottom: 3%; margin-top: 3%;"><i
+                class="fa fa-angle-double-left "></i></a>
+        <header>
+            <h1 id='title'>Associar Tabaco/Formato</h1>
+        </header>
+        <div id='survey-form'>
+            <div class='form-input'>
+                <p>Tabaco</p>
+                <select id='tabaco' class='form-input-size' style="height: 30px;" required>
+                    <option disabled selected value="">Selecciones un tabaco</option>
+                </select>
+            </div>
+            <div class='form-input'>
+                <p>Formato</p>
+                <select id='formato' class='form-input-size' style="height: 30px;" required>
+                    <option disabled selected value="">Selecciones un formato</option>
+                </select>
+            </div>
+
+            <div class='form-input'>
+                <button onclick="submit()" id='submit'>Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 8%;">
+        <header>
+            <h1 id='title'>Associar Marca/Formato</h1>
+        </header>
+        <div id='survey-form'>
+            <div class='form-input'>
+                <p>Marca</p>
+                <select id='marca' class='form-input-size' style="height: 30px;" required>
+                    <option disabled selected value="">Selecciones una Marca</option>
+                </select>
+            </div>
+            <div class='form-input'>
+                <p>Formato</p>
+                <select id='formato1' class='form-input-size' style="height: 30px;" required>
+                    <option disabled selected value="">Selecciones un formato</option>
+                </select>
+            </div>
+
+            <div class='form-input'>
+                <button onclick="submit1()" id='submit'>Submit</button>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/jquery-3.6.0.min.js"></script>
+    <script src="/js/insert_ass_formato.js"></script>
+    <script src="/assets/toastr.js"></script>
+</body>
+
+</html>
