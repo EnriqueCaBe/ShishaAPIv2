@@ -1,4 +1,9 @@
 $(document).ready(function () {
+
+  if (localStorage.getItem("token") == null) {
+    window.location = "login.html";
+  }
+
   getTabacos();
   getFormatos();
   getMarcas();
@@ -19,6 +24,9 @@ async function getTabacos() {
 function getJsonTabacos() {
   return new Promise((resolve) => {
     $.ajax({
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
       url: `/tabaco/all`,
       type: "GET",
       dataType: "json",
@@ -52,9 +60,13 @@ async function getFormatos() {
       );
   });
 }
+
 function getJsonFormatos() {
   return new Promise((resolve) => {
     $.ajax({
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
       url: `/formato/all`,
       type: "GET",
       dataType: "json",
@@ -84,8 +96,12 @@ async function submit1() {
 function mergeMarcaFormato(marca, formato) {
   return new Promise((resolve) => {
     fetch(`/ass_formato/all/${marca}/${formato}`, {
-      method: "POST",
-    })
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem("token")
+        }
+      })
       .then(function (response) {
         if (response.ok) {
           toastr.success("Merge correcto");
@@ -105,12 +121,13 @@ function limpiarCampos() {
 function insertAssFormato(assFormato) {
   return new Promise((resolve) => {
     fetch(`/ass_formato`, {
-      method: "POST",
-      body: assFormato,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+        method: "POST",
+        body: assFormato,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem("token")
+        },
+      })
       .then(function (response) {
         if (response.ok) {
           toastr.success("Añadido correctamente");
@@ -122,29 +139,31 @@ function insertAssFormato(assFormato) {
   });
 }
 
-async function getMarcas(){
+async function getMarcas() {
   const marcas = await getJsonMarcas();
-  var letras_añadidas= [];
-  marcas.map((marca)=>{
-    if(!letras_añadidas.includes(marca.name_marca.charAt(0))){
-      document.getElementById("marca").insertAdjacentHTML("beforeend",`<option disabled value="" id="${marca.name_marca.charAt(0)}">--${marca.name_marca.charAt(0)}</option>`);
+  var letras_añadidas = [];
+  marcas.map((marca) => {
+    if (!letras_añadidas.includes(marca.name_marca.charAt(0))) {
+      document.getElementById("marca").insertAdjacentHTML("beforeend", `<option disabled value="" id="${marca.name_marca.charAt(0)}">--${marca.name_marca.charAt(0)}</option>`);
       letras_añadidas.push(marca.name_marca.charAt(0));
     }
-    document.getElementById(marca.name_marca.charAt(0)).insertAdjacentHTML("afterend",`<option value="${marca.id}">${marca.name_marca}</option>`);
+    document.getElementById(marca.name_marca.charAt(0)).insertAdjacentHTML("afterend", `<option value="${marca.id}">${marca.name_marca}</option>`);
   });
 }
 
-function getJsonMarcas(){
+function getJsonMarcas() {
   return new Promise((resolve) => {
     $.ajax({
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
       url: `/marca/all`,
       type: "GET",
       dataType: "json",
       success: function (data) {
         resolve(data)
       },
-      error: function () {
-      },
+      error: function () {},
     });
   });
 }

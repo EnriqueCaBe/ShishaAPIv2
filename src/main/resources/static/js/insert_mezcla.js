@@ -2,6 +2,11 @@ var tabacos;
 var porcentaje = 2;
 var total_porcentajes = ["1"];
 $(document).ready(function () {
+
+  if (localStorage.getItem("token") == null) {
+    window.location = "login.html";
+  }
+
   getTabacos();
 });
 
@@ -28,21 +33,22 @@ async function doIt() {
     }`));
   });
 
-  await insertPorcentajes(json_porcetajes,o);
+  await insertPorcentajes(json_porcetajes, o);
 }
 
-function insertPorcentajes(porcentajes,mezcla){
+function insertPorcentajes(porcentajes, mezcla) {
   return new Promise((resolve) => {
     fetch(`/porcentajes/${mezcla}`, {
-      method: "POST",
-      body: JSON.stringify(porcentajes),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      success: function (data) {
-        resolve(data);
-      }
-    })
+        method: "POST",
+        body: JSON.stringify(porcentajes),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem("token")
+        },
+        success: function (data) {
+          resolve(data);
+        }
+      })
       .then(function (response) {
         if (response.ok) {
           toastr.success("Mezcla añadida correctamente");
@@ -73,12 +79,13 @@ function getMezclaByName(name) {
 function insertMezcla(json) {
   return new Promise((resolve) => {
     fetch(`/mezcla`, {
-      method: "POST",
-      body: json,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+        method: "POST",
+        body: json,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem("token")
+        },
+      })
       .then(function (response) {
         if (response.ok) {
           toastr.success("Porcentajes añadidos correctamente");
@@ -105,8 +112,8 @@ function addDiv() {
       <label>Porcentaje ${porcentaje}</label>
        <select id='tabaco${porcentaje}' class='form-input-size' style="height: 40px; width: 98%;" required>
           <option disabled selected value="">Selecciones un tabaco</option>` +
-      stringTabacos +
-      `
+    stringTabacos +
+    `
       </select>
       <input type='number' id='porcentaje${porcentaje}' placeholder='%' class='form-input-size' style="width: 98%" required/>
   </div>`
@@ -130,6 +137,9 @@ async function getTabacos() {
 function getTabacosFromBBDD() {
   return new Promise((resolve) => {
     $.ajax({
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
       url: `/tabaco/all`,
       type: "GET",
       dataType: "json",

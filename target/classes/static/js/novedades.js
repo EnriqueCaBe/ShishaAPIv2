@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  if (localStorage.getItem("token") == null) {
+    window.location = "login.html";
+  }
   getNovedades();
 });
 
@@ -27,6 +30,9 @@ async function getNovedades() {
 function cargarNovedades() {
   return new Promise((resolve) => {
     $.ajax({
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
       url: `/tabaco/new`,
       type: "GET",
       dataType: "json",

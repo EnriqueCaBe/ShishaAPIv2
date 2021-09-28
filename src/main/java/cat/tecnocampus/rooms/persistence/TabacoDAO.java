@@ -3,6 +3,7 @@ package cat.tecnocampus.rooms.persistence;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
+import cat.tecnocampus.rooms.application.dtos.UsuarioDTO;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -29,10 +30,16 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
                     .addKeys("name")
                     .newResultSetExtractor(TabacoDTO.class);
 
+    ResultSetExtractorImpl<UsuarioDTO> userRowMapper =
+            JdbcTemplateMapperFactory
+                    .newInstance()
+                    .addKeys("name")
+                    .newResultSetExtractor(UsuarioDTO.class);
+
     @Override
     public void insertTabaco(TabacoDTO tabaco) {
-        final String query = "insert into tabaco(name_tabaco,name_api, descripcion, marca, imagen, imagen_flag,fecha_publicacion,novedad) values(?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag(),tabaco.getFecha_publicacion(),"T");
+        final String query = "insert into tabaco(name_tabaco,name_api, descripcion,sabor1,sabor2,sabor3,sabor4,sabor5, marca, imagen, imagen_flag,fecha_publicacion,novedad) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(),tabaco.getSabor1(),tabaco.getSabor2(),tabaco.getSabor3(),tabaco.getSabor4(),tabaco.getSabor5(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag(),tabaco.getFecha_publicacion(),"T");
     }
 
     @Override
@@ -66,38 +73,9 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     }
 
     @Override
-    public List<TabacoDTO> getTabacosBySearch(TabacoSearchDTO tabacoSearchDTO) {
-        return null;
-    }
-
-    @Override
-    public List<TabacoDTO> getTabacosByName(String tabaco_name) {
-        final String query = "select * from tabaco where name_tabaco = ?";
-        return jdbcTemplate.query(query,tabacosRowMapper,tabaco_name);
-    }
-
-    @Override
-    public Collection<? extends TabacoDTO> getTabacosByMarcaName(String marca) {
-        final String query = "select * from tabaco where marca = ?" ;
-        return jdbcTemplate.query(query,tabacosRowMapper,marca);
-    }
-
-    @Override
-    public Collection<? extends TabacoDTO> getTabacosByGramos(double gramos) {
-        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca, tabaco.imagen, tabaco.imagen_flag  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.gramos=?";
-        return jdbcTemplate.query(query,tabacosRowMapper,gramos);
-    }
-
-    @Override
-    public Collection<? extends TabacoDTO> getTabacosByPrecio(double precio) {
-        final String query = "select tabaco.id,tabaco.name_tabaco,tabaco.name_api, tabaco.descripcion, tabaco.marca, tabaco.imagen, tabaco.imagen_flag  from tabaco join tabaco_formato_asso on tabaco_formato_asso.tabaco_id=tabaco.id join formato on tabaco_formato_asso.formato_id=formato.id where formato.precio=?";
-        return jdbcTemplate.query(query,tabacosRowMapper,precio);
-    }
-
-    @Override
     public void updateTabaco(TabacoDTO tabacoDTO) {
-        final String query = "update tabaco set name_tabaco=?, name_api=?, descripcion=?, marca=?, imagen=?, imagen_flag=? where id=?";
-        jdbcTemplate.update(query,tabacoDTO.getName_tabaco(),tabacoDTO.getName_api(),tabacoDTO.getDescripcion(), tabacoDTO.getMarca(),tabacoDTO.getImagen(),tabacoDTO.getImagen_flag(),tabacoDTO.getId());
+        final String query = "update tabaco set name_tabaco=?, name_api=?, descripcion=?,sabor1=?,sabor2=?,sabor3=?,sabor4=?,sabor5=?, marca=?, imagen=?, imagen_flag=? where id=?";
+        jdbcTemplate.update(query,tabacoDTO.getName_tabaco(),tabacoDTO.getName_api(),tabacoDTO.getDescripcion(),tabacoDTO.getSabor1(),tabacoDTO.getSabor2(),tabacoDTO.getSabor3(),tabacoDTO.getSabor4(),tabacoDTO.getSabor5(), tabacoDTO.getMarca(),tabacoDTO.getImagen(),tabacoDTO.getImagen_flag(),tabacoDTO.getId());
     }
 
     public boolean canUpdate(TabacoDTO tabacoDTO) {
@@ -134,5 +112,17 @@ public class TabacoDAO implements cat.tecnocampus.rooms.application.daosInterfac
     public List<TabacoDTO> getLastNovedades(String last2WeeksDateTime, String lastWeekDateTime) {
         final String query = "select * from tabaco where fecha_publicacion between ? and ?";
         return jdbcTemplate.query(query,tabacosRowMapper, last2WeeksDateTime,lastWeekDateTime);
+    }
+
+    @Override
+    public List<TabacoDTO> getTabacosBySabor(String sabor) {
+        final String query = "select * from tabaco where sabor1=? or sabor2=? or sabor3=? or sabor4=? or sabor5=?";
+        return jdbcTemplate.query(query,tabacosRowMapper,sabor,sabor,sabor,sabor,sabor);
+    }
+
+    @Override
+    public UsuarioDTO getUsuarioByName(String username) {
+        final String query = "select usuario.username, usuario.password,role as authority from usuario join authorities on usuario.username=authorities.username where usuario.username=?";
+        return jdbcTemplate.query(query,userRowMapper,username).get(0);
     }
 }

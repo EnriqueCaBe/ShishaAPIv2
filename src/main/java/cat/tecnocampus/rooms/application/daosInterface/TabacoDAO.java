@@ -3,6 +3,7 @@ package cat.tecnocampus.rooms.application.daosInterface;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
+import cat.tecnocampus.rooms.application.dtos.UsuarioDTO;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,16 +22,6 @@ public interface TabacoDAO {
 
     TabacoDTO getTabacoById(int id);
 
-    List<TabacoDTO> getTabacosBySearch(TabacoSearchDTO tabacoSearchDTO);
-
-    List<TabacoDTO> getTabacosByName(String tabaco_name);
-
-    Collection<? extends TabacoDTO> getTabacosByMarcaName(String marca);
-
-    Collection<? extends TabacoDTO> getTabacosByGramos(double gramos);
-
-    Collection<? extends TabacoDTO> getTabacosByPrecio(double precio);
-
     void updateTabaco(TabacoDTO tabacoDTO);
 
     boolean canUpdate(TabacoDTO tabacoDTO);
@@ -40,4 +31,8 @@ public interface TabacoDAO {
     void updateNovedades(List<TabacoDTO> list);
 
     List<TabacoDTO> getLastNovedades(String last2WeeksDateTime, String lastWeekDateTime);
+
+    List<TabacoDTO> getTabacosBySabor(String sabor);
+
+    UsuarioDTO getUsuarioByName(String username);
 }

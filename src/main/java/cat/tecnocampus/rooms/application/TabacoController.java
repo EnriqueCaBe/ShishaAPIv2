@@ -2,10 +2,8 @@ package cat.tecnocampus.rooms.application;
 
 import cat.tecnocampus.rooms.application.daosInterface.FormatoDAO;
 import cat.tecnocampus.rooms.application.daosInterface.MarcaDAO;
-import cat.tecnocampus.rooms.application.dtos.AssFormatoDTO;
-import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
-import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
-import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
+import cat.tecnocampus.rooms.application.daosInterface.SaborDAO;
+import cat.tecnocampus.rooms.application.dtos.*;
 import cat.tecnocampus.rooms.application.exceptions.CantUpdateTabacoException;
 import cat.tecnocampus.rooms.application.exceptions.TabacoDoesExistsException;
 import cat.tecnocampus.rooms.persistence.AssFormatoDAO;
@@ -24,12 +22,14 @@ public class TabacoController {
     private final MarcaDAO marcaDAO;
     private final FormatoDAO formatoDAO;
     private final AssFormatoDAO assFormatoDAO;
+    private final SaborDAO saborDAO;
 
-    public TabacoController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO, FormatoDAO formatoDAO, AssFormatoDAO assFormatoDAO) {
+    public TabacoController(TabacoDAO tabacoDAO, MarcaDAO marcaDAO, FormatoDAO formatoDAO, AssFormatoDAO assFormatoDAO, SaborDAO saborDAO) {
         this.tabacoDAO = tabacoDAO;
         this.marcaDAO = marcaDAO;
         this.formatoDAO = formatoDAO;
         this.assFormatoDAO = assFormatoDAO;
+        this.saborDAO = saborDAO;
     }
 
     public void insertTabaco(TabacoDTO tabaco) {
@@ -38,11 +38,48 @@ public class TabacoController {
             if (tabaco.getImagen().equals("")) {
                 tabaco.setImagen(marca.getImagen());
             }
+
+            tabaco.setSabor1(tabaco.getSabor1().toUpperCase());
+            tabaco.setSabor2(tabaco.getSabor2().toUpperCase());
+            tabaco.setSabor3(tabaco.getSabor3().toUpperCase());
+            tabaco.setSabor4(tabaco.getSabor4().toUpperCase());
+            tabaco.setSabor5(tabaco.getSabor5().toUpperCase());
+
+            insertSaboresOnBD(tabaco);
+
             tabaco.setImagen_flag(marca.getImagen_flag());
             tabaco.setFecha_publicacion(getActualDateTime());
             tabaco.setNovedad("T");
             tabacoDAO.insertTabaco(tabaco);
         } else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
+    }
+
+    private void insertSaboresOnBD(TabacoDTO tabaco){
+        if(!tabaco.getSabor1().equalsIgnoreCase("")){
+            if(!saborDAO.existSabor(tabaco.getSabor1())){
+                saborDAO.insertSabor(new SaborDTO(tabaco.getSabor1()));
+            }
+        }
+        if(!tabaco.getSabor2().equalsIgnoreCase("")){
+            if(!saborDAO.existSabor(tabaco.getSabor2())){
+                saborDAO.insertSabor(new SaborDTO(tabaco.getSabor2()));
+            }
+        }
+        if(!tabaco.getSabor3().equalsIgnoreCase("")){
+            if(!saborDAO.existSabor(tabaco.getSabor3())){
+                saborDAO.insertSabor(new SaborDTO(tabaco.getSabor3()));
+            }
+        }
+        if(!tabaco.getSabor4().equalsIgnoreCase("")){
+            if(!saborDAO.existSabor(tabaco.getSabor4())){
+                saborDAO.insertSabor(new SaborDTO(tabaco.getSabor4()));
+            }
+        }
+        if(!tabaco.getSabor5().equalsIgnoreCase("")){
+            if(!saborDAO.existSabor(tabaco.getSabor5())){
+                saborDAO.insertSabor(new SaborDTO(tabaco.getSabor5()));
+            }
+        }
     }
 
     public void setImages() {
@@ -63,36 +100,6 @@ public class TabacoController {
         return tabaco;
     }
 
-    public List<TabacoDTO> getTabacosBySearch(TabacoSearchDTO tabacoSearchDTO) {
-        List<TabacoDTO> finalList = new ArrayList<>();
-        List<TabacoDTO> list1 = new ArrayList<>();
-        List<TabacoDTO> list2 = new ArrayList<>();
-        List<TabacoDTO> list3 = new ArrayList<>();
-        List<TabacoDTO> list4 = new ArrayList<>();
-        Collection<TabacoDTO> similar = new HashSet<TabacoDTO>();
-        if (tabacoSearchDTO.getTabaco_name() != null) {
-            list1.addAll(tabacoDAO.getTabacosByName(tabacoSearchDTO.getTabaco_name()));
-            similar.addAll(list1);
-        }
-        if (tabacoSearchDTO.getMarca() != null) {
-            list2.addAll(tabacoDAO.getTabacosByMarcaName(tabacoSearchDTO.getMarca()));
-            if (similar.isEmpty()) similar.addAll(list2);
-            else similar.retainAll(list2);
-        }
-        if (tabacoSearchDTO.getGramos() != 0) {
-            list3.addAll(tabacoDAO.getTabacosByGramos(tabacoSearchDTO.getGramos()));
-            if (similar.isEmpty()) similar.addAll(list3);
-            else similar.retainAll(list3);
-        }
-        if (tabacoSearchDTO.getPrecio() != 0) {
-            list4.addAll(tabacoDAO.getTabacosByPrecio(tabacoSearchDTO.getPrecio()));
-            if (similar.isEmpty()) return list4;
-            else similar.retainAll(list4);
-        }
-        finalList.addAll(similar);
-        return finalList;
-    }
-
     public void assoFormatoByMarca(int idmarca, int idformato) {
         MarcaDTO marca = marcaDAO.getMarcaById(idmarca);
         List<TabacoDTO> list = tabacoDAO.getTabacosByMarca(marca);
@@ -103,10 +110,20 @@ public class TabacoController {
 
     public void updateTabaco(TabacoDTO tabacoDTO) {
         if (tabacoDAO.canUpdate(tabacoDTO)) {
+            tabacoDTO.setSabor1(tabacoDTO.getSabor1().toUpperCase());
+            tabacoDTO.setSabor2(tabacoDTO.getSabor2().toUpperCase());
+            tabacoDTO.setSabor3(tabacoDTO.getSabor3().toUpperCase());
+            tabacoDTO.setSabor4(tabacoDTO.getSabor4().toUpperCase());
+            tabacoDTO.setSabor5(tabacoDTO.getSabor5().toUpperCase());
+            insertSaboresOnBD(tabacoDTO);
             tabacoDAO.updateTabaco(tabacoDTO);
         } else {
             throw new CantUpdateTabacoException(tabacoDTO);
         }
+    }
+
+    public List<TabacoDTO> getTabacosBySabor(String sabor){
+        return tabacoDAO.getTabacosBySabor(sabor);
     }
 
     public List<TabacoDTO> getNewTabacos() {
@@ -138,5 +155,9 @@ public class TabacoController {
         cal.add(Calendar.DATE, -14);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(cal.getTime());
+    }
+
+    public UsuarioDTO getUsuarioByName(String username){
+        return tabacoDAO.getUsuarioByName(username);
     }
 }

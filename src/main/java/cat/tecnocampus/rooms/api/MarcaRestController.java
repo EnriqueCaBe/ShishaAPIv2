@@ -17,7 +17,7 @@ public class MarcaRestController {
         this.marcaController = marcaController;
     }
 
-    @PostMapping("/marca")
+    @PostMapping("/admin/marca")
     public void insertMarca(@RequestBody MarcaDTO marca){
         marcaController.postMarca(marca);
     }
@@ -42,7 +42,7 @@ public class MarcaRestController {
         return marcaController.getMarcaAndTabacos(id);
     }
 
-    @DeleteMapping("/marca/{id}")
+    @DeleteMapping("/admin/marca/{id}")
     public void deleteMarca(@PathVariable int id){
 
     }

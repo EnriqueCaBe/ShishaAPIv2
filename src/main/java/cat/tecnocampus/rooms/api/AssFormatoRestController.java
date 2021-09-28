@@ -17,7 +17,7 @@ public class AssFormatoRestController {
         this.assFormatoController = assFormatoController;
     }
 
-    @PostMapping("/ass_formato")
+    @PostMapping("/admin/ass_formato")
     public void insertAssFormato(@RequestBody @Valid AssFormatoDTO assFormatoDTO){
         assFormatoController.insertAssFormato(assFormatoDTO);
     }

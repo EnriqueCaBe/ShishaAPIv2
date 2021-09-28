@@ -20,7 +20,7 @@ public class FormatoRestController {
         this.formatoController = formatoController;
     }
 
-    @PostMapping("/formato")
+    @PostMapping("/admin/formato")
     public void postFormato(@RequestBody @Valid FormatoDTO formatoDTO){
         formatoController.postFormato(formatoDTO);
     }

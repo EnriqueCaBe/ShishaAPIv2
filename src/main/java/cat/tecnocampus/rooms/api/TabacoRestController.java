@@ -1,13 +1,18 @@
 package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.TabacoController;
+import cat.tecnocampus.rooms.application.dtos.SaborRequestDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
 import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
-import cat.tecnocampus.rooms.application.services.CreatePDF;
+import cat.tecnocampus.rooms.application.dtos.UsuarioDTO;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sound.midi.SysexMessage;
 import javax.validation.Valid;
 import java.io.FileNotFoundException;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -15,14 +20,12 @@ import java.util.List;
 public class TabacoRestController {
 
     private final TabacoController tabacoController;
-    private CreatePDF createPDF;
 
-    public TabacoRestController(TabacoController tabacoController, CreatePDF createPDF) {
+    public TabacoRestController(TabacoController tabacoController) {
         this.tabacoController = tabacoController;
-        this.createPDF = createPDF;
     }
 
-    @PostMapping("/tabaco")
+    @PostMapping("/admin/tabaco")
     public void postTabaco(@RequestBody @Valid TabacoDTO tabaco){
         tabacoController.insertTabaco(tabaco);
     }
@@ -42,9 +45,9 @@ public class TabacoRestController {
         return tabacoController.getTabacoById(id);
     }
 
-    @GetMapping("/tabaco/search")
-    public List<TabacoDTO> getTabacosBySearch(@RequestBody TabacoSearchDTO tabacoSearchDTO){
-        return tabacoController.getTabacosBySearch(tabacoSearchDTO);
+    @PostMapping("/tabaco/sabor")
+    public List<TabacoDTO> getTabacosBySabor(@RequestBody SaborRequestDTO sabor){
+        return tabacoController.getTabacosBySabor(sabor.getSabor());
     }
 
     @GetMapping("/tabaco/new")
@@ -52,18 +55,18 @@ public class TabacoRestController {
         return tabacoController.getNewTabacos();
     }
 
-    @PostMapping("/tabaco/update")
+    @PostMapping("/admin/tabaco/update")
     public void updateTabaco(@RequestBody TabacoDTO tabacoDTO){
         tabacoController.updateTabaco(tabacoDTO);
     }
 
-    @PostMapping("/ass_formato/all/{marca}/{formato}")
+    @PostMapping("/admin/ass_formato/all/{marca}/{formato}")
     public void assFormato(@PathVariable int marca, @PathVariable int formato){
         tabacoController.assoFormatoByMarca(marca,formato);
     }
 
-    @GetMapping("/document")
-    public void create() throws FileNotFoundException {
-        createPDF.createFile();
+    @GetMapping("/user/me")
+    public UsuarioDTO getMe(Principal principal){
+        return tabacoController.getUsuarioByName(principal.getName());
     }
 }
