@@ -1,10 +1,9 @@
 package cat.tecnocampus.rooms.api;
 
+import cat.tecnocampus.rooms.application.ShishaDatabaseController;
 import cat.tecnocampus.rooms.application.TabacoController;
-import cat.tecnocampus.rooms.application.dtos.SaborRequestDTO;
-import cat.tecnocampus.rooms.application.dtos.TabacoDTO;
-import cat.tecnocampus.rooms.application.dtos.TabacoSearchDTO;
-import cat.tecnocampus.rooms.application.dtos.UsuarioDTO;
+import cat.tecnocampus.rooms.application.dtos.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +19,11 @@ import java.util.List;
 public class TabacoRestController {
 
     private final TabacoController tabacoController;
+    private final ShishaDatabaseController shishaDatabaseController;
 
-    public TabacoRestController(TabacoController tabacoController) {
+    public TabacoRestController(TabacoController tabacoController, ShishaDatabaseController shishaDatabaseController) {
         this.tabacoController = tabacoController;
+        this.shishaDatabaseController = shishaDatabaseController;
     }
 
     @PostMapping("/admin/tabaco")
@@ -68,5 +69,10 @@ public class TabacoRestController {
     @GetMapping("/user/me")
     public UsuarioDTO getMe(Principal principal){
         return tabacoController.getUsuarioByName(principal.getName());
+    }
+
+    @GetMapping("/admin/db/marca/{marca}")
+    public List<TabacoDTO> getTabacosByMarca(@PathVariable int marca) throws JsonProcessingException {
+        return shishaDatabaseController.getTabacosByMarca(marca);
     }
 }

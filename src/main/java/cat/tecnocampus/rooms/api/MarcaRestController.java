@@ -1,8 +1,10 @@
 package cat.tecnocampus.rooms.api;
 
 import cat.tecnocampus.rooms.application.MarcaController;
+import cat.tecnocampus.rooms.application.ShishaDatabaseController;
 import cat.tecnocampus.rooms.application.TabacoController;
 import cat.tecnocampus.rooms.application.dtos.MarcaDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.List;
 public class MarcaRestController {
 
     private MarcaController marcaController;
+    private ShishaDatabaseController shishaDatabaseController;
 
-    public MarcaRestController(MarcaController marcaController, TabacoController tabacoController) {
+    public MarcaRestController(MarcaController marcaController, ShishaDatabaseController shishaDatabaseController) {
         this.marcaController = marcaController;
+        this.shishaDatabaseController = shishaDatabaseController;
     }
 
     @PostMapping("/admin/marca")
@@ -45,5 +49,10 @@ public class MarcaRestController {
     @DeleteMapping("/admin/marca/{id}")
     public void deleteMarca(@PathVariable int id){
 
+    }
+
+    @GetMapping("/admin/db/marcas")
+    public List<MarcaDTO> getMarcasDB() throws JsonProcessingException {
+        return shishaDatabaseController.getAllMarcasDB();
     }
 }
