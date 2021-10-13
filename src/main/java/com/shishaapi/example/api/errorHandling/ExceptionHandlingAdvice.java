@@ -1,6 +1,6 @@
 package com.shishaapi.example.api.errorHandling;
 
-import cat.tecnocampus.rooms.application.exceptions.*;
+
 import com.shishaapi.example.application.exceptions.FormatoDoesExistsException;
 import com.shishaapi.example.application.exceptions.MarcaDoesExistsException;
 import com.shishaapi.example.application.exceptions.TabacoDoesExistsException;

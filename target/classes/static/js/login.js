@@ -28,7 +28,7 @@
 function getAuthoritzation() {
 	$.ajax({
 	  headers: { Authorization: localStorage.getItem("token") },
-	  url: "http://localhost:8080/user/me",
+	  url: "/user/me",
 	  type: "GET",
 	  dataType: "json",
 	  success: function (data) {

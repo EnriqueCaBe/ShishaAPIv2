@@ -2,7 +2,6 @@ package com.shishaapi.example.api;
 
 import com.shishaapi.example.application.ShishaDatabaseController;
 import com.shishaapi.example.application.TabacoController;
-import cat.tecnocampus.rooms.application.dtos.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.shishaapi.example.application.dtos.SaborRequestDTO;
 import com.shishaapi.example.application.dtos.TabacoDTO;

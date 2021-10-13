@@ -2,25 +2,25 @@
   "groups": [
     {
       "name": "application.jwt",
-      "type": "cat.tecnocampus.rooms.configuration.security.jwt.JwtConfig",
-      "sourceType": "cat.tecnocampus.rooms.configuration.security.jwt.JwtConfig"
+      "type": "com.shishaapi.example.configuration.security.jwt.JwtConfig",
+      "sourceType": "com.shishaapi.example.configuration.security.jwt.JwtConfig"
     }
   ],
   "properties": [
     {
       "name": "application.jwt.secret-key",
       "type": "java.lang.String",
-      "sourceType": "cat.tecnocampus.rooms.configuration.security.jwt.JwtConfig"
+      "sourceType": "com.shishaapi.example.configuration.security.jwt.JwtConfig"
     },
     {
       "name": "application.jwt.token-expiration-after-days",
       "type": "java.lang.Integer",
-      "sourceType": "cat.tecnocampus.rooms.configuration.security.jwt.JwtConfig"
+      "sourceType": "com.shishaapi.example.configuration.security.jwt.JwtConfig"
     },
     {
       "name": "application.jwt.token-prefix",
       "type": "java.lang.String",
-      "sourceType": "cat.tecnocampus.rooms.configuration.security.jwt.JwtConfig"
+      "sourceType": "com.shishaapi.example.configuration.security.jwt.JwtConfig"
     }
   ],
   "hints": []
