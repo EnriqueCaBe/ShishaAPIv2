@@ -53,3 +53,11 @@ function getAuthoritzation() {
 	  "Error"
 	);
   }
+
+function closeModal(){
+	document.getElementById("myModal").style.display = "none";
+}
+
+  function goTo404(){
+	  window.location = "404.html"
+  }
