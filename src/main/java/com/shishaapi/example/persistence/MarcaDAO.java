@@ -36,8 +36,8 @@ public class MarcaDAO implements com.shishaapi.example.application.daosInterface
 
     @Override
     public void insertMarca(MarcaDTO marcaDTO) {
-        final String query = "insert into marca(name_marca,pais,pais_api,descripcion,imagen, imagen_flag) values(?,?,?,?,?,?)";
-        jdbcTemplate.update(query,marcaDTO.getName_marca(), marcaDTO.getPais(), marcaDTO.getPais_api(), marcaDTO.getDescripcion(), marcaDTO.getImagen(), marcaDTO.getImagen_flag());
+        final String query = "insert into marca(id,name_marca,pais,pais_api,descripcion,imagen, imagen_flag) values(?,?,?,?,?,?,?)";
+        jdbcTemplate.update(query,marcaDTO.getId(),marcaDTO.getName_marca(), marcaDTO.getPais(), marcaDTO.getPais_api(), marcaDTO.getDescripcion(), marcaDTO.getImagen(), marcaDTO.getImagen_flag());
     }
 
     @Override

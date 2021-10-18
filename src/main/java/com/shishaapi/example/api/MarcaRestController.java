@@ -13,15 +13,14 @@ import java.util.List;
 public class MarcaRestController {
 
     private MarcaController marcaController;
-    private ShishaDatabaseController shishaDatabaseController;
 
-    public MarcaRestController(MarcaController marcaController, ShishaDatabaseController shishaDatabaseController) {
+    public MarcaRestController(MarcaController marcaController) {
         this.marcaController = marcaController;
-        this.shishaDatabaseController = shishaDatabaseController;
     }
 
     @PostMapping("/admin/marca")
     public void insertMarca(@RequestBody MarcaDTO marca){
+        marca.toString();
         marcaController.postMarca(marca);
     }
 
@@ -48,10 +47,5 @@ public class MarcaRestController {
     @DeleteMapping("/admin/marca/{id}")
     public void deleteMarca(@PathVariable int id){
 
-    }
-
-    @GetMapping("/admin/db/marcas")
-    public List<MarcaDTO> getMarcasDB() throws JsonProcessingException {
-        return shishaDatabaseController.getAllMarcasDB();
     }
 }

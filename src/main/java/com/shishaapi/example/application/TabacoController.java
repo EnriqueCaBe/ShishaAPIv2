@@ -34,20 +34,7 @@ public class TabacoController {
 
     public void insertTabaco(TabacoDTO tabaco) {
         if (!tabacoDAO.isTabacoExists(tabaco)) {
-            MarcaDTO marca = marcaDAO.getMarcaByName(tabaco.getMarca());
-            if (tabaco.getImagen().equals("")) {
-                tabaco.setImagen(marca.getImagen());
-            }
-
-            tabaco.setSabor1(tabaco.getSabor1().toUpperCase());
-            tabaco.setSabor2(tabaco.getSabor2().toUpperCase());
-            tabaco.setSabor3(tabaco.getSabor3().toUpperCase());
-            tabaco.setSabor4(tabaco.getSabor4().toUpperCase());
-            tabaco.setSabor5(tabaco.getSabor5().toUpperCase());
-
             insertSaboresOnBD(tabaco);
-
-            tabaco.setImagen_flag(marca.getImagen_flag());
             tabaco.setFecha_publicacion(getActualDateTime());
             tabaco.setNovedad("T");
             tabacoDAO.insertTabaco(tabaco);

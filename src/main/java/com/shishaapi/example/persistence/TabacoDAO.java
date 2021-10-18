@@ -36,8 +36,8 @@ public class TabacoDAO implements com.shishaapi.example.application.daosInterfac
 
     @Override
     public void insertTabaco(TabacoDTO tabaco) {
-        final String query = "insert into tabaco(name_tabaco,name_api, descripcion,sabor1,sabor2,sabor3,sabor4,sabor5, marca, imagen, imagen_flag,fecha_publicacion,novedad) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(query,tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(),tabaco.getSabor1(),tabaco.getSabor2(),tabaco.getSabor3(),tabaco.getSabor4(),tabaco.getSabor5(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag(),tabaco.getFecha_publicacion(),"T");
+        final String query = "insert into tabaco(id,name_tabaco,name_api, descripcion,sabor1,sabor2,sabor3,sabor4,sabor5, marca, imagen, imagen_flag,fecha_publicacion,novedad) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(query,tabaco.getId(),tabaco.getName_tabaco(), tabaco.getName_api(), tabaco.getDescripcion(),tabaco.getSabor1(),tabaco.getSabor2(),tabaco.getSabor3(),tabaco.getSabor4(),tabaco.getSabor5(), tabaco.getMarca(), tabaco.getImagen(),tabaco.getImagen_flag(),tabaco.getFecha_publicacion(),"T");
     }
 
     @Override

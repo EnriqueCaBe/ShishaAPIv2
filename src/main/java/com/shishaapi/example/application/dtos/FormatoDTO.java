@@ -8,6 +8,12 @@ public class FormatoDTO {
 
     public FormatoDTO(){}
 
+    public FormatoDTO(int id, double gramos, double precio) {
+        this.id = id;
+        this.gramos = gramos;
+        this.precio = precio;
+    }
+
     public int getId() {
         return id;
     }

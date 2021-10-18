@@ -26,8 +26,8 @@ public class FormatoDAO implements com.shishaapi.example.application.daosInterfa
 
     @Override
     public void insertFormato(FormatoDTO formatoDTO) {
-        final String query = "insert into formato(gramos, precio) values(?,?)";
-        jdbcTemplate.update(query,formatoDTO.getGramos(),formatoDTO.getPrecio());
+        final String query = "insert into formato(id,gramos, precio) values(?,?,?)";
+        jdbcTemplate.update(query, formatoDTO.getId(), formatoDTO.getGramos(), formatoDTO.getPrecio());
     }
 
     @Override

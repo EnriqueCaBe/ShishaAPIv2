@@ -23,47 +23,24 @@
 
         <div id='survey-form'>
             <div class='form-input'>
-                <label>Nombre Tabaco</label>
-                <input type='text' id='name_tabaco' placeholder='Nombre Tabaco' class='form-input-size' required />
-            </div>
-            <div class='form-input'>
-                <label>Nombre API</label>
-                <input type='text' id='name_api' placeholder='Nombre API' class='form-input-size' required />
-            </div>
-            <div class='form-input'>
                 <p>Marca</p>
                 <select id='marca' class='form-input-size' style="height: 30px;" required>
                     <option disabled selected value="">Selecciones una marca</option>
                 </select>
             </div>
             <div class='form-input'>
-                <label>Imagen Tabaco</label>
-                <input type='text' id='imagen' placeholder='URL imagen' class='form-input-size' />
+                <p>Tabaco</p>
+                <select id='tabaco' class='form-input-size' style="height: 30px;" required disabled>
+                    <option disabled selected value="">Selecciones una marca</option>
+                </select>
             </div>
-            <div class='form-input'>
-                <p>Descripci&oacute;n</p>
-                <textarea id="descripcion" type='text' placeholder='El tabaco sabe a...'></textarea>
+            <div class='form-input' id="formatos">
+
+                <p>Formatos</p>
+                <div id="formatos">
+                </div>
             </div>
-            <div class='form-input'>
-                <p>Sabor 1</p>
-                <input id="sabor1" type='text' placeholder='Sabor 1' class='form-input-size'></input>
-            </div>
-            <div class='form-input'>
-                <p>Sabor 2</p>
-                <input id="sabor2" type='text' placeholder='Sabor 2' class='form-input-size'></input>
-            </div>
-            <div class='form-input'>
-                <p>Sabor 3</p>
-                <input id="sabor3" type='text' placeholder='Sabor 3' class='form-input-size'></input>
-            </div>
-            <div class='form-input'>
-                <p>Sabor 4</p>
-                <input id="sabor4" type='text' placeholder='Sabor 4' class='form-input-size'></input>
-            </div>
-            <div class='form-input'>
-                <p>Sabor 5</p>
-                <input id="sabor5" type='text' placeholder='Sabor 5' class='form-input-size'></input>
-            </div>
+            
             <div class='form-input'>
                 <button onclick="doIt()" id='submit'>Submit</button>
             </div>

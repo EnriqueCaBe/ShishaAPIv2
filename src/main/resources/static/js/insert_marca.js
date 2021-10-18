@@ -2,32 +2,67 @@ $(document).ready(function () {
   if (localStorage.getItem("token") == null) {
     window.location = "login.html";
   }
+  getMarcas();
 });
 
-
-async function doIt() {
-  var newMarca = `{"name_marca":"${document.getElementById("name_marca").value}", "pais":"${document.getElementById("pais").value}",
-    "pais_api":"${document.getElementById("pais_api").value}", "descripcion":"${document.getElementById("descripcion").value}", "imagen":"${document.getElementById("url_marca").value}", "imagen_flag":"${document.getElementById("url_pais").value}" }`;
-
-  await insertMarca(newMarca);
-  limpiarCampos();
+async function getMarcas(){
+  const marcas = await getMarcasJSON();
+  var letras_añadidas = [];
+  marcas.map((marca) => {
+    if (!letras_añadidas.includes(marca.name_marca.charAt(0))) {
+      document.getElementById("marca").insertAdjacentHTML("beforeend", `<option disabled value="" id="${marca.name_marca.charAt(0)}">--${marca.name_marca.charAt(0)}</option>`);
+      letras_añadidas.push(marca.name_marca.charAt(0));
+    }
+    document.getElementById(marca.name_marca.charAt(0)).insertAdjacentHTML("afterend", `<option value="${marca.id}">${marca.name_marca}</option>`);
+  });
 }
 
-function limpiarCampos() {
-  document.getElementById("name_marca").value = "";
-  document.getElementById("name_api").value = "";
-  document.getElementById("pais").value = "";
-  document.getElementById("pais_api").value = "";
-  document.getElementById("descripcion").value = "";
-  document.getElementById("url_marca").value = "";
-  document.getElementById("url_pais").value = "";
+async function doIt(){
+  const marca = await getMarcaByID(document.getElementById("marca").value);
+  console.log(marca);
+  await insertMarca(marca);
+}
+
+
+function getMarcasJSON() {
+  return new Promise((resolve) => {
+    $.ajax({
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
+      url: `/admin/db/marcas`,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        resolve(data)
+      },
+      error: function () {},
+    });
+  });
+}
+
+function getMarcaByID(id){
+  return new Promise((resolve) => {
+    $.ajax({
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
+      url: `/admin/db/marca/${id}`,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        resolve(data)
+      },
+      error: function () {},
+    });
+  });
 }
 
 function insertMarca(marca) {
   return new Promise((resolve) => {
-    fetch(`/marca`, {
+    fetch(`/admin/marca`, {
       method: 'POST',
-      body: marca,
+      body: JSON.stringify(marca),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem("token")
@@ -40,14 +75,4 @@ function insertMarca(marca) {
       }
     }).then((res) => resolve(res));
   });
-}
-
-
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
 }

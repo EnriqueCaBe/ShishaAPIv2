@@ -1,5 +1,6 @@
 package com.shishaapi.example.application;
 
+import com.shishaapi.example.application.dtos.FormatoDTO;
 import com.shishaapi.example.application.dtos.MarcaDTO;
 import com.shishaapi.example.application.dtos.TabacoDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,7 +17,7 @@ import java.util.List;
 @Service
 public class ShishaDatabaseController {
 
-    private static final String URL = "http://192.168.44.119:9002";
+    private static final String URL = "http://localhost:8080";
     RestTemplate restTemplate;
 
     public ShishaDatabaseController(RestTemplate restTemplate) {
@@ -24,7 +25,7 @@ public class ShishaDatabaseController {
     }
 
     public List<MarcaDTO> getAllMarcasDB() throws JsonProcessingException {
-        ResponseEntity<String> s = restTemplate.getForEntity("http://localhost:9002/marca/all",String.class);
+        ResponseEntity<String> s = restTemplate.getForEntity(URL + "/marca/all",String.class);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode root = objectMapper.readTree(s.getBody());
         List<MarcaDTO> list = new ArrayList<MarcaDTO>();
@@ -43,12 +44,29 @@ public class ShishaDatabaseController {
         return list;
     }
 
-    public List<TabacoDTO> getTabacosByMarca(int marca) throws JsonProcessingException {
-        ResponseEntity<String> s = restTemplate.getForEntity("http://localhost:9002/marca/" + marca,String.class);
+    public MarcaDTO getMarcaByID(int id) throws JsonProcessingException {
+        ResponseEntity<String> s = restTemplate.getForEntity(URL + "/marca/"+id,String.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode root = objectMapper.readTree(s.getBody());
+
+        MarcaDTO marcaDTO = new MarcaDTO();
+        marcaDTO.setId(root.path("id").asInt());
+        marcaDTO.setName_marca(root.path("name_marca").asText());
+        marcaDTO.setPais(root.path("pais").asText());
+        marcaDTO.setPais_api(root.path("pais_api").asText());
+        marcaDTO.setDescripcion(root.path("descripcion").asText());
+        marcaDTO.setImagen(root.path("imagen").asText());
+        marcaDTO.setImagen_flag(root.path("imagen_flag").asText());
+        marcaDTO.setTabacos(null);
+
+        return marcaDTO;
+    }
+
+    public List<TabacoDTO> getTabacosByMarca(String marca) throws JsonProcessingException {
+        ResponseEntity<String> s = restTemplate.getForEntity(URL + "/marca/tabaco/" + marca,String.class);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode root = objectMapper.readTree(s.getBody());
         List<TabacoDTO> list = new ArrayList<>();
-        System.out.println(s.getBody());
         for(int i = 0; i < root.path("tabacos").size(); i++){
             TabacoDTO tabaco = new TabacoDTO();
             tabaco.setId(root.path("tabacos").get(i).path("id").asInt());
@@ -69,5 +87,37 @@ public class ShishaDatabaseController {
             list.add(tabaco);
         }
         return list;
+    }
+
+    public TabacoDTO getTabacoByID(int id) throws JsonProcessingException {
+        ResponseEntity<String> s = restTemplate.getForEntity(URL + "/tabaco/"+id,String.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode root = objectMapper.readTree(s.getBody());
+
+        TabacoDTO tabacoDTO = new TabacoDTO();
+
+        tabacoDTO.setId(root.path("id").asInt());
+        tabacoDTO.setName_tabaco(root.path("name_tabaco").asText());
+        tabacoDTO.setName_api(root.path("name_api").asText());
+        tabacoDTO.setDescripcion(root.path("descripcion").asText());
+        tabacoDTO.setSabor1(root.path("sabor1").asText());
+        tabacoDTO.setSabor2(root.path("sabor2").asText());
+        tabacoDTO.setSabor3(root.path("sabor3").asText());
+        tabacoDTO.setSabor4(root.path("sabor4").asText());
+        tabacoDTO.setSabor5(root.path("sabor5").asText());
+        tabacoDTO.setMarca(root.path("marca").asText());
+        tabacoDTO.setImagen(root.path("imagen").asText());
+        tabacoDTO.setImagen_flag(root.path("imagen_flag").asText());
+        tabacoDTO.setFecha_publicacion("");
+        tabacoDTO.setNovedad("");
+
+        List<FormatoDTO> formatos = new ArrayList<FormatoDTO>();
+        for(int i = 0; i < root.path("formatos").size(); i++){
+            formatos.add(new FormatoDTO(root.path("formatos").get(i).path("id").asInt(),root.path("formatos").get(i).path("gramos").asInt(),root.path("formatos").get(i).path("precio").asDouble()));
+        }
+        tabacoDTO.setFormatos(formatos);
+
+        return tabacoDTO;
+
     }
 }

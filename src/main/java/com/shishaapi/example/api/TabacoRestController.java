@@ -17,11 +17,9 @@ import java.util.List;
 public class TabacoRestController {
 
     private final TabacoController tabacoController;
-    private final ShishaDatabaseController shishaDatabaseController;
 
-    public TabacoRestController(TabacoController tabacoController, ShishaDatabaseController shishaDatabaseController) {
+    public TabacoRestController(TabacoController tabacoController) {
         this.tabacoController = tabacoController;
-        this.shishaDatabaseController = shishaDatabaseController;
     }
 
     @PostMapping("/admin/tabaco")
@@ -69,8 +67,5 @@ public class TabacoRestController {
         return tabacoController.getUsuarioByName(principal.getName());
     }
 
-    @GetMapping("/admin/db/marca/{marca}")
-    public List<TabacoDTO> getTabacosByMarca(@PathVariable int marca) throws JsonProcessingException {
-        return shishaDatabaseController.getTabacosByMarca(marca);
-    }
+
 }
