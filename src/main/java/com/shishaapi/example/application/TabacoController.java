@@ -38,7 +38,21 @@ public class TabacoController {
             tabaco.setFecha_publicacion(getActualDateTime());
             tabaco.setNovedad("T");
             tabacoDAO.insertTabaco(tabaco);
-        } else throw new TabacoDoesExistsException(tabaco.getName_tabaco());
+            insertAndAsignFormatos(tabaco.getId(),tabaco.getFormatos());
+        } else{
+            insertAndAsignFormatos(tabaco.getId(),tabaco.getFormatos());
+        }
+    }
+
+    private void insertAndAsignFormatos(int id, List<FormatoDTO> formatos) {
+        for(FormatoDTO formatoDTO: formatos){
+            if(!formatoDAO.isFormatoExists(formatoDTO)){
+                formatoDAO.insertFormato(formatoDTO);
+            }
+            if(!assFormatoDAO.isAssFormatoExists(new AssFormatoDTO(id,formatoDTO.getId()))){
+                assFormatoDAO.insertAssFormato(new AssFormatoDTO(id,formatoDTO.getId()));
+            }
+        }
     }
 
     private void insertSaboresOnBD(TabacoDTO tabaco){

@@ -26,6 +26,13 @@ public class MarcaController {
         this.formatoDAO = formatoDAO;
     }
 
+    public void corregirFlag(){
+        List<MarcaDTO> listMarcas = marcaDAO.getAllMarcas();
+        this.marcaDAO.corregirFlags(listMarcas);
+        List<TabacoDTO> listTabaco = tabacoDAO.getAllTabaco();
+        this.tabacoDAO.corregirFlags(listTabaco);
+    }
+
     public void postMarca(MarcaDTO marca) {
         if (!marcaDAO.isMarcaExists(marca)) {
             marcaDAO.insertMarca(marca);

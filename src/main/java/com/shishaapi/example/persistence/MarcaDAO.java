@@ -1,11 +1,15 @@
 package com.shishaapi.example.persistence;
 
 import com.shishaapi.example.application.dtos.MarcaDTO;
+import com.shishaapi.example.application.dtos.TabacoDTO;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.jdbc.spring.ResultSetExtractorImpl;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 @Repository
 public class MarcaDAO implements com.shishaapi.example.application.daosInterface.MarcaDAO {
@@ -76,6 +80,4 @@ public class MarcaDAO implements com.shishaapi.example.application.daosInterface
         final String query = "delete from marca where id=?";
         jdbcTemplate.update(query,id);
     }
-
-
 }

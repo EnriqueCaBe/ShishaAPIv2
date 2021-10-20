@@ -32,7 +32,7 @@ public class FormatoDAO implements com.shishaapi.example.application.daosInterfa
 
     @Override
     public boolean isFormatoExists(FormatoDTO formatoDTO) {
-        final String query = "select gramos, precio from formato where gramos = ? and precio = ?";
+        final String query = "select id,gramos, precio from formato where gramos = ? and precio = ?";
         List<FormatoDTO> list = jdbcTemplate.query(query,formatosRowMapper,formatoDTO.getGramos(),formatoDTO.getPrecio());
         return list.size() != 0;
     }

@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>ShishaMixer | Inicio</title>
+    <link rel="stylesheet" href="./style/indexstyle.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+</head>
+
+<body style="margin-bottom: 5%;">
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <img src="./images/18.png" style="width:40%; margin-left: 30%;">
+            <h1 style="text-align: center;">Tienes mas de 18 años?</h1>
+            <div>
+                <button onclick="closeModal()" style="width: 30%; margin-left:15%; margin-right: 5%; border: none;color: white;padding: 15px 32px;font-size: 16px; background-color: #008CBA; border-radius: 5px;">Sí</button>
+                <button onclick="goTo404()" style="width: 30%;  border: none;color: white;padding: 15px 32px;font-size: 16px; background-color: #f44336; border-radius: 5px;">No</button>
+            </div>
+        </div>
+    </div>
+    <img id="userPhoto" src="./images/Shisha_Mixer.png" alt="User Photo">
+    <div
+        style="width: 80%; background: rgba(255, 255, 255, 0.644); border-radius: 10px; color: black; padding:2%; margin-left: 8%; margin-top: 4%;">
+        <h2 style="width: 100%; text-align: center; font-family:'Fira Code';">Logeate</h2>
+        <div style="text-align: center; width:80%; margin-left:10%;">
+            <input id="usuario" type="text"
+                style="width:100%; font-size:25px; border-radius: 5px; padding:5px; border:rgba(255, 255, 255, 0.644); font-family:'Fira Code';"
+                placeholder="Usuario">
+        </div>
+        <div style="text-align: center;width:80%; margin-left:10%; margin-top:30px;">
+            <input id="password" type="password"
+                style="width:100%; font-size:25px; border-radius: 5px; padding:5px; border:rgba(255, 255, 255, 0.644); font-family:'Fira Code';"
+                placeholder="Password">
+        </div>
+        <div style="text-align: center;width:80%; margin-left:10%; margin-top:30px;">
+            <button id="submit" style="width: 50%; margin-bottom: 20px; font-family:'Fira Code';">Log In</button>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./assets/jquery-3.6.0.min.js"></script>
+    <script src="./assets/toastr.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
