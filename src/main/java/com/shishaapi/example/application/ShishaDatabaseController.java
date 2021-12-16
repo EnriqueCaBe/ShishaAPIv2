@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class ShishaDatabaseController {
 
-    private static final String URL = "http://localhost:8080";
+    private static final String URL = "http://64.225.77.37";
     RestTemplate restTemplate;
 
     public ShishaDatabaseController(RestTemplate restTemplate) {
