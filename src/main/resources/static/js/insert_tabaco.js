@@ -59,11 +59,9 @@ async function doIt() {
     tabacoJSONnew = JSON.parse(tabacoJSON);
     tabacoJSONnew.formatos.map((formato) =>{
       if(!formatos.includes(parseInt(formato.id))){
-        console.log(tabacoJSONnew.formatos.findIndex(f => f.id === formato.id));
         tabacoJSONnew.formatos.splice(tabacoJSONnew.formatos.findIndex(f => f.id === formato.id),1);
       }
     });
-    console.log(tabacoJSONnew);
     await insertTabaco(tabacoJSONnew);
     document.getElementById("formatos").innerHTML = '';
     document.getElementById("tabaco").innerHTML = '';

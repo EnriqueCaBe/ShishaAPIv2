@@ -18,6 +18,12 @@ async function putDatos() {
     var letras = [];
     marca.tabacos.map((tabaco) => {
 
+        var sabores = tabaco.sabor1;
+        if(tabaco.sabor2 !== "") sabores = `${sabores}, ${tabaco.sabor2}`;
+        if(tabaco.sabor3 !== "") sabores = `${sabores}, ${tabaco.sabor3}`;
+        if(tabaco.sabor4 !== "") sabores = `${sabores}, ${tabaco.sabor4}`;
+        if(tabaco.sabor5 !== "") sabores = `${sabores}, ${tabaco.sabor5}`;
+
         if (tabaco.name_tabaco.charAt(0).match(/^[0-9]+$/)) {
             if (!letras.includes("num")) {
                 document.getElementById("links").insertAdjacentHTML("beforeend", `<h1 id="num" style="width: 100%; text-align: center;" data-aos="fade-right">0-9</h1>`);
@@ -28,7 +34,7 @@ async function putDatos() {
                 <img class="izquierda" src="${tabaco.imagen}"
                     style="width: 100px; height: 100px; object-fit:contain;">
                 <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>
-                <aside style="margin-top: 3%;">${tabaco.marca}</aside>
+                <aside style="margin-top: 3%;">${sabores}</aside>
                 <div class="reset"></div>
             </div>`);
         } else {
@@ -41,7 +47,7 @@ async function putDatos() {
                 <img class="izquierda" src="${tabaco.imagen}"
                     style="width: 100px; height: 100px; object-fit:contain;">
                 <aside style="font-size: 30px; margin-top: 3%;">${tabaco.name_tabaco}</aside>
-                <aside style="margin-top: 3%;">${tabaco.marca}</aside>
+                <aside style="margin-top: 3%;">${sabores}</aside>
                 <div class="reset"></div>
             </div>`);
         }

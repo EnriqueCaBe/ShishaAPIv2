@@ -33,9 +33,11 @@ function getAuthoritzation() {
 	  dataType: "json",
 	  success: function (data) {
 		if (data.authority === "ROLE_ADMIN"){
+			localStorage.setItem("rol","ROLE_ADMIN")
             window.location = "index_admin.html";
         }
         else if (data.authority === "ROLE_USER"){
+			localStorage.setItem("rol","ROLE_USER")
             window.location = "index.html";
         }
 		  
